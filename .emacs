@@ -162,18 +162,20 @@
 (add-hook 'org-clock-out-hook 'ap/remove-empty-drawer-on-clock-out 'append)
 
 ;; clocking
-(org-clock-persistence-insinuate)                        ; resume clocking task when emacs is restarted
-(setq org-clock-history-length 23)                       ; show lot of clocking history so it's easy to pick items off the C-F11 list
-(setq org-clock-in-resume t)                             ; resume clocking task on clock-in if the clock is open
-(setq org-clock-in-switch-to-state 'ap/clock-in-to-next) ; change tasks to NEXT when clocking in
-(setq org-clock-out-remove-zero-time-clocks t)           ; remove clocked tasks with 0:00 duration
-(setq org-clock-out-when-done t)                         ; clock out when moving task to a done state
-(setq org-clock-persist t)                               ; save running clock when exiting Emacs; load it on startup
-(setq org-clock-persist-query-resume nil)                ; do not prompt to resume an active clock
+(org-clock-persistence-insinuate)                                       ; resume clocking task when emacs is restarted
+(setq org-clock-history-length 23)                                      ; show lot of clocking history so it's easy to pick items off the C-F11 list
+(setq org-clock-in-resume t)                                            ; resume clocking task on clock-in if the clock is open
+(setq org-clock-in-switch-to-state 'ap/clock-in-to-next)                ; change tasks to NEXT when clocking in
+(setq org-clock-out-remove-zero-time-clocks t)                          ; remove clocked tasks with 0:00 duration
+(setq org-clock-out-when-done t)                                        ; clock out when moving task to a done state
+(setq org-clock-persist t)                                              ; save running clock when exiting Emacs; load it on startup
+(setq org-clock-persist-query-resume nil)                               ; do not prompt to resume an active clock
 (setq org-clock-auto-clock-resolution
-    (quote when-no-clock-is-running))                    ; enable auto clock resolution for finding open clocks
-(setq org-clock-report-include-clocking-task t)          ; include current clocking task in clock reports
+    (quote when-no-clock-is-running))                                   ; enable auto clock resolution for finding open clocks
+(setq org-clock-report-include-clocking-task t)                         ; include current clocking task in clock reports
 (setq ap/keep-clock-running nil)
+(setq org-agenda-clockreport-parameter-plist
+    (quote (:link t :maxlevel 5 :fileskip0 t :compact t :narrow 80)))   ; Agenda clock report parameters
 
 ;; refile
 ; exclude DONE state tasks from refile targets
