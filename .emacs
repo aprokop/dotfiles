@@ -100,6 +100,9 @@
 (setq org-log-into-drawer t)
 (setq org-clock-into-drawer t)                                  ; save clock data and state changes and notes in the LOGBOOK drawer
 
+;; use fixed-width font for tables
+(set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+
 ;; setup tags
 ; Tags with fast selection keys
 (setq org-tag-alist (quote ((:startgroup)
