@@ -152,9 +152,9 @@
               ("j" "journal" entry (file+datetree "~/.personal/org/diary.org")
                "* %?\n%U\n" :clock-in t :clock-resume t)
               ("m" "meeting" entry (file "~/.personal/org/refile.org")
-               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+               "* MEETING with %? on %t :MEETING:\n%U" :clock-in t :clock-resume t)
               ("p" "phone call" entry (file "~/.personal/org/refile.org")
-               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t))))
+               "* PHONE with %? on %t :PHONE:\n%U" :clock-in t :clock-resume t))))
 
 ;; remove empty LOGBOOK drawers on clock out
 (defun ap/remove-empty-drawer-on-clock-out ()
