@@ -68,18 +68,36 @@
 ; existing blank lines around the items
 (setq org-blank-before-new-entry (quote ((heading) (plain-list-item . auto))))
 
-;; set default key bindings
-(global-set-key "\C-cl"       'org-store-link)
-(global-set-key "\C-ca"       'org-agenda)
-(global-set-key "\C-cb"       'org-iswitchb)
-(global-set-key "\C-cc"       'org-capture)                     ; start capture mode
-;; set custom key bindings
-(global-set-key (kbd "<f3>")     'org-agenda)
-(global-set-key (kbd "<f5> SPC") 'ap/clock-in-last-task)
-(global-set-key (kbd "<f5> I")   'ap/punch-in)
-(global-set-key (kbd "<f5> O")   'ap/punch-out)
-(global-set-key (kbd "<f6>")     'org-clock-goto)
-(global-set-key (kbd "C-<f6>")   'org-clock-in)
+;; set custom key bindings (norang)
+; very often
+(global-set-key (kbd "<f3>")      'org-agenda)                   ; agenda (one less key than 'C-c a')
+(global-set-key "\C-cb"           'org-iswitchb)                 ; switch to org file
+(global-set-key (kbd "<f11>")     'org-clock-goto)               ; goto currently clocked item
+(global-set-key "\C-cc"           'org-capture)                  ; start capture mode
+; often
+(global-set-key (kbd "C-<f11>")   'org-clock-in)                 ; clock in a task (show menu with prefix)
+;; (global-set-key (kbd "<f9> g")    'gnus)                         ; Gnus (mail)
+;; (global-set-key (kbd "<f5>")      'ap/org-todo)                  ; show TODO items for this subtree
+;; (global-set-key (kbd "<S-f5>")    'ap/widen)                     ; widen
+;; (global-set-key (kbd "<f9> b")    'bbdb)                         ; quick access to bbdb data (adressbook)
+(global-set-key (kbd "<f9> c")    'calendar)                     ; calendar access
+(global-set-key (kbd "<f9> SPC")  'ap/clock-in-last-task)        ; switch clock back to previously clocked task
+(global-set-key "\C-cl"           'org-store-link)               ; store the link for retrieval with 'C-c C-l'
+; sometimes
+(global-set-key (kbd "<f8>")      'org-cycle-agenda-files)       ; goto next org file in org-agenda-files
+;; (global-set-key (kbd "<f9> t")    'ap/insert-inactive-timestamp) ; insert inactive timestamp
+(global-set-key (kbd "<f9> v")    'visible-mode)                 ; toggle visible modes (for showing/editing links)
+(global-set-key (kbd "C-<f9>")    'previous-buffer)              ; previous buffer
+(global-set-key (kbd "C-<f10>")   'next-buffer)                  ; next buffer
+(global-set-key (kbd "C-x n r")   'narrow-to-region)             ; narrow to region
+(global-set-key (kbd "<f9> I")    'ap/punch-in)                  ; punch clock in
+(global-set-key (kbd "<f9> O")    'ap/punch-out)                 ; punch clock out
+;; (global-set-key (kbd "<f9> o")    'ap/make-org-scratch)          ; switch to org scratch buffer
+;; (global-set-key (kbd "<f9> s")    'ap/switch-to-scratch)         ; switch to scratch buffer
+; rarely
+;; (global-set-key (kbd "<f9> h")    'ap/hide-other)                ; hide all other tasks
+(global-set-key (kbd "<f7>")      'ap/set-truncate-lines)        ; toggle line truncation/wrap
+(global-set-key "\C-ca"           'org-agenda)                   ; agenda (minimal emacs testing)
 
 ;; flyspell mode for spell checking everywhere
 ; (add-hook 'org-mode-hook 'turn-on-flyspell 'append)             ; should work but does not
@@ -409,6 +427,15 @@ A prefix arg forces clock in of the default task."
     (org-with-point-at clock-in-to-task
       (org-clock-in nil))))
 
+(defun ap/org-todo (arg)
+  (interactive "p")
+  (if (equal arg 4)
+    (save-restriction
+      (bh/narrow-to-org-subtree)
+      (org-show-todo-tree nil))
+    (bh/narrow-to-org-subtree)
+    (org-show-todo-tree nil)))
+
 (defun ap/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
@@ -609,3 +636,12 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
          t)
        (concat "-" tag))))
 (setq org-agenda-auto-exclude-function 'ap/org-auto-exclude-function)
+
+(defun ap/set-truncate-lines ()
+  "Toggle value of truncate-lines and refresh window display."
+  (interactive)
+  (setq truncate-lines (not truncate-lines))
+  ;; now refresh window display (an idiom from simple.el):
+  (save-excursion
+    (set-window-start (selected-window)
+                      (window-start (selected-window)))))
