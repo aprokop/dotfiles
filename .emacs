@@ -62,6 +62,9 @@
 ; start in indented mode
 (setq org-startup-indented t)
 
+; wrap lines
+(setq org-startup-truncated nil)
+
 ; hide blank lines between headings
 (setq org-cycle-separator-lines 0)
 ; prevent creating blank lines before headings but allow list items to adapt to
