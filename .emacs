@@ -6,6 +6,12 @@
 ;; disable loading of "default.el" at startup
 (setq inhibit-default-init t)
 
+; color scheme
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-billw)
+
 ;; set cursor: nonblinking yellow
 (blink-cursor-mode 0)
 (set-cursor-color "#ffff00")
@@ -26,7 +32,8 @@
 ;; (require 'un-define)
 
 ;; define default font
-(set-face-attribute 'default nil :font "Comic Sans MS")
+; (set-face-attribute 'default nil :font "Comic Sans MS")
+(set-face-attribute 'default nil :font "Terminus")
 (set-face-attribute 'default nil :height 140)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
@@ -44,7 +51,7 @@
 ;;;
 
 ; read cloned org-mode repo (which could be easily updated)
-(add-to-list 'load-path (expand-file-name "~/code/packages/system/org-mode/lisp"))
+(add-to-list 'load-path (expand-file-name "~/code/packages/system/emacs-misc/org-mode/lisp"))
 
 ; enable org-mode (this line should be after 'load path with org-mode)
 (require 'org)
@@ -121,8 +128,13 @@
 (setq org-log-into-drawer t)
 (setq org-clock-into-drawer t)                                  ; save clock data and state changes and notes in the LOGBOOK drawer
 
-;; use fixed-width font for tables
-(set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+;; set face attributes
+(set-face-attribute 'org-column nil
+                     :background "black"
+                    )
+(set-face-attribute 'org-agenda-clocking nil
+                    :background "firebrick"
+                    )
 
 ;; setup tags
 ; Tags with fast selection keys
@@ -152,9 +164,9 @@
               (sequence "WAITING(w@/!)" "|" "PHONE" "MEETING"))))
 (setq org-todo-keyword-faces
       (quote (("TODO"       :foreground "red"           :weight bold)
-              ("NEXT"       :foreground "blue"          :weight bold)
+              ("NEXT"       :foreground "orange"        :weight bold)
               ("DONE"       :foreground "forest green"  :weight bold)
-              ("WAITING"    :foreground "orange"        :weight bold)
+              ("WAITING"    :foreground "cyan"          :weight bold)
               ("MEETING"    :foreground "forest green"  :weight bold)
               ("PHONE"      :foreground "forest green"  :weight bold))))
 (setq org-todo-state-tags-triggers
@@ -239,6 +251,14 @@
 ; compact the block agenda view
 (setq org-agenda-compact-blocks t)
 
+; set default column view headings: Task Effort Clock_Summary
+(setq org-columns-default-format "%80ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM")
+
+; global Effort estimate values
+; global STYLE property values for completion
+(setq org-global-properties (quote (("Effort_ALL" . "0:10 0:30 1:00 2:00 4:00 8:00 12:00 16:00 24:00 40:00 0:00")
+                                    ("STYLE_ALL" . "habit"))))
+
 ; custom agenda command definitions
 (setq org-agenda-custom-commands
       (quote (("N" "Notes" tags "NOTE"
@@ -247,7 +267,7 @@
               ("h" "Habits" tags-todo "STYLE=\"habit\""
                ((org-agenda-overriding-header "Habits")
                 (org-agenda-sorting-strategy
-                 '(todo-state-down effort-up category-keep))))
+                 '(todo-state-down priority-up effort-up category-keep))))
               (" " "Agenda"
                ((agenda "" nil)
                 (tags "REFILE"
@@ -321,7 +341,7 @@
 ;; punch-in/punch-out
 (defun ap/punch-in (arg)
   "Start continuous clocking and set the default task to the
-selected task.  If no task is selected set the Organization task
+selected task. If no task is selected set the Organization task
 as the default task."
   (interactive "p")
   (setq ap/keep-clock-running t)
