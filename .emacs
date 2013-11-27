@@ -12,6 +12,11 @@
 (color-theme-initialize)
 (color-theme-billw)
 
+;; vi like keys
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
+
 ;; set cursor: nonblinking yellow
 (blink-cursor-mode 0)
 (set-cursor-color "#ffff00")
