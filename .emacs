@@ -17,6 +17,9 @@
 (require 'evil)
 (evil-mode 1)
 
+;; text width wrap
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
 ;; set cursor: nonblinking yellow
 (blink-cursor-mode 0)
 (set-cursor-color "#ffff00")
