@@ -1,0 +1,32 @@
+XTerm*cursorColor: Yellow
+XTerm*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-iso10646-1
+XTerm*wideFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-iso10646-1
+XTerm*background: Black
+XTerm*foreground: #c0c0c0
+XTerm*renderFont: false
+XTerm*maxBufSize: 1048576
+XTerm*translations: #override \
+	Meta<Key>c:	    string("©") \n
+	Meta<Key>L:	    string("£") \n
+
+XLock.mode: pipes
+XLock.erasedelay: 400
+XLock.pipes.delay: 20000
+XLock.username:
+XLock.password:
+XLock.info:
+XLock.description: False
+XLock.font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+XLock.planfont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+XLock.fontset: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+XLock.planfontset: -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+XLock.messagefont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+Xft.dpi: 96
+
+Fig.latexfonts: true
+Fig.specialtext: true
