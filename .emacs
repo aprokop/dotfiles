@@ -68,7 +68,11 @@
 ;;;
 
 ; read cloned org-mode repo (which could be easily updated)
-(add-to-list 'load-path (expand-file-name "~/code/packages/system/emacs-misc/org-mode/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/org-mode/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/org-mode/contrib"))
+
+; allow alphabetical lists; set before org.el is loaded
+(setq org-list-allow-alphabetical t)
 
 ; enable org-mode (this line should be after 'load path with org-mode)
 (require 'org)
