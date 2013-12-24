@@ -220,14 +220,6 @@
               ("p" "phone call" entry (file "~/.personal/org/refile.org")
                "* PHONE with %? on %t :PHONE:\n%U" :clock-in t :clock-resume t))))
 
-;; remove empty LOGBOOK drawers on clock out
-(defun ap/remove-empty-drawer-on-clock-out ()
-  (interactive)
-    (save-excursion
-        (beginning-of-line 0)
-            (org-remove-empty-drawer-at "LOGBOOK" (point))))
-(add-hook 'org-clock-out-hook 'ap/remove-empty-drawer-on-clock-out 'append)
-
 ;; clocking
 (org-clock-persistence-insinuate)                                       ; resume clocking task when emacs is restarted
 (setq org-clock-history-length 23)                                      ; show lot of clocking history so it's easy to pick items off the C-F11 list
