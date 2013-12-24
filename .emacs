@@ -189,13 +189,14 @@
 (setq org-treat-S-cursor-todo-selection-as-state-change nil)    ; skip normal processing when entering/leaving <todo> state
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "|" "PHONE" "MEETING"))))
+              (sequence "WAITING(w@/!)" "|" "PHONE" "MEETING" "SEMINAR"))))
 (setq org-todo-keyword-faces
       (quote (("TODO"       :foreground "red"           :weight bold)
               ("NEXT"       :foreground "orange"        :weight bold)
               ("DONE"       :foreground "forest green"  :weight bold)
               ("WAITING"    :foreground "cyan"          :weight bold)
               ("MEETING"    :foreground "forest green"  :weight bold)
+              ("SEMINAR"    :foreground "forest green"  :weight bold)
               ("PHONE"      :foreground "forest green"  :weight bold))))
 (setq org-todo-state-tags-triggers
       (quote (("WAITING"    ("WAITING" . t))
@@ -214,6 +215,8 @@
                "* %?\n%U\n" :clock-in t :clock-resume t)
               ("m" "meeting" entry (file "~/.personal/org/refile.org")
                "* MEETING with %? on %t :MEETING:\n%U" :clock-in t :clock-resume t)
+              ("s" "seminar" entry (file "~/.personal/org/refile.org")
+               "* SEMINAR on %t :SEMINAR:\nAUTHOR: %?\nTITLE: \n%U" :clock-in t :clock-resume t)
               ("p" "phone call" entry (file "~/.personal/org/refile.org")
                "* PHONE with %? on %t :PHONE:\n%U" :clock-in t :clock-resume t))))
 
