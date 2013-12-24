@@ -126,10 +126,12 @@ export EDITOR=/usr/bin/vim
 lsnew() { ls -lt ${1+"$@"} | head -10; }
 function s() {
 local arg=${1:-1};
+local pt=""
 while [ $arg -gt 0 ]; do
-    cd .. >&/dev/null;
+    pt="../$pt"
     arg=$(($arg - 1));
 done
+cd $pt >&/dev/null;
 }
 
 function dux() {
