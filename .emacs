@@ -93,6 +93,13 @@
 ; wrap lines
 (setq org-startup-truncated nil)
 
+; src code highlighting
+(setq org-src-fontify-natively t)
+(require 'ox-latex)
+(add-to-list 'org-latex-packages-alist '("" "listings"))
+(add-to-list 'org-latex-packages-alist '("" "color"))
+
+
 ; hide blank lines between headings
 (setq org-cycle-separator-lines 0)
 ; prevent creating blank lines before headings but allow list items to adapt to
