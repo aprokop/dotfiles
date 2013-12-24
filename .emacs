@@ -6,6 +6,9 @@
 ;; disable loading of "default.el" at startup
 (setq inhibit-default-init t)
 
+;; disable toolbar
+(tool-bar-mode -1)
+
 ; color scheme
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
 (require 'color-theme)
