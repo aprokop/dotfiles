@@ -1,2 +1,5 @@
 .gitignore
 *~
+.emacs.d/.org-id-locations
+.emacs.d/bookmarks
+.emacs.d/org-clock-save.el
