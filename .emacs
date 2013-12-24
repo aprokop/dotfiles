@@ -23,6 +23,12 @@
 ;; text width wrap
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; recent files mode
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
 ;; set cursor: nonblinking yellow
 (blink-cursor-mode 0)
 (set-cursor-color "#ffff00")
