@@ -13,7 +13,7 @@
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-billw)
+(color-theme-prok)
 
 ;; vi like keys
 (add-to-list 'load-path "~/.emacs.d/evil")
