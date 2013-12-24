@@ -307,17 +307,13 @@
                             (org-tags-match-list-sublevels t)
                             (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-sorting-strategy
-                             '(priority-down todo-state-down effort-up category-keep))))
+                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)))
                 (tags-todo "-REFILE-WAITING/!"
                            ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project Subtasks" "Standalone Tasks"))
                             (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
                             (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-sorting-strategy
-                             '(category-keep))))
+                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)))
                 (tags-todo "+WAITING/!"
                            ((org-agenda-overriding-header "Waiting and Postponed Tasks")
                             (org-agenda-skip-function 'ap/skip-stuck-projects)
