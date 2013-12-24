@@ -14,15 +14,22 @@ XTerm*renderFont:       false
 XTerm*maxBufSize:       1048576
 XTerm*translations:     #override \
 	Meta<Key>c:	        string("©") \
-	Meta<Key>L:	        string("£") \
+	Meta<Key>L:	        string("£")
 
+!nasty hacks for urxvt to act like xterm
+!this is only a subset, see more here:
+!http://www.netswarm.net/misc/urxvt-xtermcompat.txt
 URxvt*termName:         xterm-256color
 URxvt.scrollBar:        false
 URxvt*keysym.S-Up:      \033[1;2A
 URxvt*keysym.S-Down:    \033[1;2B
 URxvt*keysym.S-Right:   \033[1;2C
 URxvt*keysym.S-Left:    \033[1;2D
-
+URxvt*keysym.S-Delete:  \033[3;2~
+URxvt*keysym.S-Home:    \033[1;2H
+URxvt*keysym.S-End:     \033[1;2F
+URxvt*keysym.Home:      \033OH
+URxvt*keysym.End:       \033OF
 URxvt*keysym.S-F1:      \033[1;2P
 URxvt*keysym.S-F2:      \033[1;2Q
 URxvt*keysym.S-F3:      \033[1;2R
