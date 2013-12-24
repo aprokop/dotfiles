@@ -13,8 +13,8 @@ XTerm*wideFont:         -*-terminus-medium-*-*-*-20-*-*-*-*-*-iso10646-1
 XTerm*renderFont:       false
 XTerm*maxBufSize:       1048576
 XTerm*translations:     #override \
-	Meta<Key>c:	        string("©") \n
-	Meta<Key>L:	        string("£") \n
+	Meta<Key>c:	        string("©") \
+	Meta<Key>L:	        string("£") \
 
 URxvt*termName:         xterm-256color
 URxvt.scrollBar:        false
@@ -22,6 +22,19 @@ URxvt*keysym.S-Up:      \033[1;2A
 URxvt*keysym.S-Down:    \033[1;2B
 URxvt*keysym.S-Right:   \033[1;2C
 URxvt*keysym.S-Left:    \033[1;2D
+
+URxvt*keysym.S-F1:      \033[1;2P
+URxvt*keysym.S-F2:      \033[1;2Q
+URxvt*keysym.S-F3:      \033[1;2R
+URxvt*keysym.S-F4:      \033[1;2S
+URxvt*keysym.S-F5:      \033[15;2~
+URxvt*keysym.S-F6:      \033[17;2~
+URxvt*keysym.S-F7:      \033[18;2~
+URxvt*keysym.S-F8:      \033[19;2~
+URxvt*keysym.S-F9:      \033[20;2~
+URxvt*keysym.S-F10:     \033[21;2~
+URxvt*keysym.S-F11:     \033[23;2~
+URxvt*keysym.S-F12:     \033[24;2~
 
 XLock.mode:             pipes
 XLock.erasedelay:       400
