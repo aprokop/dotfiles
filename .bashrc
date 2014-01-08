@@ -60,49 +60,51 @@ export OMPI_MPICXX=clang++
 
 export HISTTIMEFORMAT='%F %T '
 
-alias ls='ls --color=tty -v --ignore="C:*\\debuglog.txt"'
-alias l.='ls -d .* --color=tty -v'
-alias lsd='ls -d --color=tty -v */'
-alias lsf="find -maxdepth 1 -type f | sed 's/^.\///' | grep -v '^\.' | xargs ls --color"
-alias lt='ls -ltr'
-alias diff='colordiff'
-alias less='less -R'
-# alias gdb='gdb -tui'
-alias gdb='gdb --ex run'
-alias org='emacs ~/.personal/org/my.org'
-
-# alias xterm='xterm +sb -si -sk -sl 16384'
-alias xterm='urxvt'
-alias ulocate='locate -d ~/.locate.db'
-alias qemu='qemu-system-x86_64'
-alias make='make -j12'
-alias ninja='ninja -j12'
-alias ctest='ctest -j12'
-alias top='htop'
-# alias ssh='ssh -Y'
-alias vi='vim -p'
-alias mplayer='mplayer -really-quiet'
-alias mv='mv -i'
+# standard programs
 alias cp='cp -i'
-alias iotop='iotop -o'
-alias gv="okular"
-alias excuse='echo `telnet bofh.jeffballard.us 666 2>/dev/null` | grep --color -o "Your excuse is:.*$"'
-alias grep='grep --color --exclude=tags'
-alias egrep='egrep --color'
-alias clwhite="sed -i 's/\s*$//g'"
-alias feh='feh -Fd'
-alias gitk='gitk --all'
-alias libreoffice='libreoffice4.1'
-alias lowriter='libreoffice'
-alias localc='libreoffice'
-alias loimpress='libreoffice'
-alias firefox='firefox -new-tab'
-alias gitk='gitk --all --since="1 week ago"'
-
-# use ccache
+alias ctest='ctest -j12'
+alias diff='colordiff'
+alias egrep='egrep --color=always'
 # alias gcc='ccache'
 # alias g++='ccache'
+alias gdb='gdb --ex run'
+alias gitk='gitk --all --since="1 week ago"'
+alias grep='grep --color=always --exclude=tags'
+alias feh='feh -Fd'
+alias firefox='firefox -new-tab'
+alias iotop='iotop -o'
+alias less='less -R'
+alias libreoffice='libreoffice4.1'
+alias ls='ls --color=always -v --ignore="C:*\\debuglog.txt"'
+# alias gdb='gdb -tui'
+alias make='make -j12'
+alias mplayer='mplayer -really-quiet'
+alias mv='mv -i'
+alias ninja='ninja -j12'
+# alias ssh='ssh -Y'
+# alias xterm='xterm +sb -si -sk -sl 16384'
+alias vi='vim -p'
 
+
+# reassign commands
+alias gv="okular"
+alias top='htop'
+alias xterm='urxvt'
+
+# custom commands
+alias clwhite="sed -i 's/\s*$//g'"
+alias excuse='echo `telnet bofh.jeffballard.us 666 2>/dev/null` | grep --color=always -o "Your excuse is:.*$"'
+alias l.='ls -d .* --color=always -v'
+alias localc='libreoffice'
+alias loimpress='libreoffice'
+alias lowriter='libreoffice'
+alias lsd='ls -d --color=always -v */'
+alias lsf="find -maxdepth 1 -type f | sed 's/^.\///' | grep -v '^\.' | xargs ls --color=always"
+alias lt='ls -ltr'
+alias org='emacs ~/.personal/org/my.org'
+alias ulocate='locate -d ~/.locate.db'
+
+# set VI mode for bash
 set -o vi
 bind '"\e."':yank-last-arg
 
