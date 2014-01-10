@@ -282,6 +282,13 @@
 (setq org-global-properties (quote (("Effort_ALL" . "0:10 0:30 1:00 2:00 4:00 8:00 12:00 16:00 24:00 40:00 0:00")
                                     ("STYLE_ALL" . "habit"))))
 
+;; archiving
+(setq org-archive-mark-done nil)
+(setq org-archive-location "%s_archive::* Archived Tasks")
+; include agenda archive files when searching for things
+(setq org-agenda-text-search-extra-files (quote (agenda-archives)))
+
+
 ; custom agenda command definitions
 (setq org-agenda-custom-commands
       (quote (("N" "Notes" tags "NOTE"
@@ -687,3 +694,26 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
   (save-excursion
     (set-window-start (selected-window)
                       (window-start (selected-window)))))
+
+(defun ap/skip-non-archivable-tasks ()
+  "Skip trees that are not available for archiving"
+  (save-restriction
+    (widen)
+    ;; Consider only tasks with done todo headings as archivable candidates
+    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+          (subtree-end (save-excursion (org-end-of-subtree t))))
+      (if (member (org-get-todo-state) org-todo-keywords-1)
+          (if (member (org-get-todo-state) org-done-keywords)
+              (let* ((daynr (string-to-int (format-time-string "%d" (current-time))))
+                     (a-month-ago (* 60 60 24 (+ daynr 1)))
+                     (last-month (format-time-string "%Y-%m-" (time-subtract (current-time) (seconds-to-time a-month-ago))))
+                     (this-month (format-time-string "%Y-%m-" (current-time)))
+                     (subtree-is-current (save-excursion
+                                           (forward-line 1)
+                                           (and (< (point) subtree-end)
+                                                (re-search-forward (concat last-month "\\|" this-month) subtree-end t)))))
+                (if subtree-is-current
+                    subtree-end ; Has a date in this month or last month, skip it
+                  nil))  ; available to archive
+            (or subtree-end (point-max)))
+        next-headline))))
