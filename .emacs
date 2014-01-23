@@ -214,11 +214,11 @@
               ("j" "journal" plain (file+datetree "~/.personal/org/journal.org")
                "%U\n%?\n")
               ("m" "meeting" entry (file "~/.personal/org/refile.org")
-               "* MEETING with %? on %t :MEETING:\n%U" :clock-in t :clock-resume t)
+               "* MEETING with %? on %t :MEETING:\n" :clock-in t :clock-resume t)
               ("s" "seminar" entry (file "~/.personal/org/refile.org")
-               "* SEMINAR on %t :SEMINAR:\nAUTHOR: %?\nTITLE: \n%U" :clock-in t :clock-resume t)
+               "* SEMINAR on %t :SEMINAR:\nAUTHOR: %?\nTITLE: \n\n" :clock-in t :clock-resume t)
               ("p" "phone call" entry (file "~/.personal/org/refile.org")
-               "* PHONE with %? on %t :PHONE:\n%U" :clock-in t :clock-resume t))))
+               "* PHONE with %? on %t :PHONE:\n" :clock-in t :clock-resume t))))
 
 ;; clocking
 (org-clock-persistence-insinuate)                                       ; resume clocking task when emacs is restarted
