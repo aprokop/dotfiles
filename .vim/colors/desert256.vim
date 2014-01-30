@@ -250,6 +250,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "DiffChange
     "DiffDelete
     "DiffText
+    hi DiffAdd       ctermbg=4
+    hi DiffChange    ctermbg=4
+    hi DiffDelete    cterm=bold ctermfg=7 ctermbg=4
+    hi DiffText      cterm=bold ctermbg=1
     "ErrorMsg
     call <SID>X("VertSplit", "c2bfa5", "7f7f7f", "reverse")
     call <SID>X("Folded", "ffd700", "4d4d4d", "")
