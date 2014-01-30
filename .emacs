@@ -9,6 +9,9 @@
 ;; disable toolbar
 (tool-bar-mode -1)
 
+;; show trailing whitespace
+(setq-default show-trailing-whitespace t)
+
 ; color scheme
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
 (require 'color-theme)
