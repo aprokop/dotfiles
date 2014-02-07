@@ -211,7 +211,7 @@
 ;; capture templates for: <todo> tasks, notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/.personal/org/refile.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+               "* TODO %?\n%U\n" :clock-in t :clock-resume t)
               ("n" "note" entry (file "~/.personal/org/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
               ("j" "journal" plain (file+datetree "~/.personal/org/journal.org")
