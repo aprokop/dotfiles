@@ -48,4 +48,4 @@ noremap <buffer> <S-F5> :update<CR>:call <SID>make_local()<CR><CR>
 
 " For some reason, Syntastic does not work properly with c files for me
 " This is a workaround for that
-au! BufWritePost *.c *.h SyntasticCheck gcc
+au! BufWritePost *.c,*.h SyntasticCheck gcc
