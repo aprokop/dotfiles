@@ -225,7 +225,9 @@ set t_Co=256
 " Make scripts executable by default: if file begins with #! and contains '/bin/' in the path
 " au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
-let g:local_vimrc = ".local_vimrc"
+let g:localvimrc_name    = ".local_vimrc"
+let g:localvimrc_ask     = 0
+let g:localvimrc_sandbox = 0
 
 " Highlight extra white space
 highlight ExtraWhitespace ctermbg=lightred guibg=red
