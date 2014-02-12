@@ -12,9 +12,6 @@
 XTerm*wideFont:         -*-terminus-medium-*-*-*-20-*-*-*-*-*-iso10646-1
 XTerm*renderFont:       false
 XTerm*maxBufSize:       1048576
-XTerm*translations:     #override \
-	Meta<Key>c:	        string("©") \
-	Meta<Key>L:	        string("£")
 
 !nasty hacks for urxvt to act like xterm
 !this is only a subset, see more here:
