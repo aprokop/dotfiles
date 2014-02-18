@@ -200,6 +200,9 @@ EXEC 01;32
 .odt 38;5;2
 .ods 38;5;2
 .ps 38;5;2
+.odf 38;5;2
+.odp 38;5;2
+.ods 38;5;2
 
 # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
 .axv 01;35
