@@ -4,6 +4,9 @@
 # runs your .bashrc and is recommended by the bash info pages.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-if [[ ! -n $SSH_AGENT_PID ]]; then
+ssh_lock=`netstat -xl | grep -o "/tmp/ssh-[A-Za-z0-9]*/agent.[0-9]*"`
+if [[ $ssh_lock == "" ]]; then
     eval `ssh-agent`
+else
+    export SSH_AUTH_SOCK=$ssh_lock
 fi
