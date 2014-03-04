@@ -31,6 +31,14 @@ case ${TERM} in
 		;;
 esac
 
+# Connect to existing / create new ssh-agent
+ssh_lock=`netstat -xl | grep -o "/tmp/ssh-[A-Za-z0-9]*/agent.[0-9]*"`
+if [[ $ssh_lock == "" ]]; then
+    eval `ssh-agent`
+else
+    export SSH_AUTH_SOCK=$ssh_lock
+fi
+
 # Add bash-complete support
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
