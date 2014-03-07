@@ -51,8 +51,8 @@ shopt -s extglob
 export CPATH=~/local/include:$CPATH
 export LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64:/usr/lib64:/lib64:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$LIBRARY_PATH
-export PERL5LIB=~/local/lib/perl:
-export PYTHONPATH=$PYTHONPATH:~/local/lib/python
+export PERL5LIB=~/local/lib/perl:$PERL5LIB
+export PYTHONPATH=~/local/lib/python:$PYTHONPATH
 eval `~/bin/depend ~/.default_depend`
 export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin:$PATH
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
@@ -75,6 +75,7 @@ alias diff='colordiff'
 alias egrep='egrep --color'
 # alias gcc='ccache'
 # alias g++='ccache'
+# alias gdb='gdb -tui'
 alias gdb='gdb --ex run'
 alias gitk='gitk --all --since="1 month ago"'
 alias grep='grep --color --exclude=tags'
@@ -84,7 +85,6 @@ alias iotop='iotop -o'
 alias less='less -R'
 alias libreoffice='libreoffice4.1'
 alias ls='ls --color=always -v --ignore="C:*\\debuglog.txt"'
-# alias gdb='gdb -tui'
 alias make='make -j12'
 alias mplayer='mplayer -really-quiet'
 alias mv='mv -i'
@@ -93,7 +93,6 @@ alias tig='tig --since="1 month ago"'
 # alias ssh='ssh -Y'
 # alias xterm='xterm +sb -si -sk -sl 16384'
 alias vi='vim -p'
-
 
 # reassign commands
 alias gv="okular"
