@@ -165,16 +165,16 @@ map [] k$][%?}<CR>
 
 noremap <F6>  :ccl<CR> " Close make window
 noremap <F7>  :cp<CR>  " Go to next error
-noremap <F8>  :cn<CR> " Go to prev error
+noremap <F8>  :cn<CR>  " Go to prev error
 " SVN
-" noremap <F9>  :!svn diff > .svn.diff<CR>:tabnew<CR>:view .svn.diff<CR>gg
-" noremap <S-F9>  :!svn diff % > .svn.diff<CR>:tabnew<CR>:view .svn.diff<CR>gg
+" noremap <F9>            :!svn diff   > .svn.diff<CR>:tabnew<CR>:view .svn.diff<CR>gg
+" noremap <S-F9>          :!svn diff % > .svn.diff<CR>:tabnew<CR>:view .svn.diff<CR>gg
 " git
-noremap <F9>  :!git diff > .git.diff<CR>:tabnew<CR>:view .git.diff<CR>gg
-noremap <S-F9>  :!git diff % > .git.diff<CR>:tabnew<CR>:view .git.diff<CR>gg
-noremap <F10> :CalendarH<CR>
-noremap <silent> <F11> :cal VimCommanderToggle()<CR>
-noremap <S-F12> :!ctags -R -I THROW --c++-kinds=+p --fields=+iatS --extra=+q .<CR><CR>
+noremap <F9>            :!git diff     > .git.diff<CR>:tabnew<CR>:view .git.diff<CR>gg
+noremap <S-F9>          :!git diff "%" > .git.diff<CR>:tabnew<CR>:view .git.diff<CR>gg
+noremap <F10>           :CalendarH<CR>
+noremap <silent> <F11>  :cal VimCommanderToggle()<CR>
+noremap <S-F12>         :!ctags -R -I THROW --c++-kinds=+p --fields=+iatS --extra=+q .<CR><CR>
 
 iab todo TODO
 iab fixme FIXME
