@@ -230,7 +230,18 @@ let g:localvimrc_ask     = 0
 let g:localvimrc_sandbox = 0
 
 " Highlight extra white space
+let g:highlight_white = 1
 highlight ExtraWhitespace ctermbg=lightred guibg=red
+fun! ChangeHighlightWhite()
+    if g:highlight_white
+        let g:highlight_white = 0
+        highlight ExtraWhitespace ctermbg=black    guibg=black
+    else
+        let g:highlight_white = 1
+        highlight ExtraWhitespace ctermbg=lightred guibg=red
+    endi
+endfun
+nnoremap ,w :call ChangeHighlightWhite()<CR>
 if has("autocmd")
     au BufEnter * match ExtraWhitespace /\s\+$/
 endif
@@ -245,7 +256,7 @@ let g:syntastic_cpp_check_header = 0
 
 " Scroll inactive window
 nmap <silent> <M-Down> :call ScrollOtherWindow("down")<CR>
-nmap <silent> <M-Up> :call ScrollOtherWindow("up")<CR>
+nmap <silent> <M-Up>   :call ScrollOtherWindow("up")<CR>
 fun! ScrollOtherWindow(dir)
 	if a:dir == "down"
 		let move = "\<C-E>"
