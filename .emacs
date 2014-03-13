@@ -300,30 +300,34 @@
               ("h" "Habits" tags-todo "STYLE=\"habit\""
                ((org-agenda-overriding-header "Habits")
                 (org-agenda-sorting-strategy
-                 '(todo-state-down priority-up effort-up category-keep))))
+                 '(category-keep))))
               (" " "Agenda"
                ((agenda "" nil)
                 (tags "REFILE"
                       ((org-agenda-overriding-header "Tasks to Refile")
                        (org-tags-match-list-sublevels nil)))
-                (tags-todo "/!"
-                           ((org-agenda-overriding-header "Projects")
-                            (org-agenda-skip-function 'ap/skip-non-projects)
-                            (org-agenda-sorting-strategy
-                             '(priority-down category-keep))))
+;               (tags-todo "/!"
+;                          ((org-agenda-overriding-header "Projects")
+;                           (org-agenda-skip-function 'ap/skip-non-projects)
+;                           (org-agenda-sorting-strategy
+;                            '(priority-down category-keep))))
                 (tags-todo "/!NEXT"
                            ((org-agenda-overriding-header "Project Next Tasks")
                             (org-agenda-skip-function 'ap/skip-projects-and-habits-and-single-tasks)
                             (org-tags-match-list-sublevels t)
                             (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)))
+                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                              '(todo-state-down priority-down effort-up category-keep))))
                 (tags-todo "-REFILE-WAITING/!"
                            ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project Subtasks" "Standalone Tasks"))
                             (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
                             (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)))
+                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                              '(todo-state-down priority-down effort-up category-keep))))
                 (tags-todo "+WAITING/!"
                            ((org-agenda-overriding-header "Waiting and Postponed Tasks")
                             (org-agenda-skip-function 'ap/skip-stuck-projects)
@@ -346,7 +350,7 @@
                 (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
                 (org-tags-match-list-sublevels t)
                 (org-agenda-sorting-strategy
-                 '(todo-state-down effort-up category-keep))))
+                 '(category-keep))))
               ("R" "Tasks" tags-todo "-REFILE/!-WAITING"
                ((org-agenda-overriding-header "Tasks")
                 (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
