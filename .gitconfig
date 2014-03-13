@@ -7,7 +7,7 @@
     st = status
     br = branch -v
     fp = format-patch -k -M -N
-    log1 = log --pretty=oneline --abbrev-commit
+    log1 = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'
     ls = ls-files
     # authors = log --all --format="%aN"
     authors = log --format="%aN"
