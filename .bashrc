@@ -165,41 +165,10 @@ xmodmap ~/.Xmodmap
 
 export GPG_TTY='tty'
 
-# Git me harder!
-__git_ps1 ()
-{
-    local g="$(git rev-parse --git-dir 2>/dev/null)"
-    if [ -n "$g" ]; then
-        local r
-        local b
-        if [ -d "$g/../.dotest" ]
-        then
-            local b="$(git symbolic-ref HEAD 2>/dev/null)"
-            r="|REBASING"
-        elif [ -d "$g/.dotest-merge" ]
-        then
-            r="|REBASING"
-            b="$(cat $g/.dotest-merge/head-name)"
-        elif [ -f "$g/MERGE_HEAD" ]
-        then
-            r="|MERGING"
-            b="$(git symbolic-ref HEAD 2>/dev/null)"
-        else
-            if [ -f $g/BISECT_LOG ]
-            then
-                r="|BISECTING"
-            fi
-            if ! b="$(git symbolic-ref HEAD 2>/dev/null)"
-            then
-                b="$(cut -c1-7 $g/HEAD)..."
-            fi
-        fi
-        if [ -n "$1" ]; then
-            printf "$1" "${b##refs/heads/}$r"
-        else
-            printf " (%s)" "${b##refs/heads/}$r"
-        fi
-    fi
-}
-export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1) \[\033[01;34m\]$\[\033[00m\] "
 export http_proxy=http://sonproxy.sandia.gov:80
+
+# Git me harder!
+export GIT_PS1_SHOWSTASHSTATE=1
+#export GIT_PS1_SHOWUPSTREAM="verbose"
+source /home/aprokop/local/share/git/git-prompt.sh
+export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1) \[\033[01;34m\]$\[\033[00m\] "
