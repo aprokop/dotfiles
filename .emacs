@@ -90,6 +90,9 @@
 ; capture mode file
 (setq org-default-notes-file "~/.personal/org/refile.org")
 
+; diary file
+(setq diary-file "~/.personal/org/diary")
+
 ; start in indented mode
 (setq org-startup-indented t)
 
