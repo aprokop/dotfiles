@@ -7,8 +7,9 @@
     st = status
     br = branch -v
     fp = format-patch -k -M -N
-    log1 = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'
-    log2 = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
+    log1  = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
+    log1a = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
+    log2  = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
     ls = ls-files
     authors = log --format="%aN"
 [apply]
