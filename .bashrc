@@ -70,6 +70,7 @@ export OMPI_MPICXX=clang++
 export HISTTIMEFORMAT='%F %T '
 
 # standard programs
+alias cal='cal -m'
 alias cp='cp -i'
 alias ctest='ctest -j12'
 alias diff='colordiff'
