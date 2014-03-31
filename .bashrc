@@ -53,6 +53,7 @@ export LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64:/usr/li
 export LD_LIBRARY_PATH=$LIBRARY_PATH
 export PERL5LIB=~/local/lib/perl:$PERL5LIB
 export PYTHONPATH=~/local/lib/python:$PYTHONPATH
+export MANPATH=~/local/share/man:$MANPATH
 eval `~/bin/depend ~/.default_depend`
 export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin:$PATH
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
