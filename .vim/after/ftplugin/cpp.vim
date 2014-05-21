@@ -35,7 +35,3 @@ function! SSH(filename)
     return l:v
 endfunction
 nmap ,S :exec "edit " . SSH('%')<CR>
-
-" For some reason, Syntastic does not work properly with c files for me
-" This is a workaround for that
-au! BufWritePost *.cc,*.cpp,*.C,*.hpp SyntasticCheck gcc

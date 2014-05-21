@@ -252,7 +252,6 @@ execute pathogen#infect()
 " " Syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs  = 1
-let g:syntastic_cpp_check_header = 0
 
 " Scroll inactive window
 nmap <silent> <M-Down> :call ScrollOtherWindow("down")<CR>
