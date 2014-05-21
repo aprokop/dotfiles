@@ -37,3 +37,5 @@
 [gui]
     fontui = -family helvetica -size 10 -weight normal -slant roman -underline 0 -overstrike 0
     fontdiff = -family terminus -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[help]
+    # autocorrect = 10
