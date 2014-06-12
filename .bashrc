@@ -52,7 +52,8 @@ export CPATH=~/local/include:$CPATH
 export LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64:/usr/lib64:/lib64:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$LIBRARY_PATH
 export PERL5LIB=~/local/lib/perl:$PERL5LIB
-export PYTHONPATH=~/local/lib/python:$PYTHONPATH
+export GOROOT=~/local/opt/go-1.2.1
+export PYTHONPATH=~/local/lib64/python2.6/site-packages:$PYTHONPATH
 export MANPATH=~/local/share/man:$MANPATH
 eval `~/bin/depend ~/.default_depend`
 export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin:$PATH
@@ -71,6 +72,7 @@ export HISTTIMEFORMAT='%F %T '
 
 # standard programs
 alias cal='cal -m'
+alias cgdb='cgdb --ex run'
 alias cp='cp -i'
 alias ctest='ctest -j12'
 alias diff='colordiff'
