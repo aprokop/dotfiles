@@ -1,41 +1,41 @@
 [user]
-    name = Andrey Prokopenko
-    email = aprokop@sandia.gov
+    name        = Andrey Prokopenko
+    email       = aprokop@sandia.gov
 [alias]
-    ci = commit
-    co = checkout
-    st = status
-    br = branch -v
-    fp = format-patch -k -M -N
-    log1  = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
-    log1a = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
-    log2  = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
-    ls = ls-files
-    authors = log --format="%aN"
+    ci          = commit
+    co          = checkout
+    st          = status
+    br          = branch -v
+    fp          = format-patch -k -M -N
+    log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
+    log1a       = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
+    log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
+    ls          = ls-files
+    authors     = log --format="%aN"
 [apply]
-    whitespace = fix
+    whitespace  = fix
 [core]
-    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    # pager = vim -R -
+    whitespace  = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    # pager       = vim -R -
 [diff "nocomment"]
-    textconv = stripcmt
+    textconv    = stripcmt
 [color]
-    ui = auto
+    ui          = auto
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+    current     = yellow reverse
+    local       = yellow
+    remote      = green
 [color "diff"]
-    meta = yellow
-    frag = magenta
-    old = red
-    new = green
+    meta        = yellow
+    frag        = magenta
+    old         = red
+    new         = green
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+    added       = yellow
+    changed     = green
+    untracked   = cyan
 [gui]
-    fontui = -family helvetica -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-    fontdiff = -family terminus -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+    fontui      = -family helvetica -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff    = -family terminus  -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [help]
     # autocorrect = 10
