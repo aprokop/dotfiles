@@ -73,7 +73,7 @@ export HISTTIMEFORMAT='%F %T '
 # standard programs
 alias cal='cal -m'
 alias cgdb='cgdb --ex run'
-alias cp='cp -i'
+alias cp='cp -ip'
 alias ctest='ctest -j12'
 alias diff='colordiff'
 alias egrep='egrep --color'
