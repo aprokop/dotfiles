@@ -87,6 +87,11 @@ if has("eval")
     filetype indent on
 endif
 
+" Set vim colors
+colorscheme desert256
+" Use Vim 256 colorscheme in screen
+set t_Co=256
+
 " Enable folds
 set nofoldenable
 
@@ -100,12 +105,8 @@ if has("autocmd")
 		\ endif
 endif
 
-" completion
+" Word completion
 set dictionary=/usr/share/dict/cracklib-small
-
-" Omni completion
-" let OmniCpp_MayCompleteDot = 0
-" let OmniCpp_MayCompleteArrow = 0
 
 " Tab work
 set showtabline=2
@@ -143,12 +144,12 @@ imap <PageDown> <C-O><C-D><C-O><C-D>
 let g:tex_flavor='latex'
 
 
-" Групповые комментарии
+" Group comments
 if has("autocmd") && has("eval")
-    " Добавить знак комментария в начале строки
+    " Add comment symbol in the beginning of the line
 "    au BufEnter .vimrc,*.vim			noremap <F3> :s/^\(\s*\)/\1"\ /<CR>			" "
     au BufEnter configure.in,configure.ac	noremap <F3> :s/^\(\s*\)/\1\#\ /<CR>		" #
-    " Убрать знак комментария в начале строки
+    " Remove comment symbol in the beginning of the line
 "    au BufEnter .vimrc,*.vim			noremap <silent> <F4> :s/^\(\s*\)"\ /\1/<CR>		" "
     au BufEnter configure.in,configure.ac	noremap <silent> <F4> :s/^\(\s*\)\#\ /\1/<CR>		" #
 endif
@@ -196,7 +197,7 @@ vnoremap k gk
 nmap ,v :e ~/.vimrc<CR>
 nmap ,s :source ~/.vimrc<CR>
 
-" insert a blank line above/below and stay in normal mode
+" Insert a blank line below/above/after/prior and stay in normal mode
 nnoremap ,o :put =''<CR>
 nnoremap ,O :put! =''<CR>
 nnoremap ,i i<space><Esc>
@@ -212,15 +213,9 @@ set langmap=жйучхбртыпмдшфэъклщезнгюос;ABCDEFGHIJKLMNOPQRSTUVWXYZ,ЖЙУЧХБРТЫПМДШФ
 set guicursor=a:block-Cursor-blinkon0
 
 " Improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
-let g:SuperTabDefaultCompletionType = "<C-P>"
+highlight PmenuSel ctermbg=yellow gui=bold
+let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabRetainCompletionDuration = "session"
-let g:SuperTabDefaultCompletionTypeDiscovery = "&omnifunc:<C-X><C-O>,&completefunc:<C-X><C-U>"
-
-" Set vim colors
-colorscheme desert256
-" Use Vim 256 colorscheme in screen
-set t_Co=256
 
 " Make scripts executable by default: if file begins with #! and contains '/bin/' in the path
 " au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
