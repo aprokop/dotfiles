@@ -105,6 +105,7 @@ alias xterm='urxvt'
 
 # custom commands
 alias clwhite="sed -i 's/\s*$//g'"
+alias gauno='git status -uno'
 alias excuse='echo `telnet bofh.jeffballard.us 666 2>/dev/null` | grep --color=always -o "Your excuse is:.*$"'
 alias l.='ls -d .* --color=always -v'
 alias localc='libreoffice'
