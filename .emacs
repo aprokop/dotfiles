@@ -195,7 +195,7 @@
 (setq org-treat-S-cursor-todo-selection-as-state-change nil)    ; skip normal processing when entering/leaving <todo> state
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "|" "PHONE" "MEETING" "SEMINAR"))))
+              (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING" "SEMINAR"))))
 (setq org-todo-keyword-faces
       (quote (("TODO"       :foreground "red"           :weight bold)
               ("NEXT"       :foreground "orange"        :weight bold)
