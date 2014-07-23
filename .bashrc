@@ -42,8 +42,6 @@ fi
 # Add bash-complete support
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
-# share
-
 # My configs
 shopt -s histappend
 shopt -s extglob
@@ -89,7 +87,7 @@ alias egrep='egrep --color'
 # alias gdb='gdb -tui'
 alias gdb='gdb --ex run'
 alias gitk='gitk --all --since="1 month ago"'
-alias grep='grep --color --exclude=tags'
+alias grep='LANG="C" grep --color --exclude=tags'
 alias feh='feh -Fd'
 alias firefox='firefox -new-tab'
 alias iotop='iotop -o'
