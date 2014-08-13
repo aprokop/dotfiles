@@ -75,7 +75,7 @@ export OMPI_MPICXX=clang++
 
 export HISTTIMEFORMAT='%F %T '
 
-# standard programs
+# standard commands
 alias cal='cal -m'
 alias cgdb='cgdb --ex run'
 alias cp='cp -ip'
@@ -92,7 +92,7 @@ alias feh='feh -Fd'
 alias firefox='firefox -new-tab'
 alias iotop='iotop -o'
 alias less='less -R'
-alias libreoffice='libreoffice4.2'
+alias libreoffice='libreoffice4.3'
 alias ls='ls --color=always -v --ignore="C:*\\debuglog.txt"'
 # alias make='make -j12'
 alias mplayer='mplayer -really-quiet'
@@ -104,7 +104,7 @@ alias tig='tig --all --since="1 month ago"'
 # alias xterm='xterm +sb -si -sk -sl 16384'
 alias vi='vim -p'
 
-# reassign commands
+# reassigned commands
 alias gv="okular"
 alias top='htop'
 alias xterm='urxvt'
@@ -112,7 +112,6 @@ alias xterm='urxvt'
 # custom commands
 alias clwhite="sed -i 's/\s*$//g'"
 alias gauno='git status -uno'
-alias excuse='echo `telnet bofh.jeffballard.us 666 2>/dev/null` | grep --color=always -o "Your excuse is:.*$"'
 alias l.='ls -d .* --color=always -v'
 alias localc='libreoffice'
 alias loimpress='libreoffice'
@@ -131,9 +130,6 @@ bind '"\e."':yank-last-arg
 # Quiet down
 alias okular="be_quiet okular"
 # alias stardict="be_quiet stardict"
-
-# NET
-# export BROWSER=/usr/bin/opera
 
 source $HOME/local/share/cdargs/cdargs-bash.sh
 source $HOME/local/share/git/git-completion.sh
@@ -177,6 +173,8 @@ xmodmap ~/.Xmodmap
 
 export GPG_TTY='tty'
 
+# Network
+export BROWSER=/home/aprokop/local/opt/firefox/firefox
 export http_proxy=http://sonproxy.sandia.gov:80
 
 # Git me harder!
