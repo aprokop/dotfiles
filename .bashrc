@@ -64,9 +64,6 @@ if [[ "$PATH" != "" ]]; then export PATH=:$PATH; fi
 export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin${PATH}
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
 
-export http_proxy=http://sonproxy.sandia.gov:80
-export https_proxy=$http_proxy
-
 HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
@@ -175,7 +172,19 @@ export GPG_TTY='tty'
 
 # Network
 export BROWSER=/home/aprokop/local/opt/firefox/firefox
-export http_proxy=http://sonproxy.sandia.gov:80
+
+# Proxies
+export http_proxy="http://sonproxy.sandia.gov:80"
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
+export rsync_proxy=$http_proxy
+export no_proxy="localhost"
+# some programs look for all caps proxies
+export HTTP_PROXY=$http_proxy
+export HTTPS_PROXY=$http_proxy
+export FTP_PROXY=$http_proxy
+export RSYNC_PROXY=$http_proxy
+export NO_PROXY=$no_proxy
 
 # Git me harder!
 export GIT_PS1_SHOWSTASHSTATE=1
