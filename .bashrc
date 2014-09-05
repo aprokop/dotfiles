@@ -68,7 +68,9 @@ HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
 export OMPI_MPICC=clang
+export OMPI_CFLAGS='-fdiagnostics-color'
 export OMPI_MPICXX=clang++
+export OMPI_CXXFLAGS='-fdiagnostics-color'
 
 export HISTTIMEFORMAT='%F %T '
 
@@ -79,8 +81,6 @@ alias cp='cp -ip'
 alias ctest='ctest -j12'
 alias diff='colordiff'
 alias egrep='egrep --color'
-# alias gcc='ccache'
-# alias g++='ccache'
 # alias gdb='gdb -tui'
 alias gdb='gdb --ex run'
 alias gitk='gitk --all --since="1 month ago"'
