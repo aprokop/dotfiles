@@ -45,12 +45,6 @@ set path=.
 " set persistent undo
 " set undofile
 
-" Selective textwidth
-if has("autocmd")
-    " autocmd Filetype tex	set textwidth=110
-    autocmd Filetype tex	set wrapmargin=10
-endif
-
 " Show full tags when doing search completion
 set showfulltag
 
