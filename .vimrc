@@ -11,7 +11,7 @@ set fileencodings=utf8,cp1251,cp866,koi8-r
 
 set term=xterm
 
-set listchars=tab:>-
+set listchars=eol:$,tab:>-
 
 " Shifts
 set softtabstop=4
