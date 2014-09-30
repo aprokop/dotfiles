@@ -113,6 +113,8 @@ alias xterm='urxvt'
 # custom commands
 alias clwhite="sed -i 's/\s*$//g'"
 alias gauno='git status -uno'
+alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
+alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias l.='ls -d .* --color=always -v'
 alias localc='libreoffice'
 alias loimpress='libreoffice'
