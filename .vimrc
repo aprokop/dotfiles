@@ -109,9 +109,10 @@ noremap th :tabprev<CR>
 noremap tn :tabnew<CR>
 noremap td :q<CR>
 
-" q: sucks
-" nmap q: :q
+" I never use q:, but periodically hit it by mistake
+nmap q: :q
 
+" Quick file selection through CtrlP
 noremap ,t :CtrlP<CR>
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_clear_cache_on_exit = 0
@@ -123,10 +124,9 @@ noremap <space> <C-f>
 set encoding=utf-8
 set termencoding=utf-8
 
-" более привычные Page Up/Down, когда курсор остается в той же строке,
-" (а не переносится в верх/низ экрана, как при стандартном)
-" Поскольку по умолчанию прокрутка по C-Y/D происходит на полэкрана,
-" привязка делается к двойному нажатиe
+" More conventient PgUp/PgDown, making cursor stay in the same line and not
+" move up/down as standard. As default scroll on C-Y/D is by half-screen, the
+" binding is done to double press
 nmap <PageUp> <C-U><C-U>
 imap <PageUp> <C-O><C-U><C-O><C-U>
 nmap <PageDown> <C-D><C-D>
@@ -152,7 +152,7 @@ endif
 " uses expression to extract path from current file's path
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-" Если скобка стоит не первым символом в строке
+" If a bracket not the first symbol in line
 map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
@@ -211,9 +211,7 @@ highlight PmenuSel ctermbg=yellow gui=bold
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabRetainCompletionDuration = "session"
 
-" Make scripts executable by default: if file begins with #! and contains '/bin/' in the path
-" au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
-
+" Project specific configuration
 let g:localvimrc_name    = ".local_vimrc"
 let g:localvimrc_ask     = 0
 let g:localvimrc_sandbox = 0
@@ -238,7 +236,7 @@ endif
 " Run pathogen
 execute pathogen#infect()
 
-" " Syntastic
+" Syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs  = 1
 
@@ -254,6 +252,7 @@ fun! ScrollOtherWindow(dir)
 	exec "normal \<C-W>p" . move . "\<C-W>p"
 endfun
 
+" Use bc to calculate the value of selected expression
 vnoremap ;bc "ey:call CalcBC()<CR>
 function! CalcBC()
 	let has_equal = 0
@@ -269,10 +268,10 @@ function! CalcBC()
 	endif
 
 	" sub common func names for bc equivalent
-	let @e = substitute (@e, '\csin\s*(', "s (", "")
-	let @e = substitute (@e, '\ccos\s*(', "c (", "")
-	let @e = substitute (@e, '\catan\s*(', "a (", "")
-	let @e = substitute (@e, "\cln\s*(", "l (", "")
+	let @e = substitute (@e, '\csin\s*(', 's (', "")
+	let @e = substitute (@e, '\ccos\s*(', 'c (', "")
+	let @e = substitute (@e, '\catan\s*(', 'a (', "")
+	let @e = substitute (@e, "\cln\s*(", 'l (', "")
 
 	" escape chars for shell
 	let @e = escape (@e, '*()')
