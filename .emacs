@@ -85,10 +85,10 @@
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 
 ; include files from these dirs to agenda automatically
-(setq org-agenda-files (quote ("~/.personal/org"
-                               "~/.personal/org/misc"
-                               "~/.personal/org/projects"
-                               )))
+(setq org-agenda-files (append (quote ("~/.personal/org"))
+    (if (file-directory-p "~/.personal/org/misc")     (quote ("~/.personal/org/misc"))     nil)
+    (if (file-directory-p "~/.personal/org/projects") (quote ("~/.personal/org/projects")) nil)
+    ))
 
 ; capture mode file
 (setq org-default-notes-file "~/.personal/org/refile.org")
