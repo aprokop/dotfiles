@@ -41,3 +41,5 @@
     # autocorrect = 10
 [merge]
 	tool = vimdiff3
+[push]
+	default = simple
