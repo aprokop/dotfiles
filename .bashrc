@@ -66,6 +66,8 @@ export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
 
 HISTSIZE=5000
 
+# module use-append ~/.modules
+
 export OMP_NUM_THREADS=1
 export OMPI_MPICC=clang
 export OMPI_CFLAGS='-fdiagnostics-color'
