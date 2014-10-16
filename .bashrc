@@ -5,6 +5,26 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+# Set environment before non-interactive shell check, so that it is the same
+# for both login and interactive shells
+if [[ "$CPATH" != "" ]]; then export CPATH=:$CPATH; fi
+export CPATH=~/local/include${CPATH}
+# LD_LIBRARY_PATH is used by your program to search for directories containing
+# the libraries after it has been successfully compiled and linked
+# LIBRARY_PATH is used by gcc before compilation to search for directories
+# containing libraries that need to be linked to your program
+if [[ "x$LD_LIBRARY_PATH" != "x" ]]; then export LD_LIBRARY_PATH=:$LD_LIBRARY_PATH; fi
+export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64${LD_LIBRARY_PATH}
+export LIBRARY_PATH=$LD_LIBRARY_PATH
+export PERL5LIB=~/local/lib/perl:$PERL5LIB
+export GOROOT=~/local/opt/go-1.2.1
+export PYTHONPATH=~/local/lib64/python2.6/site-packages:$PYTHONPATH
+export MANPATH=~/local/share/man:$MANPATH
+eval `~/bin/depend ~/.default_depend`
+if [[ "$PATH" != "" ]]; then export PATH=:$PATH; fi
+export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin${PATH}
+export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
+
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -45,24 +65,6 @@ fi
 # My configs
 shopt -s histappend
 shopt -s extglob
-
-if [[ "$CPATH" != "" ]]; then export CPATH=:$CPATH; fi
-export CPATH=~/local/include${CPATH}
-# LD_LIBRARY_PATH is used by your program to search for directories containing
-# the libraries after it has been successfully compiled and linked
-# LIBRARY_PATH is used by gcc before compilation to search for directories
-# containing libraries that need to be linked to your program
-if [[ "x$LD_LIBRARY_PATH" != "x" ]]; then export LD_LIBRARY_PATH=:$LD_LIBRARY_PATH; fi
-export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64${LD_LIBRARY_PATH}
-export LIBRARY_PATH=$LD_LIBRARY_PATH
-export PERL5LIB=~/local/lib/perl:$PERL5LIB
-export GOROOT=~/local/opt/go-1.2.1
-export PYTHONPATH=~/local/lib64/python2.6/site-packages:$PYTHONPATH
-export MANPATH=~/local/share/man:$MANPATH
-eval `~/bin/depend ~/.default_depend`
-if [[ "$PATH" != "" ]]; then export PATH=:$PATH; fi
-export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin${PATH}
-export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
 
 HISTSIZE=5000
 
