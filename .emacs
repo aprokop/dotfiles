@@ -53,8 +53,10 @@
 
 ;; define default font
 ; (set-face-attribute 'default nil :font "Comic Sans MS")
-(set-face-attribute 'default nil :font "Terminus")
-(set-face-attribute 'default nil :height 140)
+; (set-face-attribute 'default nil :font "Laconic")
+(set-face-attribute 'default nil :font "Consolas")
+; (set-face-attribute 'default nil :font "Terminus")
+; (set-face-attribute 'default nil :height 140)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))     ;; one line at a time
