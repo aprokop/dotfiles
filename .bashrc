@@ -7,24 +7,28 @@
 
 # Set environment before non-interactive shell check, so that it is the same
 # for both login and interactive shells
-if [[ "$CPATH" != "" ]]; then export CPATH=:$CPATH; fi
-export CPATH=~/local/include${CPATH}
-# LD_LIBRARY_PATH is used by your program to search for directories containing
-# the libraries after it has been successfully compiled and linked
+export CPATH=~/local/include:${CPATH}
+export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64:${LD_LIBRARY_PATH}
 # LIBRARY_PATH is used by gcc before compilation to search for directories
 # containing libraries that need to be linked to your program
-if [[ "x$LD_LIBRARY_PATH" != "x" ]]; then export LD_LIBRARY_PATH=:$LD_LIBRARY_PATH; fi
-export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-5.0/lib64${LD_LIBRARY_PATH}
-export LIBRARY_PATH=$LD_LIBRARY_PATH
-export PERL5LIB=~/local/lib/perl:$PERL5LIB
-export GOROOT=~/local/opt/go-1.2.1
-export PYTHONPATH=~/local/lib64/python2.6/site-packages:$PYTHONPATH
-export MANPATH=~/local/share/man:$MANPATH
-eval `~/bin/depend ~/.default_depend`
-if [[ "$PATH" != "" ]]; then export PATH=:$PATH; fi
-export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin${PATH}
+# export LIBRARY_PATH=$LD_LIBRARY_PATH
+export MANPATH=~/local/share/man:${MANPATH}
+export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin:${PATH}
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
+export PYTHONPATH=~/local/lib64/python2.6/site-packages:${PYTHONPATH}
+export PERL5LIB=~/local/lib/perl:$PERL5LIB
+eval `~/bin/depend ~/.default_depend`
 
+# Initialize Modules environment for non-interactive shell
+# (copied from /etc/profile.d/modules.sh)
+if [[ $- != *i* ]] ; then
+    shell=`/bin/basename \`/bin/ps -p $$ -ocomm=\``
+    if [ -f /usr/share/Modules/init/$shell ]; then  . /usr/share/Modules/init/$shell;
+    else                                            . /usr/share/Modules/init/sh;       fi
+fi
+
+module use-append ~/.modules
+module load common_base
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -68,13 +72,7 @@ shopt -s extglob
 
 HISTSIZE=5000
 
-# module use-append ~/.modules
-
 export OMP_NUM_THREADS=1
-export OMPI_MPICC=clang
-export OMPI_CFLAGS='-fdiagnostics-color'
-export OMPI_MPICXX=clang++
-export OMPI_CXXFLAGS='-fdiagnostics-color'
 
 export HISTTIMEFORMAT='%F %T '
 
