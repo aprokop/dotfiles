@@ -40,6 +40,6 @@
 [help]
     # autocorrect = 10
 [merge]
-    tool = vimdiff3
+    tool        = vimdiff3
 [push]
-    default = simple
+    default     = simple
