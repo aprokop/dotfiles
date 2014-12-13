@@ -16,8 +16,6 @@ export MANPATH=~/local/share/man:${MANPATH}
 export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin:${PATH}
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
 export PYTHONPATH=~/local/lib64/python2.6/site-packages:${PYTHONPATH}
-export PERL5LIB=~/local/lib/perl:$PERL5LIB
-eval `~/bin/depend ~/.default_depend`
 
 # Initialize Modules environment for non-interactive shell
 # (copied from /etc/profile.d/modules.sh)
@@ -174,7 +172,6 @@ END { y = 1; while( total > 1024 ) { total = (total + 1023)/1024; y++; } printf(
 }
 
 xrdb -load ~/.Xresources
-xmodmap ~/.Xmodmap
 
 export GPG_TTY='tty'
 
