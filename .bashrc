@@ -8,12 +8,12 @@
 # Set environment before non-interactive shell check, so that it is the same
 # for both login and interactive shells
 export CPATH=~/local/include:${CPATH}
-export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:/opt/nvidia/cuda-6.5/lib64:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:${LD_LIBRARY_PATH}
 # LIBRARY_PATH is used by gcc before compilation to search for directories
 # containing libraries that need to be linked to your program
 # export LIBRARY_PATH=$LD_LIBRARY_PATH
 export MANPATH=~/local/share/man:${MANPATH}
-export PATH=~/bin:/opt/bin:~/local/bin:/opt/nvidia/cuda-5.0/bin:${PATH}
+export PATH=~/bin:/opt/bin:~/local/bin:${PATH}
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
 export PYTHONPATH=~/local/lib64/python2.6/site-packages:${PYTHONPATH}
 
