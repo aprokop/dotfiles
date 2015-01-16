@@ -25,6 +25,7 @@ if [[ $- != *i* ]] ; then
     else                                            . /usr/share/Modules/init/sh;       fi
 fi
 
+# Set module environment
 module use-append ~/.modules
 module load common_base
 
@@ -81,7 +82,6 @@ alias cp='cp -ip'
 alias ctest='ctest -j12'
 alias diff='colordiff'
 alias egrep='egrep --color'
-alias gcc='gcc -fdiagnostics-color=auto'
 # alias gdb='gdb -tui'
 alias gdb='gdb --ex run'
 alias gitk='gitk --all --since="1 month ago"'
@@ -128,6 +128,7 @@ alias lt='ls -ltr'
 alias make='ninjac -j12'
 alias org='emacs ~/.personal/org/my.org'
 alias ulocate='locate -d ~/.locate.db'
+alias wtc='curl http://whatthecommit.com/index.txt'
 
 # set VI mode for bash
 set -o vi
