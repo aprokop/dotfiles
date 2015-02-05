@@ -29,6 +29,12 @@ fi
 module use-append ~/.modules
 module load common_base
 
+[[ -s $HOME/local/share/cdargs/cdargs-bash.sh           ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
+[[ -s $HOME/local/share/git/git-completion.sh           ]]  && source $HOME/local/share/git/git-completion.sh
+[[ -f /etc/profile.d/bash-completion.sh                 ]]  && source /etc/profile.d/bash-completion.sh
+[[ -s $HOME/local/share/bash-completion/bash_completion ]]  && source $HOME/local/share/bash-completion/bash_completion
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh         ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -47,10 +53,10 @@ fi
 # Change the window title of X terminals
 case ${TERM} in
 	xterm*|rxvt*|Eterm|aterm|kterm|gnome)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+		PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} echo -ne \"\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007\""
 		;;
 	screen)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+		PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} echo -ne \"\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\""
 		;;
 esac
 
@@ -61,9 +67,6 @@ if [[ $ssh_lock == "" ]]; then
 else
     export SSH_AUTH_SOCK=$ssh_lock
 fi
-
-# Add bash-complete support
-[[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 # My configs
 shopt -s histappend
@@ -142,9 +145,6 @@ bind '"\e."':yank-last-arg
 alias okular="be_quiet okular"
 # alias stardict="be_quiet stardict"
 
-source $HOME/local/share/cdargs/cdargs-bash.sh
-source $HOME/local/share/git/git-completion.sh
-source $HOME/local/share/bash-completion/bash_completion
 # source $HOME/.xinitrc
 
 export TRILINOS_HOME=/home/aprokop/code/trilinos/
