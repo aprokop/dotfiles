@@ -126,7 +126,7 @@ alias localc='libreoffice'
 alias loimpress='libreoffice'
 alias lowriter='libreoffice'
 alias lsd='ls -d --color=always -v */'
-alias lsf="find -maxdepth 1 -type f | sed 's/^.\///' | grep -v '^\.' | xargs ls --color=always"
+alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls --color=always"
 alias lt='ls -ltr'
 alias make='ninjac -j12'
 alias ma='module avail'
