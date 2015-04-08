@@ -123,6 +123,7 @@ alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}'
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias l.='ls -d .* --color=always -v'
 alias localc='libreoffice'
+alias lodraw='libreoffice'
 alias loimpress='libreoffice'
 alias lowriter='libreoffice'
 alias lsd='ls -d --color=always -v */'
@@ -135,6 +136,7 @@ alias mlist='module list'
 alias mu='module unload'
 alias org='emacs ~/.personal/org/my.org'
 alias ulocate='locate -d ~/.locate.db'
+alias vtune='amplxe-gui'
 alias wtc='curl http://whatthecommit.com/index.txt'
 
 # set VI mode for bash
