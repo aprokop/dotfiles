@@ -40,7 +40,7 @@ module load common_base
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
 	# Shell is non-interactive.  Be done now!
-	return
+	exit
 fi
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
@@ -72,7 +72,7 @@ for lock in "${ssh_locks[@]}"; do
         break
     fi
 done
-if [[ $ssh_lock == "" ]]; then
+if [[ "x$ssh_lock" == "x" ]]; then
     eval `ssh-agent`
 else
     export SSH_AUTH_SOCK=$ssh_lock
@@ -109,6 +109,7 @@ alias ls='ls --color=always -v --ignore="C:*\\debuglog.txt"'
 alias mplayer='mplayer -really-quiet'
 alias mv='mv -i'
 alias ninja='ninja -j12'
+alias okular='be_quiet okular'
 alias parallel='parallel --no-notice'
 alias tig='tig --all --since="1 month ago"'
 alias tgz='tar --use-compress-program=pigz'
@@ -149,13 +150,40 @@ alias ulocate='locate -d ~/.locate.db'
 alias vtune='amplxe-gui'
 alias wtc='curl http://whatthecommit.com/index.txt'
 
+# functions
+function dux() {
+    local arg=${1:-.}
+    du -sk $arg/* | sort -n | awk 'BEGIN{ pref[1]="K"; pref[2]="M"; pref[3]="G";} \
+    {
+        total = total + $1;
+        x = $1;
+        y = 1;
+        while( x > 1024 ) { x = (x + 1023)/1024; y++; }
+        printf("%g%s\t",int(x*10)/10,pref[y],$2);
+        for (f = 2; f <= NF; f++) {	printf("%s ", $f); }
+        printf("\n");
+    }
+    END { y = 1; while( total > 1024 ) { total = (total + 1023)/1024; y++; } printf("Total: %g%s\n",int(total*10)/10,pref[y]); }'
+}
+lsnew() {
+    ls -lt ${1+"$@"} | head -10;
+}
+rpath() {
+    objdump -x $1 | grep RPATH | awk '{print $2}'
+}
+s() {
+    local arg=${1:-1};
+    local pt=""
+    while [ $arg -gt 0 ]; do
+        pt="../$pt"
+        arg=$(($arg - 1));
+    done
+    cd $pt >&/dev/null;
+}
+
 # set VI mode for bash
 set -o vi
 bind '"\e."':yank-last-arg
-
-# Quiet down
-alias okular="be_quiet okular"
-# alias stardict="be_quiet stardict"
 
 # source $HOME/.xinitrc
 
@@ -164,32 +192,6 @@ export TRILINOS_HOME=/home/aprokop/code/trilinos/
 # using vim as a pager
 # export MANPAGER=/usr/bin/vimmanpager
 export EDITOR=/usr/bin/vim
-
-lsnew() { ls -lt ${1+"$@"} | head -10; }
-function s() {
-local arg=${1:-1};
-local pt=""
-while [ $arg -gt 0 ]; do
-    pt="../$pt"
-    arg=$(($arg - 1));
-done
-cd $pt >&/dev/null;
-}
-
-function dux() {
-local arg=${1:-.}
-du -sk $arg/* | sort -n | awk 'BEGIN{ pref[1]="K"; pref[2]="M"; pref[3]="G";} \
-{
-    total = total + $1;
-    x = $1;
-    y = 1;
-    while( x > 1024 ) { x = (x + 1023)/1024; y++; }
-    printf("%g%s\t",int(x*10)/10,pref[y],$2);
-    for (f = 2; f <= NF; f++) {	printf("%s ", $f); }
-    printf("\n");
-}
-END { y = 1; while( total > 1024 ) { total = (total + 1023)/1024; y++; } printf("Total: %g%s\n",int(total*10)/10,pref[y]); }'
-}
 
 xrdb -load ~/.Xresources
 
