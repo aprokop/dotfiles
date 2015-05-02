@@ -40,7 +40,7 @@ module load common_base
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
 	# Shell is non-interactive.  Be done now!
-	exit
+	return
 fi
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
