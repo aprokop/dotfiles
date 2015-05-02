@@ -152,18 +152,13 @@ alias wtc='curl http://whatthecommit.com/index.txt'
 
 # functions
 function dux() {
-    local arg=${1:-.}
-    du -sk $arg/* | sort -n | awk 'BEGIN{ pref[1]="K"; pref[2]="M"; pref[3]="G";} \
-    {
-        total = total + $1;
-        x = $1;
-        y = 1;
-        while( x > 1024 ) { x = (x + 1023)/1024; y++; }
-        printf("%g%s\t",int(x*10)/10,pref[y],$2);
-        for (f = 2; f <= NF; f++) {	printf("%s ", $f); }
-        printf("\n");
-    }
-    END { y = 1; while( total > 1024 ) { total = (total + 1023)/1024; y++; } printf("Total: %g%s\n",int(total*10)/10,pref[y]); }'
+    if [ $# -gt 0 ]; then
+        du -sh  "$@" | sort -h
+        du -shc "$@" | tail -n 1 | awk 'END{ print "Total: " $1}'
+    else
+        du -sh *  | sort -h
+        du -shc * | tail -n 1 | awk 'END{ print "Total: " $1}'
+    fi
 }
 lsnew() {
     ls -lt ${1+"$@"} | head -10;
