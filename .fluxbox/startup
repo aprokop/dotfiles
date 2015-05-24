@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "/home/prok/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# wmnd &
+# wmsmixer -w &
+# idesk &
+
+unclutter -idle 6 &		# remove cursors after a few seconds of idleness
+xset r rate 380			# set keyboard delay
+xautolock -time 10 -secure &	# autolock X screen after 10 minutes of inactivity
+
+# opera &
+yakuake &
+# kmix &
+# kalarm &
+gnome-power-manager &
+# /bin/bash /home/prok/bin/jdownloader &
+# korganizer &
+# ibus-daemon&
+# sudo -A /usr/local/bin/sandfox --profile skype skype
+
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/prok/.fluxbox/log"

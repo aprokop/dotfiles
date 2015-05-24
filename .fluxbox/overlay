@@ -1,0 +1,6 @@
+! The following line will prevent styles from setting the background.
+! background: none
+window.roundCorners: TopLeft TopRight BottomLeft BottomRight
+window.justify: Left
+background: fullscreen
+background.pixmap: /home/prok/photos/Wallpapers/excellence.jpg
