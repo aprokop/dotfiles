@@ -125,9 +125,9 @@ alias top='htop'
 alias xterm='urxvt'
 
 # custom commands
-ccopy(){ for i in $*; do cp -aip $i /tmp/ccopy.$i; done }
-alias clist="ls -d --color=never /tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
-alias cpaste="ls -d --color=never /tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv /tmp/ccopy.% ./%"
+ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.$i; done }
+alias clist="ls -d --color=never $HOME/tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
+alias cpaste="ls -d --color=never $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv /tmp/ccopy.% ./%"
 alias clwhite="sed -i 's/\s*$//g'"
 alias gauno='git status -uno'
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
