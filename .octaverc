@@ -1,0 +1,4 @@
+# load startup.m like MATLAB
+if ( exist ('startup.m', 'file') )
+  source ('startup.m')
+endif
