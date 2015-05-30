@@ -40,18 +40,6 @@ URxvt*keysym.S-F10:     \033[21;2~
 URxvt*keysym.S-F11:     \033[23;2~
 URxvt*keysym.S-F12:     \033[24;2~
 
-XLock.mode:             pipes
-XLock.erasedelay:       400
-XLock.pipes.delay:      20000
-XLock.username:
-XLock.password:
-XLock.info:
-XLock.description:      False
-XLock.planfont:         -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-XLock.fontset:          -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-XLock.planfontset:      -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-XLock.messagefont:      -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-
 Xft.antialias:          1
 Xft.hinting:            1
 Xft.hintstyle:          hintfull
