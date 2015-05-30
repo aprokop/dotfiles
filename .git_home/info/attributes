@@ -1,0 +1,5 @@
+*.fig -diff -merge
+*.pdf -diff -merge
+*.eps -diff -merge
+*.ps -diff -merge
+*.dat -diff -merge
