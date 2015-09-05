@@ -200,6 +200,10 @@ set langmap=זיףקץבנעûןלהרפ‎תךכשוחםד‏מס;ABCDEFGHIJKLMNOPQRSTUVWXYZ,ֶֹ׃׳ױֱ׀ׂÛִּֿ״װ
 
 set guicursor=a:block-Cursor-blinkon0
 
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_filetype_blacklist = { 'tex' : 0 }
+
 " Improve autocomplete menu color
 highlight PmenuSel ctermbg=yellow gui=bold
 let g:SuperTabDefaultCompletionType = "context"
