@@ -208,8 +208,17 @@ export FTP_PROXY=$http_proxy
 export RSYNC_PROXY=$http_proxy
 export NO_PROXY=$no_proxy
 
+__slurm_ps1 ()
+{
+    salloc=`env | grep SLURM_NNODES`
+    if [ "x$salloc" != "x" ]; then
+        printf " slurm[%d]" `echo $salloc | cut -f 2 -d =`
+    fi
+}
+
 # Git me harder!
 export GIT_PS1_SHOWSTASHSTATE=1
 #export GIT_PS1_SHOWUPSTREAM="verbose"
 source /home/aprokop/local/share/git/git-prompt.sh
-export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1) \[\033[01;34m\]$\[\033[00m\] "
+
+export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
