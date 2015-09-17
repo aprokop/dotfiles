@@ -182,7 +182,7 @@ bind '"\e."':yank-last-arg
 
 # source $HOME/.xinitrc
 
-export TRILINOS_HOME=/home/aprokop/code/trilinos/
+export TRILINOS_HOME=$HOME/code/trilinos/
 
 # using vim as a pager
 # export MANPAGER=/usr/bin/vimmanpager
@@ -193,7 +193,7 @@ xrdb -load ~/.Xresources
 export GPG_TTY='tty'
 
 # Network
-export BROWSER=/home/aprokop/local/opt/firefox/firefox
+export BROWSER=$HOME/local/opt/firefox/firefox
 
 # Proxies
 export http_proxy="http://sonproxy.sandia.gov:80"
@@ -219,6 +219,6 @@ __slurm_ps1 ()
 # Git me harder!
 export GIT_PS1_SHOWSTASHSTATE=1
 #export GIT_PS1_SHOWUPSTREAM="verbose"
-source /home/aprokop/local/share/git/git-prompt.sh
+source $HOME/local/share/git/git-prompt.sh
 
 export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
