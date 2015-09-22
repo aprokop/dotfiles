@@ -9,6 +9,9 @@
 ;; disable toolbar
 (tool-bar-mode -1)
 
+;; enable X middle-mouse pasting ("primary" selection)
+(setq x-select-enable-primary t)
+
 ;; show trailing whitespace
 (setq-default show-trailing-whitespace t)
 
