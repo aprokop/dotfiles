@@ -202,7 +202,7 @@ set guicursor=a:block-Cursor-blinkon0
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_filetype_blacklist = { 'tex' : 0 }
+let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11': 1, 'c' : 1}
 
 " Improve autocomplete menu color
 highlight PmenuSel ctermbg=yellow gui=bold
