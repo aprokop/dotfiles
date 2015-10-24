@@ -28,6 +28,10 @@ fi
 # Set module environment
 module use-append ~/.modules
 module load common_base
+# if [[ -d /projects ]]; then
+    # export SEMS_MODULE_ROOT=/projects/modulefiles
+    # source $SEMS_MODULE_ROOT/utils/sems-modules-rhel6-x86_64.sh
+# fi
 
 [[ -s $HOME/local/share/cdargs/cdargs-bash.sh           ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
 [[ -s $HOME/local/share/git/git-completion.sh           ]]  && source $HOME/local/share/git/git-completion.sh
@@ -99,7 +103,7 @@ alias egrep='egrep --color'
 alias gdb='gdb --ex run'
 alias gitk='gitk --all --since="1 month ago"'
 alias grep='LANG="C" grep --color --exclude=tags'
-alias feh='feh -Fd'
+# alias feh='feh -Fd'
 alias firefox='firefox -new-tab'
 alias iotop='iotop -o'
 alias less='less -R'
@@ -118,7 +122,7 @@ alias tbz2='tar --use-compress-program=pbzip2'
 alias txz='tar --use-compress-program=pxz'
 # alias ssh='ssh -Y'
 # alias xterm='xterm +sb -si -sk -sl 16384'
-alias vi='vim -p'
+alias vi='vimx -p'
 
 # reassigned commands
 alias gv="okular"
@@ -147,7 +151,7 @@ alias ml='module load'
 alias mlist='module list'
 alias mu='module unload'
 alias org='emacs ~/.personal/org/my.org'
-alias ulocate='locate -d ~/.locate.db'
+alias ulocate='locate -d ~/.locate-home.db -d ~/.locate-data.db'
 alias vtune='amplxe-gui'
 alias wtc='curl http://whatthecommit.com/index.txt'
 
