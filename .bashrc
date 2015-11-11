@@ -202,15 +202,15 @@ export BROWSER=$HOME/local/opt/firefox/firefox
 
 # Proxies
 export http_proxy="http://sonproxy.sandia.gov:80"
-export https_proxy=$http_proxy
+export https_proxy="https://sonproxy.sandia.gov:80"
 export ftp_proxy=$http_proxy
 export rsync_proxy=$http_proxy
 export no_proxy="localhost"
 # some programs look for all caps proxies
 export HTTP_PROXY=$http_proxy
-export HTTPS_PROXY=$http_proxy
-export FTP_PROXY=$http_proxy
-export RSYNC_PROXY=$http_proxy
+export HTTPS_PROXY=$https_proxy
+export FTP_PROXY=$ftp_proxy
+export RSYNC_PROXY=$rsync_proxy
 export NO_PROXY=$no_proxy
 
 __slurm_ps1 ()
