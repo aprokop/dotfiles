@@ -1,4 +1,4 @@
-personal_ws-1.1 en 109 
+personal_ws-1.1 en 112 
 runtime
 ParaView
 precompute
@@ -24,8 +24,8 @@ hexahedral
 Wiesner
 Nalu
 Mailstop
-Belos
 AMGX
+Belos
 MueLu
 preconditioner
 Seidel
@@ -56,6 +56,7 @@ Livermore
 nonzeros
 rebalances
 discretization
+Navier
 Chebyshev
 TPL
 Teuchos
@@ -80,21 +81,23 @@ FGMRES
 AztecOO
 prolongator
 subgrid
+DILU
 submatrix
 discretizations
-DILU
 datasets
 discretized
+EMIN
 ASCI
 Tpetra
 Trilinos
 RCB
 preconditioners
-scalability
 GPUs
+scalability
 GPU
 Favre
 Zoltan
+vertices
 eigenproblems
 AMD
 RCP
