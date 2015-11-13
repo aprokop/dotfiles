@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/file-line"]
+	path = .vim/bundle/file-line
+	url = https://github.com/bogado/file-line.git
