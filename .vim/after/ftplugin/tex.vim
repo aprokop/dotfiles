@@ -18,7 +18,7 @@ let b:pagenumber=0
   " ! dvips .out/"%:r".dvi -o "%:r".ps
 " endfunction
 
-noremap <buffer> <F5> :update<CR>:make<CR><CR>
+noremap <buffer> <F5> :update<CR>:Make<CR><CR>
 
 set textwidth=80
 
