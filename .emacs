@@ -346,10 +346,11 @@
                             (org-tags-match-list-sublevels nil)
                             (org-agenda-todo-ignore-scheduled 'future)
                             (org-agenda-todo-ignore-deadlines 'future)))
-                (tags "-REFILE/DONE"
-                      ((org-agenda-overriding-header "Tasks to Archive")
-                       (org-agenda-skip-function 'ap/skip-non-archivable-tasks)
-                       (org-tags-match-list-sublevels nil))))
+;                (tags "-REFILE/DONE"
+;                      ((org-agenda-overriding-header "Tasks to Archive")
+;                       (org-agenda-skip-function 'ap/skip-non-archivable-tasks)
+;                       (org-tags-match-list-sublevels nil)))
+                )
                nil)
               ("r" "Tasks to Refile" tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")
@@ -376,10 +377,11 @@
               ("w" "Waiting Tasks" tags-todo "+WAITING/!"
                ((org-agenda-overriding-header "Waiting and Postponed tasks"))
                (org-tags-match-list-sublevels nil))
-              ("A" "Tasks to Archive" tags "-REFILE/"
-               ((org-agenda-overriding-header "Tasks to Archive")
-                (org-agenda-skip-function 'ap/skip-non-archivable-tasks)
-                (org-tags-match-list-sublevels nil))))))
+;              ("A" "Tasks to Archive" tags "-REFILE/"
+;               ((org-agenda-overriding-header "Tasks to Archive")
+;                (org-agenda-skip-function 'ap/skip-non-archivable-tasks)
+;                (org-tags-match-list-sublevels nil)))
+               )))
 
 ;;; functions
 
