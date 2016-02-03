@@ -130,7 +130,7 @@ alias top='htop'
 alias xterm='urxvt'
 
 # custom commands
-ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.$i; done }
+ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.`basename $i`; done }
 alias clist="ls -d --color=never $HOME/tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
 alias cpaste="ls -d --color=never $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
 alias clwhite="sed -i 's/\s*$//g'"
