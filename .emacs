@@ -204,15 +204,14 @@
 (setq org-treat-S-cursor-todo-selection-as-state-change nil)    ; skip normal processing when entering/leaving <todo> state
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "|" "BROKEN(b@/!)" "|" "DELEGATED(D@/!)" "PHONE" "MEETING" "SEMINAR"))))
+              (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "|" "BROKEN(b@/!)" "|" "DELEGATED(D@/!)" "MEETING" "SEMINAR"))))
 (setq org-todo-keyword-faces
       (quote (("TODO"       :foreground "red"           :weight bold)
               ("NEXT"       :foreground "orange"        :weight bold)
               ("DONE"       :foreground "forest green"  :weight bold)
               ("WAITING"    :foreground "cyan"          :weight bold)
               ("MEETING"    :foreground "forest green"  :weight bold)
-              ("SEMINAR"    :foreground "forest green"  :weight bold)
-              ("PHONE"      :foreground "forest green"  :weight bold))))
+              ("SEMINAR"    :foreground "forest green"  :weight bold))))
 (setq org-todo-state-tags-triggers
       (quote (("WAITING"    ("WAITING" . t))
               (done         ("WAITING"    ))
@@ -220,7 +219,7 @@
               ("NEXT"       ("WAITING"    )         ("CANCELLED"))
               ("DONE"       ("WAITING"    )         ("CANCELLED")))))
 
-;; capture templates for: <todo> tasks, notes, appointments, phone calls, meetings, and org-protocol
+;; capture templates for: <todo> tasks, notes, appointments, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/.personal/org/refile.org")
                "* TODO %?\n%U\n" :clock-in t :clock-resume t)
@@ -231,9 +230,7 @@
               ("m" "meeting" entry (file "~/.personal/org/refile.org")
                "* MEETING with %? on %t :MEETING:\n" :clock-in t :clock-resume t)
               ("s" "seminar" entry (file "~/.personal/org/refile.org")
-               "* SEMINAR on %t :SEMINAR:\nAUTHOR: %?\nTITLE: \n\n" :clock-in t :clock-resume t)
-              ("p" "phone call" entry (file "~/.personal/org/refile.org")
-               "* PHONE with %? on %t :PHONE:\n" :clock-in t :clock-resume t))))
+               "* SEMINAR on %t :SEMINAR:\nAUTHOR: %?\nTITLE: \n\n" :clock-in t :clock-resume t))))
 
 ;; clocking
 (org-clock-persistence-insinuate)                                       ; resume clocking task when emacs is restarted
@@ -323,23 +320,23 @@
 ;                           (org-agenda-skip-function 'ap/skip-non-projects)
 ;                           (org-agenda-sorting-strategy
 ;                            '(priority-down category-keep))))
-                (tags-todo "/!NEXT"
+                (tags-todo "-REFILE/!NEXT"
                            ((org-agenda-overriding-header "Project next tasks")
-                            (org-agenda-skip-function 'ap/skip-projects-and-habits-and-single-tasks)
+                            (org-agenda-skip-function 'ap/skip-projects-and-habits)
                             (org-tags-match-list-sublevels t)
                             (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-sorting-strategy
                               '(todo-state-down priority-down effort-up category-keep))))
-                (tags-todo "-REFILE-WAITING/!"
-                           ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project subtasks" "Standalone tasks"))
-                            (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
-                            (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-sorting-strategy
-                              '(todo-state-down priority-down effort-up category-keep))))
+;                (tags-todo "-REFILE-WAITING/!"
+;                           ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project subtasks" "Standalone tasks"))
+;                            (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
+;                            (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
+;                            (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
+;                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
+;                            (org-agenda-sorting-strategy
+;                              '(todo-state-down priority-down effort-up category-keep))))
                 (tags-todo "+WAITING|+DELEGATED/!"
                            ((org-agenda-overriding-header "Waiting and delegated Tasks")
                             (org-agenda-skip-function 'ap/skip-stuck-projects)
@@ -658,6 +655,23 @@ Callers of this function already widen the buffer view."
         next-headline)
        (t
         nil)))))
+(defun ap/skip-projects-and-habits ()
+  "Skip trees that are projects, tasks that are habits"
+  (save-restriction
+    (widen)
+    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max)))))
+      (cond
+       ((ap/is-project-p)
+        next-headline)
+       ((org-is-habit-p)
+        next-headline)
+       ((and ap/hide-scheduled-and-waiting-next-tasks
+             (member "WAITING" (org-get-tags-at)))
+        next-headline)
+       ((not (ap/is-project-subtree-p))
+        next-headline)
+       (t
+        nil)))))
 (defun ap/skip-project-tasks-maybe ()
   "Show tasks related to the current restriction.
 When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
@@ -677,7 +691,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
         subtree-end)
        ((and limit-to-project
              (ap/is-project-subtree-p)
-             (member (org-get-todo-state) (list "NEXT")))
+             (member (org-get-todo-state) (list "TODO")))
         subtree-end)
        (t
         nil)))))
