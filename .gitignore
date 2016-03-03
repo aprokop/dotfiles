@@ -5,3 +5,4 @@
 .emacs.d/org-clock-save.el
 .vim/.netrwhist
 *.pyc
+.tmux/resurrect
