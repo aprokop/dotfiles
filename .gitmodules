@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/vim-dispatch"]
 	path = .vim/bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule ".vim/bundle/linediff"]
+	path = .vim/bundle/linediff
+	url = git://github.com/AndrewRadev/linediff.vim.git
