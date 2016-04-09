@@ -188,21 +188,22 @@ EXEC 01;32
 .emf 01;35
 
 # documents
-.pdf 38;5;2
-.txt 38;5;2
+.chm 38;5;2
 .djvu 38;5;2
 .doc 38;5;2
 .docx 38;5;2
-.ppt 38;5;2
-.pptx 38;5;2
-.xls 38;5;2
-.xlsx 38;5;2
-.odt 38;5;2
-.ods 38;5;2
-.ps 38;5;2
 .odf 38;5;2
 .odp 38;5;2
 .ods 38;5;2
+.ods 38;5;2
+.odt 38;5;2
+.pdf 38;5;2
+.ppt 38;5;2
+.pptx 38;5;2
+.ps 38;5;2
+.txt 38;5;2
+.xls 38;5;2
+.xlsx 38;5;2
 
 # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
 .axv 01;35
