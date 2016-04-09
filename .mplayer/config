@@ -1,2 +1,3 @@
 #zoom="1"        # allow software scaling
 #double="yes"    # double buffering
+lirc=no
