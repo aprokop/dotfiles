@@ -154,6 +154,7 @@ alias mlist='module list'
 alias mu='module unload'
 alias org='emacs ~/.personal/org/my.org'
 alias ulocate='locate -d ~/.locate-home.db -d ~/.locate-data.db'
+alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
 alias vtune='amplxe-gui'
 alias wtc='curl http://whatthecommit.com/index.txt'
 
