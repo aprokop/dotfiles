@@ -72,3 +72,9 @@ LAPACK
 Cholmod
 CMake
 cmake
+nonsymmetric
+Hoemmen
+subdomains
+preconditioners
+Mavriplis
+Cuthill
