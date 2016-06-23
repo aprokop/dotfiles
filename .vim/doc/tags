@@ -114,6 +114,8 @@
 :FufTag	fuf.txt	/*:FufTag*
 :FufTagWithCursorWord	fuf.txt	/*:FufTagWithCursorWord*
 :FufTaggedFile	fuf.txt	/*:FufTaggedFile*
+:LanguageToolCheck	LanguageTool.txt	/*:LanguageToolCheck*
+:LanguageToolClear	LanguageTool.txt	/*:LanguageToolClear*
 :TipOfTheDay	totd.txt	/*:TipOfTheDay*
 Align-copyright	Align.txt	/*Align-copyright*
 Alph	latexhelp.txt	/*Alph*
@@ -143,6 +145,8 @@ Imap_PlaceHolderStart	latex-suite.txt	/*Imap_PlaceHolderStart*
 Imap_StickyPlaceHolders	latex-suite.txt	/*Imap_StickyPlaceHolders*
 Imap_UsePlaceHolders	latex-suite.txt	/*Imap_UsePlaceHolders*
 LaTeX	latexhelp.txt	/*LaTeX*
+LanguageTool	LanguageTool.txt	/*LanguageTool*
+LanguageTool.txt	LanguageTool.txt	/*LanguageTool.txt*
 Plug_IMAP_DeleteAndJumBack	latex-suite.txt	/*Plug_IMAP_DeleteAndJumBack*
 Plug_IMAP_DeleteAndJumpForward	latex-suite.txt	/*Plug_IMAP_DeleteAndJumpForward*
 Plug_IMAP_JumpBack	latex-suite.txt	/*Plug_IMAP_JumpBack*
@@ -818,6 +822,10 @@ g:fuf_taggedfile_prompt	fuf.txt	/*g:fuf_taggedfile_prompt*
 g:fuf_taggedfile_switchOrder	fuf.txt	/*g:fuf_taggedfile_switchOrder*
 g:fuf_timeFormat	fuf.txt	/*g:fuf_timeFormat*
 g:fuf_useMigemo	fuf.txt	/*g:fuf_useMigemo*
+g:languagetool_disable_rules	LanguageTool.txt	/*g:languagetool_disable_rules*
+g:languagetool_jar	LanguageTool.txt	/*g:languagetool_jar*
+g:languagetool_lang	LanguageTool.txt	/*g:languagetool_lang*
+g:languagetool_win_height	LanguageTool.txt	/*g:languagetool_win_height*
 gitv	gitv.txt	/*gitv*
 gitv-author	gitv.txt	/*gitv-author*
 gitv-changelog	gitv.txt	/*gitv-changelog*
@@ -851,6 +859,14 @@ l9-introduction	l9.txt	/*l9-introduction*
 l9-usage	l9.txt	/*l9-usage*
 l9.txt	l9.txt	/*l9.txt*
 landscape	latexhelp.txt	/*landscape*
+languagetool-bugs	LanguageTool.txt	/*languagetool-bugs*
+languagetool-configuration	LanguageTool.txt	/*languagetool-configuration*
+languagetool-download	LanguageTool.txt	/*languagetool-download*
+languagetool-features	LanguageTool.txt	/*languagetool-features*
+languagetool-installation	LanguageTool.txt	/*languagetool-installation*
+languagetool-license	LanguageTool.txt	/*languagetool-license*
+languagetool-overview	LanguageTool.txt	/*languagetool-overview*
+languagetool-screenshots	LanguageTool.txt	/*languagetool-screenshots*
 latex	latexhelp.txt	/*latex*
 latex-boxes	latexhelp.txt	/*latex-boxes*
 latex-breaking	latexhelp.txt	/*latex-breaking*

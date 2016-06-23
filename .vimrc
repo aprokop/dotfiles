@@ -198,6 +198,8 @@ set grepprg=grep\ -nH\ $*
 
 set langmap=æéó÷õáğòûïìäøôıúêëùåçíãşîñ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,ÆÉÓ×ÕÁĞÒÛÏÌÄØÔİÚÊËÙÅÇÍÃŞÎÑ;abcdefghijklmnopqrstuvwxyz
 
+let g:languagetool_jar='$HOME/local/opt/languagetool-3.3/languagetool-commandline.jar'
+
 set guicursor=a:block-Cursor-blinkon0
 
 " YouCompleteMe
