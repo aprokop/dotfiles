@@ -82,7 +82,8 @@ Laplacian
 dof
 dofs
 GMRES
-Oseen
 lidcavity
 submatrix
 underrelaxation
+Oseen
+AMGe
