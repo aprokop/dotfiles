@@ -78,3 +78,9 @@ subdomains
 preconditioners
 Mavriplis
 Cuthill
+dofs
+dof
+GMRES
+Laplacian
+Oseen
+AMGe
