@@ -67,7 +67,10 @@
 (setq mouse-wheel-follow-mouse 't)                      ;; scroll window under mouse
 (setq scroll-step 1)                                    ;; keyboard scroll one line at a time
 
-
+;; use langtool grammar checker
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-langtool"))
+(require 'langtool)
+(setq langtool-language-tool-jar "/home/aprokop/local/opt/languagetool-3.3/languagetool-commandline.jar")
 
 
 

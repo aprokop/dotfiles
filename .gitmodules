@@ -31,3 +31,6 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = git://github.com/tmux-plugins/tpm
+[submodule ".emacs.d/emacs-langtool"]
+	path = .emacs.d/emacs-langtool
+	url = https://github.com/mhayashi1120/emacs-langtool
