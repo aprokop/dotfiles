@@ -1,3 +1,4 @@
 #zoom="1"        # allow software scaling
 #double="yes"    # double buffering
 lirc=no
+af=scaletempo    # maintain pitch during speed up/scale down
