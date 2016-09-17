@@ -15,7 +15,11 @@ export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:${LD_LIBRARY_PATH}
 export MANPATH=~/local/share/man:${MANPATH}
 export PATH=~/bin:/opt/bin:~/local/bin:${PATH}
 export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
-export PYTHONPATH=~/local/lib64/python2.6/site-packages:${PYTHONPATH}
+export PYTHONPATH=~/local/lib64/python2.7/site-packages:${PYTHONPATH}
+
+# MATLAB has trouble figuring out where Java is
+# Without this line (on jet) matlab crashes and takes X server with it
+export MATLAB_JAVA=/usr/lib/jvm/java-1.8.0/jre
 
 # Initialize Modules environment for non-interactive shell
 # (copied from /etc/profile.d/modules.sh)
@@ -28,15 +32,12 @@ fi
 # Set module environment
 module use-append ~/.modules
 module load common_base
-# if [[ -d /projects ]]; then
-    # export SEMS_MODULE_ROOT=/projects/modulefiles
-    # source $SEMS_MODULE_ROOT/utils/sems-modules-rhel6-x86_64.sh
-# fi
 
 [[ -s $HOME/local/share/cdargs/cdargs-bash.sh           ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
 [[ -s $HOME/local/share/git/git-completion.sh           ]]  && source $HOME/local/share/git/git-completion.sh
 [[ -f /etc/profile.d/bash-completion.sh                 ]]  && source /etc/profile.d/bash-completion.sh
 [[ -s $HOME/local/share/bash-completion/bash_completion ]]  && source $HOME/local/share/bash-completion/bash_completion
+[[ -s /etc/profile.d/autojump.sh                        ]]  && source /etc/profile.d/autojump.sh
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh         ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # Test for an interactive shell.  There is no need to set anything
@@ -92,7 +93,13 @@ export OMP_NUM_THREADS=1
 
 export HISTTIMEFORMAT='%F %T '
 
+# input method
+# export GTK_IM_MODULE=ibus
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=ibus
+
 # standard commands
+alias anki='anki -b /home/prok/.anki'
 alias cal='cal -m'
 alias cgdb='cgdb --ex run'
 alias cp='cp -ip'
@@ -103,23 +110,26 @@ alias egrep='egrep --color'
 alias gdb='gdb --ex run'
 alias gitk='gitk --all --since="1 month ago"'
 alias grep='LANG="C" grep --color --exclude=tags'
-# alias feh='feh -Fd'
+alias feh='feh -Fd'
 alias firefox='firefox -new-tab'
 alias iotop='iotop -o'
+alias jdownloader='be_quiet jdownloader'
 alias less='less -R'
-alias libreoffice='libreoffice5.0'
-alias ls='ls --color=auto -v --ignore="C:*\\debuglog.txt"'
-# alias make='make -j20'
+# alias libreoffice='libreoffice5.0'
+alias ls='ls -N --color=always -v --ignore="C:*\\debuglog.txt"'
+# alias make='make -j3'
 alias mpirun='mpirun -bind-to socket -map-by socket'
 alias mplayer='mplayer -really-quiet'
 alias mv='mv -i'
-alias ninja='ninja -j20'
+alias ninja='ninja -j3'
 alias okular='be_quiet okular'
 alias parallel='parallel --no-notice'
+alias qmake='qmake-qt4'
 alias qstat='qstat -u `whoami`'
 alias tig='tig --all --since="1 month ago"'
 alias tgz='tar --use-compress-program=pigz'
 alias tbz2='tar --use-compress-program=pbzip2'
+alias tmux='tmux -2'
 alias txz='tar --use-compress-program=pxz'
 # alias ssh='ssh -Y'
 # alias xterm='xterm +sb -si -sk -sl 16384'
@@ -127,8 +137,12 @@ alias vi='vimx -p'
 
 # reassigned commands
 alias gv="okular"
+alias skanlite='simple-scan'
 alias top='htop'
-alias xterm='urxvt'
+# alias xterm='urxvt'
+# alias xterm='urxvt256c'
+alias xterm='konsole'
+alias vim='vimx'
 
 # custom commands
 ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.`basename $i`; done }
@@ -139,21 +153,23 @@ alias clwhite="sed -i 's/\s*$//g'"
 alias gauno='git status -uno'
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
-alias l.='ls -d .* --color=always -v'
+alias l.='ls -N -d .* --color=always -v'
 alias localc='libreoffice'
 alias lodraw='libreoffice'
 alias loimpress='libreoffice'
 alias lowriter='libreoffice'
-alias lsd='ls -d --color=always -v */'
-alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls --color=always"
-alias lt='ls -ltr'
-alias make='ninjac -j20'
+alias lsd='ls -N -d --color=always -v */'
+alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls -N --color=always"
+alias lt='ls -Nltr'
+alias make='ninjac -j3'
 alias ma='module avail'
 alias ml='module load'
 alias mlist='module list'
 alias mu='module unload'
 alias org='emacs ~/.personal/org/my.org'
-alias ulocate='locate -d ~/.locate-home.db -d ~/.locate-data.db'
+alias pdftk="LD_PRELOAD=$HOME/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk/pdftk"
+# alias ulocate='locate -d ~/.locate-home.db -d ~/.locate-data.db'
+alias ulocate='locate -d ~/.locate.db'
 alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
 alias vtune='amplxe-gui'
 alias wtc='curl http://whatthecommit.com/index.txt'
@@ -169,7 +185,7 @@ function dux() {
     fi
 }
 lsnew() {
-    ls -lt ${1+"$@"} | head -10;
+    ls -Nlt ${1+"$@"} | head -10;
 }
 rpath() {
     objdump -x $1 | grep RPATH | awk '{print $2}'
@@ -204,17 +220,17 @@ export GPG_TTY='tty'
 export BROWSER=$HOME/local/opt/firefox/firefox
 
 # Proxies
-export http_proxy="http://sonproxy.sandia.gov:80"
-export https_proxy="https://sonproxy.sandia.gov:80"
-export ftp_proxy=$http_proxy
-export rsync_proxy=$http_proxy
-export no_proxy="localhost"
+# export http_proxy="http://sonproxy.sandia.gov:80"
+# export https_proxy=$http_proxy
+# export ftp_proxy=$http_proxy
+# export rsync_proxy=$http_proxy
+# export no_proxy="localhost"
 # some programs look for all caps proxies
-export HTTP_PROXY=$http_proxy
-export HTTPS_PROXY=$https_proxy
-export FTP_PROXY=$ftp_proxy
-export RSYNC_PROXY=$rsync_proxy
-export NO_PROXY=$no_proxy
+# export HTTP_PROXY=$http_proxy
+# export HTTPS_PROXY=$https_proxy
+# export FTP_PROXY=$ftp_proxy
+# export RSYNC_PROXY=$rsync_proxy
+# export NO_PROXY=$no_proxy
 
 __slurm_ps1 ()
 {
