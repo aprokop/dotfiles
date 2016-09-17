@@ -57,9 +57,9 @@
 ;; define default font
 ; (set-face-attribute 'default nil :font "Comic Sans MS")
 ; (set-face-attribute 'default nil :font "Laconic")
-(set-face-attribute 'default nil :font "Consolas")
-; (set-face-attribute 'default nil :font "Terminus")
-; (set-face-attribute 'default nil :height 140)
+; (set-face-attribute 'default nil :font "Consolas")
+(set-face-attribute 'default nil :font "Terminus")
+(set-face-attribute 'default nil :height 140)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))     ;; one line at a time
@@ -70,7 +70,7 @@
 ;; use langtool grammar checker
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-langtool"))
 (require 'langtool)
-(setq langtool-language-tool-jar "/home/aprokop/local/opt/languagetool-3.3/languagetool-commandline.jar")
+(setq langtool-language-tool-jar "/home/aprokop/local/opt/languagetool-3.4/languagetool-commandline.jar")
 
 
 
