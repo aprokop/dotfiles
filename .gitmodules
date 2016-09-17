@@ -1,6 +1,6 @@
 [submodule ".emacs.d/evil"]
 	path = .emacs.d/evil
-	url = git://gitorious.org/evil/evil.git
+    url = hg::https://bitbucket.org/lyro/evil
 [submodule ".emacs.d/org-mode"]
 	path = .emacs.d/org-mode
 	url = git://orgmode.org/org-mode.git
