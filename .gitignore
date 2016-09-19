@@ -1,9 +1,12 @@
 .gitignore
 *~
-.emacs.d/.org-id-locations
 .emacs.d/bookmarks
+.emacs.d/ido.last
 .emacs.d/org-clock-save.el
+.emacs.d/.org-id-locations
+.emacs.d/recentf
 .vim/.netrwhist
 *.pyc
 .tmux/resurrect
 .vim/spell/en.utf-8.add.spl
+
