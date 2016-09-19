@@ -229,7 +229,7 @@
               ("n" "note" entry (file "~/.personal/org/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
               ("j" "journal" plain (file+datetree "~/.personal/org/journal.org")
-               "%U\n%?\n")
+               "%?\n")
               ("m" "meeting" entry (file "~/.personal/org/refile.org")
                "* MEETING with %? on %t :MEETING:\n" :clock-in t :clock-resume t)
               ("s" "seminar" entry (file "~/.personal/org/refile.org")
