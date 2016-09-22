@@ -7,7 +7,7 @@
     st          = status
     br          = branch -v
     fp          = format-patch -k -M -N
-    glog        = log --abbrev-commit --graph --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'
+    glog        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
     log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
     log1a       = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
     log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
