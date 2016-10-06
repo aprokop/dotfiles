@@ -33,12 +33,13 @@ fi
 module use-append ~/.modules
 module load common_base
 
-[[ -s $HOME/local/share/cdargs/cdargs-bash.sh           ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
-[[ -s $HOME/local/share/git/git-completion.sh           ]]  && source $HOME/local/share/git/git-completion.sh
-[[ -f /etc/profile.d/bash-completion.sh                 ]]  && source /etc/profile.d/bash-completion.sh
-[[ -s $HOME/local/share/bash-completion/bash_completion ]]  && source $HOME/local/share/bash-completion/bash_completion
-[[ -s /etc/profile.d/autojump.sh                        ]]  && source /etc/profile.d/autojump.sh
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh         ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/local/share/cdargs/cdargs-bash.sh            ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
+[[ -s $HOME/local/share/git/git-completion.sh            ]]  && source $HOME/local/share/git/git-completion.sh
+[[ -f /etc/profile.d/bash-completion.sh                  ]]  && source /etc/profile.d/bash-completion.sh
+[[ -s $HOME/local/share/bash-completion/bash_completion  ]]  && source $HOME/local/share/bash-completion/bash_completion
+[[ -s $HOME/local/share/bash-completion/completions/tmux ]]  && source $HOME/local/share/bash-completion/completions/tmux
+[[ -s /etc/profile.d/autojump.sh                         ]]  && source /etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh          ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
