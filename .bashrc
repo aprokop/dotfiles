@@ -173,7 +173,7 @@ alias pdftk="LD_PRELOAD=$HOME/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk
 alias ulocate='locate -d ~/.locate.db'
 alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
 alias vtune='amplxe-gui'
-alias wtc='curl http://whatthecommit.com/index.txt'
+alias wtc='curl -s http://whatthecommit.com/index.txt'
 
 # functions
 function dux() {
