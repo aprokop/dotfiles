@@ -1,6 +1,6 @@
 [user]
     name        = Andrey Prokopenko
-    email       = aprokop@sandia.gov
+    email       = prokopenkoav@ornl.gov
 [alias]
     ci          = commit
     co          = checkout
