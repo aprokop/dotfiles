@@ -127,8 +127,8 @@ set termencoding=utf-8
 " More conventient PgUp/PgDown, making cursor stay in the same line and not
 " move up/down as standard. As default scroll on C-Y/D is by half-screen, the
 " binding is done to double press
-nmap <PageUp> <C-U><C-U>
-imap <PageUp> <C-O><C-U><C-O><C-U>
+nmap <PageUp>   <C-U><C-U>
+imap <PageUp>   <C-O><C-U><C-O><C-U>
 nmap <PageDown> <C-D><C-D>
 imap <PageDown> <C-O><C-D><C-O><C-D>
 
@@ -208,11 +208,6 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11': 1, 'c' : 1}
 nnoremap ,jd :YcmCompleter GoTo<CR>
 
-" Improve autocomplete menu color
-highlight PmenuSel ctermbg=yellow gui=bold
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabRetainCompletionDuration = "session"
-
 " Project specific configuration
 let g:localvimrc_name    = ".local_vimrc"
 let g:localvimrc_ask     = 0
@@ -239,7 +234,7 @@ endif
 execute pathogen#infect()
 
 " Syntastic
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs  = 1
 
 " Scroll inactive window
@@ -289,3 +284,22 @@ function! CalcBC()
 		echo "answer = " . answer
 	endif
 endfunction
+
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+Plugin 'AndrewRadev/linediff.vim'
+Plugin 'bogado/file-line'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-dispatch'
+Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required

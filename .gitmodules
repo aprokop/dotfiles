@@ -4,24 +4,6 @@
 [submodule ".emacs.d/org-mode"]
 	path = .emacs.d/org-mode
 	url = git://orgmode.org/org-mode.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/clang_complete"]
-	path = .vim/bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang_complete.git
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule ".vim/bundle/file-line"]
-	path = .vim/bundle/file-line
-	url = https://github.com/bogado/file-line.git
-[submodule ".vim/bundle/vim-dispatch"]
-	path = .vim/bundle/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
-[submodule ".vim/bundle/linediff"]
-	path = .vim/bundle/linediff
-	url = git://github.com/AndrewRadev/linediff.vim.git
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
 	url = git://github.com/tmux-plugins/tmux-resurrect
@@ -34,6 +16,3 @@
 [submodule ".emacs.d/emacs-langtool"]
 	path = .emacs.d/emacs-langtool
 	url = https://github.com/mhayashi1120/emacs-langtool
-[submodule "vundle"]
-	path = .vim/bundle/vundle
-	url = git@github.com:VundleVim/Vundle.vim.git
