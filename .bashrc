@@ -221,10 +221,10 @@ export GPG_TTY='tty'
 export BROWSER=$HOME/local/opt/firefox/firefox
 
 # Proxies
-# export http_proxy="http://sonproxy.sandia.gov:80"
-# export https_proxy=$http_proxy
-# export ftp_proxy=$http_proxy
-# export rsync_proxy=$http_proxy
+# export http_proxy="<some_proxy>"
+# export https_proxy="<some_proxy>"
+# export ftp_proxy="<some_proxy>"
+# export rsync_proxy="<some_proxy>"
 # export no_proxy="localhost"
 # some programs look for all caps proxies
 # export HTTP_PROXY=$http_proxy
