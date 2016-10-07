@@ -218,7 +218,7 @@ xrdb -load ~/.Xresources
 export GPG_TTY='tty'
 
 # Network
-export BROWSER=$HOME/local/opt/firefox/firefox
+# export BROWSER=$HOME/local/opt/firefox/firefox
 
 # Proxies
 # export http_proxy="<some_proxy>"
