@@ -163,7 +163,7 @@ noremap <F7>  :cp<CR>  " Go to next error
 noremap <F8>  :cn<CR>  " Go to prev error
 noremap <F9>            :!git diff     > .git.diff<CR>:tabnew<CR>:view .git.diff<CR>gg
 noremap <S-F9>          :!git diff "%" > .git.diff<CR>:tabnew<CR>:view .git.diff<CR>gg
-noremap <F11>           :!ctags -R --c++-kinds=+p --fields=+iatS --extra=+q .<CR><CR>
+noremap <F11>           :!ctags -R --c++-kinds=+p --fields=+iatlS --extra=+q .<CR><CR>
 
 iab todo TODO
 iab fixme FIXME
