@@ -134,8 +134,7 @@ alias tmux='tmux -2'
 alias txz='tar --use-compress-program=pxz'
 # alias ssh='ssh -Y'
 # alias xterm='xterm +sb -si -sk -sl 16384'
-alias vi='vim -p'
-alias vim='vim -p'
+alias vi='vimx -p'
 
 # reassigned commands
 alias gv="okular"
@@ -144,6 +143,7 @@ alias top='htop'
 # alias xterm='urxvt'
 # alias xterm='urxvt256c'
 alias xterm='konsole'
+alias vim='vimx'
 
 # custom commands
 ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.`basename $i`; done }
