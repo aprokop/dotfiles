@@ -1,12 +1,12 @@
 # local\_configs
 
-### .vimrc
+### vim
 
 1. Create a symbolic links for vim:
 
     `$ ln -s local_configs/.vimrc ~/.vimrc`
-
-    `$ ln -s local_configs/.vim ~/.vim`
+    `$ ln -s local_configs/.vim   ~/.vim`
+    `$ mkdir -p ~/.vim/bundle`
 
 2. Set up [Vundle](https://github.com/VundleVim/Vundle.vim):
 
@@ -16,7 +16,8 @@
 
 ### Other configs
 
-`cd $HOME && $ ln -s local_configs/<specific_config> .`
+`ln -s local_configs/<specific_config> ~`
 
 Some configs may go to the corresponding dir. For instance, for `mplayer` do
-`cd $HOME/.mplayer/ && ln -s local_configs/.mplayer/config .`
+
+    `ln -s local_configs/.mplayer/config ~/.mplayer/config`
