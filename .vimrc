@@ -305,6 +305,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-dispatch'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/LanguageTool'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
