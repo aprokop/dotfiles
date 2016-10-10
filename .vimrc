@@ -286,14 +286,16 @@ function! CalcBC()
 endfunction
 
 
-" Set the runtime path to include Vundle and initialize
+" ------------------------ Vundle ------------------------
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
+" keep Plugin commands between vundle#begin and vundle#end
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 
-" Keep Plugin commands between vundle#begin/end.
 Plugin 'AndrewRadev/linediff.vim'
 Plugin 'bogado/file-line'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -309,5 +311,5 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/LanguageTool'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+call vundle#end()
+" --------------------------------------------------------
