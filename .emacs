@@ -7,7 +7,7 @@
 (setq inhibit-default-init t)
 
 ;; disable toolbar
-(tool-bar-mode -1)
+(if (display-graphic-p) (tool-bar-mode -1) nil)
 
 ;; enable X middle-mouse pasting ("primary" selection)
 (setq x-select-enable-primary t)
