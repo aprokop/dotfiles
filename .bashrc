@@ -5,6 +5,15 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+elif [[ "$unamestr" == "Darwin" ]]; then
+    platform='darwin'
+fi
+
+
 # Set environment before non-interactive shell check, so that it is the same
 # for both login and interactive shells
 export CPATH=~/local/include:${CPATH}
@@ -21,17 +30,19 @@ export PYTHONPATH=~/local/lib64/python2.7/site-packages:${PYTHONPATH}
 # Without this line (on jet) matlab crashes and takes X server with it
 export MATLAB_JAVA=/usr/lib/jvm/java-1.8.0/jre
 
-# Initialize Modules environment for non-interactive shell
-# (copied from /etc/profile.d/modules.sh)
-if [[ $- != *i* ]] ; then
-    shell=`/bin/basename \`/bin/ps -p $$ -ocomm=\``
-    if [ -f /usr/share/Modules/init/$shell ]; then  . /usr/share/Modules/init/$shell;
-    else                                            . /usr/share/Modules/init/sh;       fi
-fi
+if [[ "platform" == "linux" ]]; then
+    # Initialize Modules environment for non-interactive shell
+    # (copied from /etc/profile.d/modules.sh)
+    if [[ $- != *i* ]] ; then
+        shell=`/bin/basename \`/bin/ps -p $$ -ocomm=\``
+        if [ -f /usr/share/Modules/init/$shell ]; then  . /usr/share/Modules/init/$shell;
+        else                                            . /usr/share/Modules/init/sh;       fi
+    fi
 
-# Set module environment
-module use-append ~/.modules
-module load common_base
+    # Set module environment
+    module use-append ~/.modules
+    module load common_base
+fi
 
 [[ -s $HOME/local/share/cdargs/cdargs-bash.sh            ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
 [[ -s $HOME/local/share/git/git-completion.sh            ]]  && source $HOME/local/share/git/git-completion.sh
@@ -50,10 +61,12 @@ if [[ $- != *i* ]] ; then
 fi
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-if [[ -f ~/.dir_colors ]]; then
-	eval `dircolors -b ~/.dir_colors`
-else
-	eval `dircolors -b /etc/DIR_COLORS`
+if [[ "$platform" == "linux" ]]; then
+    if [[ -f ~/.dir_colors ]]; then
+        eval `dircolors -b ~/.dir_colors`
+    else
+        eval `dircolors -b /etc/DIR_COLORS`
+    fi
 fi
 
 # Change the window title of X terminals
@@ -99,6 +112,13 @@ export HISTTIMEFORMAT='%F %T '
 # export XMODIFIERS=@im=ibus
 # export QT_IM_MODULE=ibus
 
+# helpers
+if [[ "$platform" == "linux" ]]; then
+    ls_flags="-N --color=auto"
+elif [[ "$platform" == "darwin" ]]; then
+    ls_flags="-G"
+fi
+
 # standard commands
 alias anki='anki -b /home/prok/.anki'
 alias cal='cal -m'
@@ -117,7 +137,7 @@ alias iotop='iotop -o'
 alias jdownloader='be_quiet jdownloader'
 alias less='less -R'
 # alias libreoffice='libreoffice5.0'
-alias ls='ls -N --color=always -v --ignore="C:*\\debuglog.txt"'
+alias ls='ls $ls_flags -v'
 # alias make='make -j3'
 alias mpirun='mpirun -bind-to socket -map-by socket'
 alias mplayer='mplayer -really-quiet'
@@ -134,7 +154,9 @@ alias tmux='tmux -2'
 alias txz='tar --use-compress-program=pxz'
 # alias ssh='ssh -Y'
 # alias xterm='xterm +sb -si -sk -sl 16384'
-alias vi='vimx -p'
+if [[ "$platform" == "linux" ]]; then
+    alias vi='vimx -p'
+fi
 
 # reassigned commands
 alias gv="okular"
@@ -143,25 +165,33 @@ alias top='htop'
 # alias xterm='urxvt'
 # alias xterm='urxvt256c'
 alias xterm='konsole'
-alias vim='vimx'
+if [[ "$platform" == "linux" ]]; then
+    alias vim='vimx'
+fi
 
 # custom commands
 ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.`basename $i`; done }
 cmove(){ for i in $*; do mv -i   $i $HOME/tmp/ccopy.`basename $i`; done }
-alias clist="ls -d --color=never $HOME/tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
-alias cpaste="ls -d --color=never $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
-alias clwhite="sed -i 's/\s*$//g'"
+if [[ "$platform" == "linux" ]]; then
+    alias clist="ls -d --color=never $HOME/tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
+    alias cpaste="ls -d --color=never $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
+    alias clwhite="sed -i 's/\s*$//g'"
+elif [[ "$platform" == "darwin" ]]; then
+    alias clist="ls -d $HOME/tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
+    alias cpaste="ls -d $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
+    alias clwhite="sed -i \"\" 's/\s*$//g'"
+fi
 alias gauno='git status -uno'
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
-alias l.='ls -N -d .* --color=always -v'
+alias l.='ls $ls_flags -v -d .*'
 alias localc='libreoffice'
 alias lodraw='libreoffice'
 alias loimpress='libreoffice'
 alias lowriter='libreoffice'
-alias lsd='ls -N -d --color=always -v */'
-alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls -N --color=always"
-alias lt='ls -Nltr'
+alias lsd='ls -d $ls_flags -v */'
+alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
+alias lt='ls $ls_flags -ltr'
 alias make='ninjac -j3'
 alias ma='module avail'
 alias ml='module load'
@@ -186,7 +216,7 @@ function dux() {
     fi
 }
 lsnew() {
-    ls -Nlt ${1+"$@"} | head -10;
+    ls -lt ${1+"$@"} | head -10;
 }
 rpath() {
     objdump -x $1 | grep RPATH | awk '{print $2}'
@@ -213,7 +243,9 @@ export TRILINOS_HOME=$HOME/code/trilinos/
 # export MANPAGER=/usr/bin/vimmanpager
 export EDITOR=/usr/bin/vim
 
-xrdb -load ~/.Xresources
+if [[ "platform" == "linux" ]]; then
+    xrdb -load ~/.Xresources
+fi
 
 export GPG_TTY='tty'
 
