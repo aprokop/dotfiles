@@ -4,7 +4,7 @@
 [alias]
     ci          = commit
     co          = checkout
-    st          = status
+    st          = status -sb
     br          = branch -v
     fp          = format-patch -k -M -N
     glog        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
