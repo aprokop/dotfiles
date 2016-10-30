@@ -1,9 +1,8 @@
 # /etc/skel/.bashrc:
 #
-# This file is sourced by all *interactive* bash shells on startup,
-# including some apparently interactive shells such as scp and rcp
-# that can't tolerate any output.  So make sure this doesn't display
-# anything or bad things will happen !
+# This file is sourced by all *interactive* bash shells on startup, including
+# some apparently interactive shells such as scp and rcp that can't tolerate any
+# output. So make sure this doesn't display anything or bad things will happen!
 
 platform='unknown'
 unamestr=`uname`
@@ -13,9 +12,8 @@ elif [[ "$unamestr" == "Darwin" ]]; then
     platform='darwin'
 fi
 
-
-# Set environment before non-interactive shell check, so that it is the same
-# for both login and interactive shells
+# Set environment before non-interactive shell check, so that it is the same for
+# both login and interactive shells
 export CPATH=~/local/include:${CPATH}
 export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:${LD_LIBRARY_PATH}
 # LIBRARY_PATH is used by gcc before compilation to search for directories
@@ -40,23 +38,31 @@ if [[ "platform" == "linux" ]]; then
     fi
 
     # Set module environment
-    module use-append ~/.modules
-    module load common_base
+    if [[ -d $HOME/.modules ]]; then
+        module use-append ~/.modules
+        module load common_base
+    fi
 fi
 
 [[ -s $HOME/local/share/cdargs/cdargs-bash.sh            ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
 [[ -s $HOME/local/share/git/git-completion.sh            ]]  && source $HOME/local/share/git/git-completion.sh
-[[ -f /etc/profile.d/bash-completion.sh                  ]]  && source /etc/profile.d/bash-completion.sh
+[[ -s /etc/profile.d/bash-completion.sh                  ]]  && source /etc/profile.d/bash-completion.sh
 [[ -s $HOME/local/share/bash-completion/bash_completion  ]]  && source $HOME/local/share/bash-completion/bash_completion
 [[ -s $HOME/local/share/bash-completion/completions/tmux ]]  && source $HOME/local/share/bash-completion/completions/tmux
 [[ -s /etc/profile.d/autojump.sh                         ]]  && source /etc/profile.d/autojump.sh
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh          ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
 
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
+# Spack
+if [[ -s $HOME/local/opt/spack ]]; then
+    export SPACK_ROOT=$HOME/local/opt/spack
+    [[ -s $SPACK_ROOT/share/spack/setup-env.sh           ]]  && source $SPACK_ROOT/share/spack/setup-env.sh
+fi
+
+# Test for an interactive shell. There is no need to set anything past this
+# point for scp and rcp, and it's important to refrain from outputting anything
+# in those cases.
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
+	# Shell is non-interactive. Be done now!
 	return
 fi
 
@@ -104,6 +110,9 @@ shopt -s extglob
 HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
+
+export MPI_CFLAGS="-fdiagnostics-color"
+export MPI_CXXFLAGS="-fdiagnostics-color"
 
 export HISTTIMEFORMAT='%F %T '
 
@@ -192,6 +201,7 @@ alias lowriter='libreoffice'
 alias lsd='ls -d $ls_flags -v */'
 alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
 alias lt='ls $ls_flags -ltr'
+alias mak='make'
 alias make='ninjac -j3'
 alias ma='module avail'
 alias ml='module load'
