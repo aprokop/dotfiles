@@ -11,3 +11,4 @@ prok/.local/share/Trash
 prok/.mozilla/firefox/gc77gfyi.default/Cache/
 prok/.trash
 prok/.PlayOnLinux/wineprefix
+prok/code/trilinos/**/build
