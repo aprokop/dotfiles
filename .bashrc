@@ -201,7 +201,6 @@ alias lowriter='libreoffice'
 alias lsd='ls -d $ls_flags -v */'
 alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
 alias lt='ls $ls_flags -ltr'
-alias mak='make'
 alias make='ninjac -j3'
 alias ma='module avail'
 alias ml='module load'
@@ -217,6 +216,10 @@ alias ulocate='locate -d ~/.locate.db'
 alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
 alias vtune='amplxe-gui'
 alias wtc='curl -s http://whatthecommit.com/index.txt'
+
+# mistypes
+alias mak='make'
+alias makemake='make'
 
 # functions
 function dux() {
