@@ -4,12 +4,12 @@
 # some apparently interactive shells such as scp and rcp that can't tolerate any
 # output. So make sure this doesn't display anything or bad things will happen!
 
-platform='unknown'
+platform="unknown"
 unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-    platform='linux'
+if   [[ "$unamestr" == "Linux" ]]; then
+    platform="linux"
 elif [[ "$unamestr" == "Darwin" ]]; then
-    platform='darwin'
+    platform="darwin"
 fi
 
 # Set environment before non-interactive shell check, so that it is the same for
@@ -124,53 +124,53 @@ elif [[ "$platform" == "darwin" ]]; then
 fi
 
 # standard commands
-alias anki='anki -b /home/prok/.anki'
-alias cal='cal -m'
-alias cgdb='cgdb --ex run'
-alias cp='cp -ip'
-alias ctest='ctest -j12'
-alias diff='colordiff'
-alias egrep='egrep --color'
-# alias gdb='gdb -tui'
-alias gdb='gdb --ex run'
-alias gitk='gitk --all --since="1 month ago"'
-alias grep='LANG="C" grep --color --exclude=tags'
-alias feh='feh -Fd'
-alias firefox='firefox -new-tab'
-alias iotop='iotop -o'
-alias jdownloader='be_quiet jdownloader'
-alias less='less -R'
-# alias libreoffice='libreoffice5.0'
-alias ls='ls $ls_flags -v'
-# alias make='make -j3'
-alias mpirun='mpirun -bind-to socket -map-by socket'
-alias mplayer='mplayer -really-quiet'
-alias mv='mv -i'
-alias ninja='ninja-build -j3'
-alias okular='be_quiet okular'
-alias parallel='parallel --no-notice'
-alias qmake='qmake-qt4'
-alias qstat='qstat -u `whoami`'
+alias anki="anki -b /home/prok/.anki"
+alias cal="cal -m"
+alias cgdb="cgdb --ex run"
+alias cp="cp -ip"
+alias ctest="ctest -j12"
+alias diff="colordiff"
+alias egrep="egrep --color"
+# alias gdb="gdb -tui"
+alias gdb="gdb --ex run"
+alias gitk="gitk --all --since='1 month ago'"
+alias grep="LANG='C' grep --color --exclude=tags"
+alias feh="feh -Fd"
+alias firefox="firefox -new-tab"
+alias iotop="iotop -o"
+alias jdownloader="be_quiet jdownloader"
+alias less="less -R"
+# alias libreoffice="libreoffice5.0"
+alias ls="ls $ls_flags -v"
+# alias make="make -j3"
+alias mpirun="mpirun -bind-to socket -map-by socket"
+alias mplayer="mplayer -really-quiet"
+alias mv="mv -i"
+alias ninja="ninja-build -j3"
+alias okular="be_quiet okular"
+alias parallel="parallel --no-notice"
+alias qmake="qmake-qt4"
+alias qstat="qstat -u `whoami`"
 alias tig='tig --all --since="1 month ago"'
-alias tgz='tar --use-compress-program=pigz'
-alias tbz2='tar --use-compress-program=pbzip2'
-alias tmux='tmux -2'
-alias txz='tar --use-compress-program=pxz'
-# alias ssh='ssh -Y'
-# alias xterm='xterm +sb -si -sk -sl 16384'
+alias tgz="tar --use-compress-program=pigz"
+alias tbz2="tar --use-compress-program=pbzip2"
+alias tmux="tmux -2"
+alias txz="tar --use-compress-program=pxz"
+# alias ssh="ssh -Y"
+# alias xterm="xterm +sb -si -sk -sl 16384"
 if [[ "$platform" == "linux" ]]; then
-    alias vi='vimx -p'
+    alias vi="vimx -p"
 fi
 
 # reassigned commands
 alias gv="okular"
-alias skanlite='simple-scan'
-alias top='htop'
-# alias xterm='urxvt'
-# alias xterm='urxvt256c'
-alias xterm='konsole'
+alias skanlite="simple-scan"
+alias top="htop"
+# alias xterm="urxvt"
+# alias xterm="urxvt256c"
+alias xterm="konsole"
 if [[ "$platform" == "linux" ]]; then
-    alias vim='vimx'
+    alias vim="vimx"
 fi
 
 # custom commands
@@ -185,36 +185,36 @@ elif [[ "$platform" == "darwin" ]]; then
     alias cpaste="ls -d $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
     alias clwhite="sed -i \"\" 's/\s*$//g'"
 fi
-alias gauno='git status -uno'
+alias gauno="git status -uno"
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
-alias l.='ls $ls_flags -v -d .*'
-alias localc='libreoffice'
-alias lodraw='libreoffice'
-alias loimpress='libreoffice'
-alias lowriter='libreoffice'
-alias lsd='ls -d $ls_flags -v */'
+alias l.="ls $ls_flags -v -d .*"
+alias localc="libreoffice"
+alias lodraw="libreoffice"
+alias loimpress="libreoffice"
+alias lowriter="libreoffice"
+alias lsd="ls -d $ls_flags -v */"
 alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
-alias lt='ls $ls_flags -ltr'
-alias make='ninjac -j3'
-alias ma='module avail'
-alias ml='module load'
-alias mlist='module list'
-alias mu='module unload'
-alias org='emacs ~/.personal/org/my.org'
+alias lt="ls $ls_flags -ltr"
+alias make="ninjac -j3"
+alias ma="module avail"
+alias ml="module load"
+alias mlist="module list"
+alias mu="module unload"
+alias org="emacs ~/.personal/org/my.org"
 if [[ "$platform" == "darwin" ]]; then
-    alias orgmac='open /Applications/Emacs.app/ --args ~/.personal/org/my.org'
+    alias orgmac="open /Applications/Emacs.app/ --args ~/.personal/org/my.org"
 fi
 alias pdftk="LD_PRELOAD=$HOME/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk/pdftk"
-# alias ulocate='locate -d ~/.locate-home.db -d ~/.locate-data.db'
-alias ulocate='locate -d ~/.locate.db'
+# alias ulocate="locate -d ~/.locate-home.db -d ~/.locate-data.db"
+alias ulocate="locate -d ~/.locate.db"
 alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
-alias vtune='amplxe-gui'
-alias wtc='curl -s http://whatthecommit.com/index.txt'
+alias vtune="amplxe-gui"
+alias wtc="curl -s http://whatthecommit.com/index.txt"
 
 # mistypes
-alias mak='make'
-alias makemake='make'
+alias mak="make"
+alias makemake="make"
 
 # functions
 function dux() {
