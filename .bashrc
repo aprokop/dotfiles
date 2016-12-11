@@ -116,11 +116,6 @@ export OMPI_CXXFLAGS="-fdiagnostics-color"
 
 export HISTTIMEFORMAT='%F %T '
 
-# input method
-# export GTK_IM_MODULE=ibus
-# export XMODIFIERS=@im=ibus
-# export QT_IM_MODULE=ibus
-
 # helpers
 if [[ "$platform" == "linux" ]]; then
     ls_flags="-N --color=auto"
