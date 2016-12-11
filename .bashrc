@@ -12,6 +12,15 @@ elif [[ "$unamestr" == "Darwin" ]]; then
     platform="darwin"
 fi
 
+# Machine dependent parameters
+host=`hostname`
+MAKEPROC=1
+if   [[ "$host" == "jet"* ]]; then
+    MAKEPROC=3
+elif [[ "$host" == "geminga"* ]]; then
+    MAKEPROC=12
+fi
+
 # Set environment before non-interactive shell check, so that it is the same for
 # both login and interactive shells
 export CPATH=~/local/include:${CPATH}
@@ -53,10 +62,10 @@ fi
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh          ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # Spack
-if [[ -s $HOME/local/opt/spack ]]; then
-    export SPACK_ROOT=$HOME/local/opt/spack
-    [[ -s $SPACK_ROOT/share/spack/setup-env.sh           ]]  && source $SPACK_ROOT/share/spack/setup-env.sh
-fi
+# if [[ -s $HOME/local/opt/spack ]]; then
+    # export SPACK_ROOT=$HOME/local/opt/spack
+    # [[ -s $SPACK_ROOT/share/spack/setup-env.sh           ]]  && source $SPACK_ROOT/share/spack/setup-env.sh
+# fi
 
 # Test for an interactive shell. There is no need to set anything past this
 # point for scp and rcp, and it's important to refrain from outputting anything
@@ -128,7 +137,7 @@ alias anki="anki -b /home/prok/.anki"
 alias cal="cal -m"
 alias cgdb="cgdb --ex run"
 alias cp="cp -ip"
-alias ctest="ctest -j12"
+alias ctest="ctest -j$MAKEPROC"
 alias diff="colordiff"
 alias egrep="egrep --color"
 # alias gdb="gdb -tui"
@@ -142,11 +151,11 @@ alias jdownloader="be_quiet jdownloader"
 alias less="less -R"
 # alias libreoffice="libreoffice5.0"
 alias ls="ls $ls_flags -v"
-# alias make="make -j3"
+# alias make="make -j$MAKEPROC"
 alias mpirun="mpirun -bind-to socket -map-by socket"
 alias mplayer="mplayer -really-quiet"
 alias mv="mv -i"
-alias ninja="ninja-build -j3"
+alias ninja="ninja-build -j$MAKEPROC"
 alias okular="be_quiet okular"
 alias parallel="parallel --no-notice"
 alias qmake="qmake-qt4"
@@ -196,7 +205,7 @@ alias lowriter="libreoffice"
 alias lsd="ls -d $ls_flags -v */"
 alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
 alias lt="ls $ls_flags -ltr"
-alias make="ninjac -j3"
+alias make="ninjac -j$MAKEPROC"
 alias ma="module avail"
 alias ml="module load"
 alias mlist="module list"
