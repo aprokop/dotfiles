@@ -16,10 +16,10 @@
 (setq-default show-trailing-whitespace t)
 
 ; color scheme
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-prok)
+(add-to-list 'custom-theme-load-path
+             (file-name-as-directory "~/.emacs.d/themes"))
+(load-theme 'prok t t)
+(enable-theme 'prok)
 
 ;; vi like keys
 (add-to-list 'load-path "~/.emacs.d/evil")
