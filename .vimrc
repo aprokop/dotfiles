@@ -181,6 +181,10 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" Center window on search matches
+nnoremap N Nzzzv
+nnoremap n nzzzv
+
 " edit ~/.vimrc
 nmap ,v :e ~/.vimrc<CR>
 nmap ,s :source ~/.vimrc<CR>
