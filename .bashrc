@@ -15,7 +15,8 @@ fi
 # Machine dependent parameters
 host=`hostname`
 MAKEPROC=1
-if   [[ "$host" == "jet"* ]]; then
+if   [[ "$host" == "jet"* ]] ||
+     [[ "$host" == "mbpro617"* ]]; then
     MAKEPROC=3
 elif [[ "$host" == "geminga"* ]]; then
     MAKEPROC=12
