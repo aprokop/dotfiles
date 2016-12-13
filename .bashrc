@@ -38,7 +38,7 @@ export PYTHONPATH=~/local/lib64/python2.7/site-packages:${PYTHONPATH}
 # Without this line (on jet) matlab crashes and takes X server with it
 export MATLAB_JAVA=/usr/lib/jvm/java-1.8.0/jre
 
-if [[ "platform" == "linux" ]]; then
+if [[ "$platform" == "linux" ]]; then
     # Initialize Modules environment for non-interactive shell
     # (copied from /etc/profile.d/modules.sh)
     if [[ $- != *i* ]] ; then
@@ -47,6 +47,7 @@ if [[ "platform" == "linux" ]]; then
         else                                            . /usr/share/Modules/init/sh;       fi
     fi
 
+    echo ".modules"
     # Set module environment
     if [[ -d $HOME/.modules ]]; then
         module use-append ~/.modules
