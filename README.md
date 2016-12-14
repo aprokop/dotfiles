@@ -4,17 +4,24 @@
 
 1. Create a symbolic links for vim:
 
-    `$ ln -s local_configs/.vimrc ~/.vimrc`
-    
-    `$ ln -s local_configs/.vim   ~/.vim`
-    
-    `$ mkdir -p ~/.vim/bundle`
+    ```bash
+    $ ln -s local_configs/.vimrc ~/.vimrc
+    $ ln -s local_configs/.vim   ~/.vim
+    $ mkdir -p ~/.vim/bundle
+    ```
 
 2. Set up [Vundle](https://github.com/VundleVim/Vundle.vim):
 
     `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
 3. Launch `vim` and run `:PluginInstall`
+
+4. Compile `YouCompleteMe`:
+
+    ```bash
+    $ cd ~/.vim/bundle/YouCompleteMe
+    $ cd ./install.py --clang-completer
+    ```
 
 ### Other configs
 
