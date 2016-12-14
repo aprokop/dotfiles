@@ -47,7 +47,6 @@ if [[ "$platform" == "linux" ]]; then
         else                                            . /usr/share/Modules/init/sh;       fi
     fi
 
-    echo ".modules"
     # Set module environment
     if [[ -d $HOME/.modules ]]; then
         module use-append ~/.modules
