@@ -25,8 +25,8 @@
 
 ### Other configs
 
-    `ln -s local_configs/<specific_config> ~`
+    $ ln -s local_configs/<specific_config> ~
 
 Some configs may go to the corresponding dir. For instance, for `mplayer` do
 
-    `ln -s local_configs/.mplayer/config ~/.mplayer/config`
+    $ ln -s local_configs/.mplayer/config ~/.mplayer/config
