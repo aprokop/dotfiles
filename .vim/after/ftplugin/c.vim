@@ -5,10 +5,6 @@ setlocal noinfercase
 setlocal foldenable
 setlocal foldmethod=indent
 
-" Comment/uncomment
-noremap <silent> <buffer> <F3> :s/^\(\s*\)/\1\/\/\ /<CR>
-noremap <silent> <buffer> <F4> :s/^\(\s*\)\/\/\ /\1/<CR>
-
 vnoremap <buffer> ,= :Align=<CR>
 
 " Auto remove white space when saving

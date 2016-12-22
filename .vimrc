@@ -1,7 +1,38 @@
 scriptencoding utf-8
 
-" Don't be compatible with vi
+" set iMproved mode
 set nocompatible
+
+" ------------------------ Vundle ------------------------
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+" keep Plugin commands between vundle#begin and vundle#end
+call vundle#begin()
+
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'AndrewRadev/linediff.vim'
+Plugin 'bogado/file-line'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'docker/docker'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'embear/vim-localvimrc'
+Plugin 'majutsushi/tagbar'
+Plugin 'nvie/vim-flake8'
+Plugin 'powerman/vim-plugin-AnsiEsc'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-dispatch'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/LanguageTool'
+
+call vundle#end()
+" --------------------------------------------------------
 
 " Nice big viminfo file
 set viminfo='1000,f1,:1000,/1000
@@ -13,9 +44,8 @@ set term=xterm
 
 set listchars=eol:$,tab:>-
 
-" Shifts
+" Tabs
 set softtabstop=4
-" By default, go for an indent of 4
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -206,12 +236,6 @@ let g:languagetool_jar='$HOME/local/opt/languagetool-3.3/languagetool-commandlin
 
 set guicursor=a:block-Cursor-blinkon0
 
-" YouCompleteMe
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11': 1, 'c' : 1}
-nnoremap ,jd :YcmCompleter GoTo<CR>
-
 " Project specific configuration
 let g:localvimrc_name    = ".local_vimrc"
 let g:localvimrc_ask     = 0
@@ -237,10 +261,24 @@ endif
 " Run pathogen
 execute pathogen#infect()
 
+" ------------------------ Scrtips configuration ------------------------
 " Syntastic
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs  = 1
 
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11': 1, 'c' : 1}
+nnoremap ,jd :YcmCompleter GoTo<CR>
+
+" NerdCommenter
+let g:NERDCommentEmptyLines = 1
+let g:NERDSpaceDelims = 1
+map <F3>    <plug>NERDCommenterComment
+map <F4>    <plug>NERDCommenterUncomment
+
+" ------------------------ Functions ------------------------
 " Scroll inactive window
 nmap <silent> <M-Down> :call ScrollOtherWindow("down")<CR>
 nmap <silent> <M-Up>   :call ScrollOtherWindow("up")<CR>
@@ -288,34 +326,3 @@ function! CalcBC()
 		echo "answer = " . answer
 	endif
 endfunction
-
-
-" ------------------------ Vundle ------------------------
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-" keep Plugin commands between vundle#begin and vundle#end
-call vundle#begin()
-
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'AndrewRadev/linediff.vim'
-Plugin 'bogado/file-line'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'docker/docker'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'embear/vim-localvimrc'
-Plugin 'majutsushi/tagbar'
-Plugin 'nvie/vim-flake8'
-Plugin 'powerman/vim-plugin-AnsiEsc'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-dispatch'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/Align'
-Plugin 'vim-scripts/LanguageTool'
-
-call vundle#end()
-" --------------------------------------------------------
