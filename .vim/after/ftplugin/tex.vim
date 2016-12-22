@@ -6,21 +6,17 @@ noremap <silent> <F4> :s/^\(\s*\)%\ /\1/<CR>
 
 let b:pagenumber=0
 
-" function! <SID>make()
-  " wa
-  " !make
-  " !latex --output-directory=.out "%"
-  " !latex --output-directory=.out "%"
-  " !cd .out
-  " !bibtex "%:r"
-  " !cd ..
-  " !latex --output-directory=.out "%"
-  " ! dvips .out/"%:r".dvi -o "%:r".ps
-" endfunction
-
 noremap <buffer> <F5> :update<CR>:Make<CR><CR>
 
-set textwidth=80
+setlocal textwidth=80
 
-" iabbrev <buffer> beeq \begin{equation}<Enter>
-" iabbrev <buffer>  eeq \end{equation}<Enter>
+" Set indentation
+setlocal sw=2
+
+" TIP: if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press <C-n> you will automatically cycle through
+" all the figure labels. Very useful!
+setlocal iskeyword+=:
+
+" Turn on spell checking
+setlocal spell

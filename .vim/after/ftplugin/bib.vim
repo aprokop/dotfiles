@@ -2,4 +2,4 @@
 noremap <silent> <F3> :s/^\(\s*\)/\1%\ /<CR>
 noremap <silent> <F4> :s/^\(\s*\)%\ /\1/<CR>
 
-set textwidth=140
+setlocal textwidth=140
