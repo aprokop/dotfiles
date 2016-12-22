@@ -5,31 +5,31 @@ set nocompatible
 
 " ------------------------ Vundle ------------------------
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle.vim
 
 " keep Plugin commands between vundle#begin and vundle#end
 call vundle#begin()
 
 " let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'vundlevim/vundle.vim'
 
-Plugin 'AndrewRadev/linediff.vim'
+Plugin 'andrewradev/linediff.vim'
 Plugin 'bogado/file-line'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'docker/docker'
-Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'ekalinin/dockerfile.vim'
 Plugin 'embear/vim-localvimrc'
 Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
-Plugin 'powerman/vim-plugin-AnsiEsc'
-Plugin 'rdnetto/YCM-Generator'
+Plugin 'powerman/vim-plugin-ansiesc'
+Plugin 'rdnetto/ycm-generator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-dispatch'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/Align'
-Plugin 'vim-scripts/LanguageTool'
+Plugin 'valloric/youcompleteme'
+Plugin 'vim-scripts/align'
+Plugin 'vim-scripts/languagetool'
 
 call vundle#end()
 " --------------------------------------------------------

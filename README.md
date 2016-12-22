@@ -12,14 +12,14 @@
 
 2. Set up [Vundle](https://github.com/VundleVim/Vundle.vim):
 
-    `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+    `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle.vim`
 
 3. Launch `vim` and run `:PluginInstall`
 
 4. Compile `YouCompleteMe`:
 
     ```bash
-    $ cd ~/.vim/bundle/YouCompleteMe
+    $ cd ~/.vim/bundle/youcompleteme
     $ cd ./install.py --clang-completer
     ```
 
