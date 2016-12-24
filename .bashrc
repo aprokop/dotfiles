@@ -193,7 +193,7 @@ if [[ "$platform" == "linux" ]]; then
 elif [[ "$platform" == "darwin" ]]; then
     alias clist="ls -d $HOME/tmp/ccopy.* 2>/dev/null | sed 's|[^\.]*.\.||'"
     alias cpaste="ls -d $HOME/tmp/ccopy.* | sed 's|[^\.]*.\.||' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
-    alias clwhite="sed -i \"\" 's/\s*$//g'"
+    alias clwhite="sed -i \"\" 's/[[:space:]]*$//g'"
 fi
 alias gauno="git status -uno"
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
