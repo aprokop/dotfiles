@@ -18,7 +18,8 @@ MAKEPROC=1
 if   [[ "$host" == "jet"* ]] ||
      [[ "$host" == "mbpro617"* ]]; then
     MAKEPROC=3
-elif [[ "$host" == "geminga"* ]]; then
+elif [[ "$host" == "geminga"* ]] ||
+     [[ "$host" == "3a15778f103e" ]]; then
     MAKEPROC=12
 fi
 
