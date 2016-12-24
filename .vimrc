@@ -30,6 +30,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'valloric/youcompleteme'
 Plugin 'vim-scripts/align'
 Plugin 'vim-scripts/languagetool'
+Plugin 'vim-scripts/swig-syntax'
 
 call vundle#end()
 " --------------------------------------------------------
