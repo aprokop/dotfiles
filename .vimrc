@@ -260,9 +260,6 @@ if has("autocmd")
     au BufEnter * match ExtraWhitespace /\s\+$/
 endif
 
-" Run pathogen
-execute pathogen#infect()
-
 " ------------------------ Scrtips configuration ------------------------
 " Syntastic
 let g:syntastic_check_on_open = 0
