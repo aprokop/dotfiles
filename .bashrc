@@ -168,6 +168,8 @@ alias txz="tar --use-compress-program=pxz"
 # alias xterm="xterm +sb -si -sk -sl 16384"
 if [[ "$platform" == "linux" ]]; then
     alias vi="vimx -p"
+else
+    alias vi="vim"
 fi
 
 # reassigned commands
@@ -178,7 +180,7 @@ alias top="htop"
 # alias xterm="urxvt256c"
 alias xterm="konsole"
 if [[ "$platform" == "linux" ]]; then
-    alias vim="vimx"
+    alias vim="vimx -p"
 fi
 
 # custom commands
