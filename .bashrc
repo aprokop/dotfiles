@@ -21,6 +21,8 @@ if   [[ "$host" == "jet"* ]] ||
 elif [[ "$host" == "geminga"* ]] ||
      [[ "$host" == "3a15778f103e" ]]; then
     MAKEPROC=12
+elif [[ "$host" == "erectus" ]]; then
+    MAKEPROC=14
 fi
 
 # Set environment before non-interactive shell check, so that it is the same for
