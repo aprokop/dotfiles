@@ -159,7 +159,6 @@ alias mv="mv -i"
 alias ninja="ninja-build -j$MAKEPROC"
 alias okular="be_quiet okular"
 alias parallel="parallel --no-notice"
-alias qmake="qmake-qt4"
 alias qstat="qstat -u `whoami`"
 alias tig='tig --all --since="1 month ago"'
 alias tgz="tar --use-compress-program=pigz"
@@ -168,21 +167,17 @@ alias tmux="tmux -2"
 alias txz="tar --use-compress-program=pxz"
 # alias ssh="ssh -Y"
 # alias xterm="xterm +sb -si -sk -sl 16384"
-if [[ "$platform" == "linux" ]]; then
-    alias vi="vimx -p"
-else
-    alias vi="vim"
-fi
+alias vi="vim"
 
 # reassigned commands
 alias gv="okular"
 alias skanlite="simple-scan"
-alias top="htop"
+command -v htop > /dev/null 2>&1 && alias top="htop"
 # alias xterm="urxvt"
 # alias xterm="urxvt256c"
-alias xterm="konsole"
+command -v konsole > /dev/null 2>&1 && alias xterm="konsole"
 if [[ "$platform" == "linux" ]]; then
-    alias vim="vimx -p"
+    command -v vimx > /dev/null 2>&1 && alias vim="vimx -p"
 fi
 
 # custom commands
