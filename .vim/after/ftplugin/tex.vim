@@ -16,3 +16,8 @@ setlocal iskeyword+=:
 
 " Turn on spell checking
 setlocal spell
+
+" Spell sometimes does not work properly in TeX files. This is a hack to
+" make it more robust.
+syn sync minlines=500
+syn sync maxlines=2000
