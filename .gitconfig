@@ -18,6 +18,7 @@
     whitespace  = fix
 [core]
     whitespace  = trailing-space,space-before-tab
+    editor = vim
     # pager       = vim -R -
 [diff "nocomment"]
     textconv    = stripcmt
