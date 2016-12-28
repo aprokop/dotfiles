@@ -17,6 +17,9 @@ setlocal iskeyword+=:
 " Turn on spell checking
 setlocal spell
 
+" Add easy align
+vnoremap ,& :Align&<CR>
+
 " Spell sometimes does not work properly in TeX files. This is a hack to
 " make it more robust.
 syn sync minlines=500
