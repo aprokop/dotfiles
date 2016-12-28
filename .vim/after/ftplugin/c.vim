@@ -5,8 +5,6 @@ setlocal noinfercase
 setlocal foldenable
 setlocal foldmethod=indent
 
-vnoremap <buffer> ,= :Align=<CR>
-
 " Auto remove white space when saving
 " autocmd BufWritePre *.cc *.h :%s/\s\+$//e
 " autocmd BufEnter    *.cc *.h :%s/[ \t\r]\+$//e
