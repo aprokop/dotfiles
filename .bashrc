@@ -27,20 +27,25 @@ fi
 
 # Set environment before non-interactive shell check, so that it is the same for
 # both login and interactive shells
-export CPATH=~/local/include:${CPATH}
-export LD_LIBRARY_PATH=~/local/lib:~/local/lib64:${LD_LIBRARY_PATH}
+export PATH="~/bin:/opt/bin:~/local/bin:${PATH}"
+[[ "$platform" == "darwin" ]] && export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export CPATH="~/local/include:${CPATH}"
 # LIBRARY_PATH is used by gcc before compilation to search for directories
 # containing libraries that need to be linked to your program
 # export LIBRARY_PATH=$LD_LIBRARY_PATH
-export MANPATH=~/local/share/man:${MANPATH}
-export PATH=~/bin:/opt/bin:~/local/bin:${PATH}
-export PKG_CONFIG_PATH=~/local:$PKG_CONFIG_PATH
-export PYTHONPATH=~/local/lib64/python2.7/site-packages:${PYTHONPATH}
+export LD_LIBRARY_PATH="~/local/lib:~/local/lib64:${LD_LIBRARY_PATH}"
+export MANPATH="~/local/share/man:${MANPATH}"
+[[ "$platform" == "darwin" ]] && MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+export PKG_CONFIG_PATH="~/local:$PKG_CONFIG_PATH"
+export PYTHONPATH="~/local/lib64/python2.7/site-packages:${PYTHONPATH}"
 
-# MATLAB has trouble figuring out where Java is
-# Without this line (on jet) matlab crashes and takes X server with it
-export MATLAB_JAVA=/usr/lib/jvm/java-1.8.0/jre
+if [[ "$host" == "jet"* ]]; then
+    # MATLAB has trouble figuring out where Java is
+    # Without this line (on jet) matlab crashes and takes X server with it
+    export MATLAB_JAVA=/usr/lib/jvm/java-1.8.0/jre
+fi
 
+# Set Modules environment
 if [[ "$platform" == "linux" ]]; then
     # Initialize Modules environment for non-interactive shell
     # (copied from /etc/profile.d/modules.sh)
@@ -50,7 +55,6 @@ if [[ "$platform" == "linux" ]]; then
         else                                            . /usr/share/Modules/init/sh;       fi
     fi
 
-    # Set module environment
     if [[ -d $HOME/.modules ]]; then
         module use-append ~/.modules
         module load common_base
@@ -65,7 +69,7 @@ fi
 [[ -s /etc/profile.d/autojump.sh                         ]]  && source /etc/profile.d/autojump.sh
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh          ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
 
-# Spack
+# Spack (commented out due to slow speed)
 # if [[ -s $HOME/local/opt/spack ]]; then
     # export SPACK_ROOT=$HOME/local/opt/spack
     # [[ -s $SPACK_ROOT/share/spack/setup-env.sh           ]]  && source $SPACK_ROOT/share/spack/setup-env.sh
