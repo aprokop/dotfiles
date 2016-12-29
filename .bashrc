@@ -178,6 +178,8 @@ command -v htop > /dev/null 2>&1 && alias top="htop"
 command -v konsole > /dev/null 2>&1 && alias xterm="konsole"
 if [[ "$platform" == "linux" ]]; then
     command -v vimx > /dev/null 2>&1 && alias vim="vimx -p"
+else
+    alias vim="vim -p"
 fi
 
 # custom commands
