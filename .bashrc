@@ -128,6 +128,9 @@ HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
 
+export OMPI_CFLAGS="-fdiagnostics-color"
+export OMPI_CXXFLAGS="-fdiagnostics-color"
+
 export HISTTIMEFORMAT='%F %T '
 
 # helpers
