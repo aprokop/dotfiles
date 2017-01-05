@@ -3,16 +3,16 @@
     url = hg::https://bitbucket.org/lyro/evil
 [submodule ".emacs.d/org-mode"]
 	path = .emacs.d/org-mode
-	url = git://orgmode.org/org-mode.git
+	url = http://orgmode.org/org-mode.git
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
-	url = git://github.com/tmux-plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
 [submodule ".tmux/plugins/tmux-sensible"]
 	path = .tmux/plugins/tmux-sensible
-	url = git://github.com/tmux-plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
-	url = git://github.com/tmux-plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
 [submodule ".emacs.d/emacs-langtool"]
 	path = .emacs.d/emacs-langtool
 	url = https://github.com/mhayashi1120/emacs-langtool
