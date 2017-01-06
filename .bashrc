@@ -62,13 +62,18 @@ if [[ "$platform" == "linux" ]]; then
     fi
 fi
 
-[[ -s $HOME/local/share/cdargs/cdargs-bash.sh            ]]  && source $HOME/local/share/cdargs/cdargs-bash.sh
-[[ -s $HOME/local/share/git/git-completion.sh            ]]  && source $HOME/local/share/git/git-completion.sh
-[[ -s /etc/profile.d/bash-completion.sh                  ]]  && source /etc/profile.d/bash-completion.sh
-[[ -s $HOME/local/share/bash-completion/bash_completion  ]]  && source $HOME/local/share/bash-completion/bash_completion
-[[ -s $HOME/local/share/bash-completion/completions/tmux ]]  && source $HOME/local/share/bash-completion/completions/tmux
-[[ -s /etc/profile.d/autojump.sh                         ]]  && source /etc/profile.d/autojump.sh
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh          ]]  && source $HOME/.autojump/etc/profile.d/autojump.sh
+for file in \
+    "$HOME/local/share/cdargs/cdargs-bash.sh" \
+    "$HOME/local/share/git/git-completion.sh" \
+    "/usr/share/doc/git-core-doc/contrib/completion/git-completion.bash" \
+    "/etc/profile.d/bash-completion.sh" \
+    "$HOME/local/share/bash-completion/bash_completion" \
+    "$HOME/local/share/bash-completion/completions/tmux" \
+    "/etc/profile.d/autojump.sh" \
+    "$HOME/.autojump/etc/profile.d/autojump.sh" \
+    ; do
+    [[ -s $file ]] && source $file
+done
 
 # Spack (commented out due to slow speed)
 # if [[ -s $HOME/local/opt/spack ]]; then
