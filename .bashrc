@@ -19,7 +19,8 @@ if   [[ "$host" == "jet"* ]] ||
      [[ "$host" == "mbpro617"* ]]; then
     MAKEPROC=3
 elif [[ "$host" == "geminga"* ]] ||
-     [[ "$host" == "3a15778f103e" ]]; then
+     [[ "$host" == "3a15778f103e" ]] ||
+     [[ "$host" == "scramjet" ]]; then
     MAKEPROC=12
 elif [[ "$host" == "erectus" ]]; then
     MAKEPROC=14
