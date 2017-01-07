@@ -63,7 +63,7 @@ if [[ "$platform" == "linux" ]]; then
 fi
 
 for file in \
-    "$HOME/local/share/cdargs/cdargs-bash.sh" \
+    "$HOME/local/share/bashmarks/bashmarks.sh" \
     "$HOME/local/share/git/git-completion.sh" \
     "/usr/share/doc/git-core-doc/contrib/completion/git-completion.bash" \
     "/etc/profile.d/bash-completion.sh" \
@@ -233,6 +233,13 @@ alias ulocate="locate -d ~/.locate.db"
 alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
 alias vtune="amplxe-gui"
 alias wtc="curl -s http://whatthecommit.com/index.txt"
+
+# bashmarks
+alias save='bashmarks_s'
+alias j='bashmarks_g'
+alias l='bashmarks_l'
+alias p='bashmarks_p'
+alias d='bashmarks_d'
 
 # mistypes
 alias mak="make"
