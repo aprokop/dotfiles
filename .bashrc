@@ -235,11 +235,11 @@ alias vtune="amplxe-gui"
 alias wtc="curl -s http://whatthecommit.com/index.txt"
 
 # bashmarks
-alias save='bashmarks_s'
-alias j='bashmarks_g'
-alias l='bashmarks_l'
-alias p='bashmarks_p'
-alias d='bashmarks_d'
+alias save='bashmarks_s';   complete -F _bashmarks_comp save
+alias j='bashmarks_g';      complete -F _bashmarks_comp j
+alias l='bashmarks_l';      complete -F _bashmarks_comp l
+alias p='bashmarks_p';      complete -F _bashmarks_comp p
+alias d='bashmarks_d';      complete -F _bashmarks_comp d
 
 # mistypes
 alias mak="make"
