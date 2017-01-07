@@ -1,0 +1,22 @@
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific aliases and functions
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias l.='ls -d .* --color=always -v'
+alias lsd='ls -d --color=always -v */'
+alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls --color=always"
+alias lt='ls -ltr'
+alias s='cd ..'
+alias vi='vim'
+
+# set VI mode for bash
+set -o vi
+
+export PATH="/root/bin:$PATH"
+
+export PS1="\[\033[01;31m\]\W $\[\033[00m\] "
