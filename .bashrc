@@ -76,10 +76,13 @@ for file in \
 done
 
 # Spack (commented out due to slow speed)
-# if [[ -s $HOME/local/opt/spack ]]; then
-    # export SPACK_ROOT=$HOME/local/opt/spack
-    # [[ -s $SPACK_ROOT/share/spack/setup-env.sh           ]]  && source $SPACK_ROOT/share/spack/setup-env.sh
-# fi
+if [[ -s $HOME/local/opt/spack ]]; then
+    export SPACK_ROOT=$HOME/local/opt/spack
+    # Fast
+    export PATH="$SPACK_ROOT/bin:$PATH"
+    # Slow
+    # source $SPACK_ROOT/share/spack/setup-env.sh
+fi
 
 # Test for an interactive shell. There is no need to set anything past this
 # point for scp and rcp, and it's important to refrain from outputting anything
