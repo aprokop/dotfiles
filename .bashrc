@@ -58,7 +58,6 @@ if [[ "$platform" == "linux" ]]; then
 
     if [[ -d $HOME/.modules ]]; then
         module use-append ~/.modules
-        module load common_base
     fi
 fi
 
