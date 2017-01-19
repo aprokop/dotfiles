@@ -169,7 +169,6 @@ alias firefox="firefox -new-tab"
 alias iotop="iotop -o"
 alias jdownloader="be_quiet jdownloader"
 alias less="less -R"
-# alias libreoffice="libreoffice5.0"
 alias ls="ls $ls_flags -v"
 alias make="make -j$MAKEPROC"
 alias mpirun="mpirun -bind-to socket -map-by socket"
@@ -185,7 +184,6 @@ alias tbz2="tar --use-compress-program=pbzip2"
 alias tmux="tmux -2"
 alias txz="tar --use-compress-program=pxz"
 alias ssh="ssh -X"
-# alias xterm="xterm +sb -si -sk -sl 16384"
 alias vi="vim"
 
 # reassigned commands
@@ -241,6 +239,7 @@ alias p='bashmarks_p';      complete -F _bashmarks_comp p
 alias d='bashmarks_d';      complete -F _bashmarks_comp d
 
 # mistypes
+alias lsls="ls"
 alias mak="make"
 alias makemake="make"
 
