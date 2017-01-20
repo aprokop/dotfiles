@@ -291,11 +291,13 @@ export GPG_TTY='tty'
 # export BROWSER=$HOME/local/opt/firefox/firefox
 
 # Proxies
-# export http_proxy="<some_proxy>"
-# export https_proxy="<some_proxy>"
-# export ftp_proxy="<some_proxy>"
-# export rsync_proxy="<some_proxy>"
-# export no_proxy="localhost"
+if [[ "$host" == "geminga"* ]]; then
+    export http_proxy="https://sonproxy.sandia.gov:80"
+    export https_proxy="https://sonproxy.sandia.gov:80"
+    export ftp_proxy="https://sonproxy.sandia.gov:80"
+    export rsync_proxy="https://sonproxy.sandia.gov:80"
+    export no_proxy="localhost"
+fi
 # some programs look for all caps proxies
 # export HTTP_PROXY=$http_proxy
 # export HTTPS_PROXY=$https_proxy
