@@ -58,6 +58,10 @@ if [[ "$platform" == "linux" ]]; then
 
     if [[ -d $HOME/.modules ]]; then
         module use-append ~/.modules
+        if [[ "$host" == "geminga"* ]]; then
+            module load common_base
+        fi
+
     fi
 fi
 
