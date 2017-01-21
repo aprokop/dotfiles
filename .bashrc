@@ -226,9 +226,6 @@ alias mlist="module list"
 alias mu="module unload"
 alias open="be_quiet xdg-open"
 alias org="emacs ~/.personal/org/my.org"
-if [[ "$platform" == "darwin" ]]; then
-    alias orgmac="open /Applications/Emacs.app/ --args ~/.personal/org/my.org"
-fi
 alias pdftk="LD_PRELOAD=$HOME/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk/pdftk"
 # alias ulocate="locate -d ~/.locate-home.db -d ~/.locate-data.db"
 alias ulocate="locate -d ~/.locate.db"
