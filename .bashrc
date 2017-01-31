@@ -183,7 +183,6 @@ alias tgz="tar --use-compress-program=pigz"
 alias tbz2="tar --use-compress-program=pbzip2"
 alias tmux="tmux -2"
 alias txz="tar --use-compress-program=pxz"
-alias ssh="ssh -X"
 alias vi="vim"
 
 # reassigned commands
