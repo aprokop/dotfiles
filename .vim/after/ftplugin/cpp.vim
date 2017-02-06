@@ -20,8 +20,8 @@ iabbrev <buffer> jun using namespace
 iabbrev <buffer> jvi virtual
 
 " Easily switch between source and header file
-au! BufEnter *.C,*.cc,*.cpp,*.cxx let b:fswitchdst = 'h,hh,H,hpp,hxx' | let b:fswitchlocs = '../inc'
-au! BufEnter *.h,*.H,*.hpp,*.hxx  let b:fswitchdst = 'cc,cpp,cxx,C,c' | let b:fswitchlocs = '../inc'
+au! BufEnter *.C,*.cc,*.cpp,*.cxx let b:fswitchdst = 'h,hh,H,hpp,hxx'
+au! BufEnter *.h,*.H,*.hpp,*.hxx  let b:fswitchdst = 'cc,cpp,cxx,C,c'
 nmap ,s :FSHere<CR>
 
 function! SSH(filename)
