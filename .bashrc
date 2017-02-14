@@ -194,6 +194,7 @@ command -v htop > /dev/null 2>&1 && alias top="htop"
 command -v konsole > /dev/null 2>&1 && alias xterm="konsole"
 alias vim="vim -p"
 command -v vimx > /dev/null 2>&1 && alias vim="vimx -p"
+command -v ipython3 > /dev/null 2>&1 && alias wcalc="ipython3"
 
 # custom commands
 ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.`basename $i`; done }
