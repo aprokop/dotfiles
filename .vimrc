@@ -20,6 +20,7 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'docker/docker'
 Plugin 'ekalinin/dockerfile.vim'
 Plugin 'embear/vim-localvimrc'
+Plugin 'junegunn/goyo.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'powerman/vim-plugin-ansiesc'
@@ -260,9 +261,12 @@ if has("autocmd")
     au BufEnter * match ExtraWhitespace /\s\+$/
 endif
 
-" ------------------------ Scrtips configuration ------------------------
+" ------------------------ Scripts configuration ------------------------
 " Align
 vnoremap ,= :Align=<CR>
+
+" Goyo
+" let g:goyo_width = 100
 
 " NerdCommenter
 let g:NERDCommentEmptyLines = 1
