@@ -71,6 +71,7 @@ for file in \
     "/usr/share/doc/git-core-doc/contrib/completion/git-completion.bash" \
     "/etc/profile.d/bash-completion.sh" \
     "$HOME/local/share/bash-completion/bash_completion" \
+    "/usr/local/etc/bash_completion" \
     "$HOME/local/share/bash-completion/completions/tmux" \
     "/etc/profile.d/autojump.sh" \
     "$HOME/.autojump/etc/profile.d/autojump.sh" \
