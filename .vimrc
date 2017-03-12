@@ -238,7 +238,7 @@ set grepprg=grep\ -nH\ $*
 
 set langmap=æéó÷õáğòûïìäøôıúêëùåçíãşîñ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,ÆÉÓ×ÕÁĞÒÛÏÌÄØÔİÚÊËÙÅÇÍÃŞÎÑ;abcdefghijklmnopqrstuvwxyz
 
-let g:languagetool_jar='$HOME/local/opt/languagetool-3.3/languagetool-commandline.jar'
+let g:languagetool_jar='$HOME/local/opt/languagetool/languagetool-commandline.jar'
 
 set guicursor=a:block-Cursor-blinkon0
 
