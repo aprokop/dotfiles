@@ -1,4 +1,4 @@
-set formatoptions+=a
+" set formatoptions+=a
 
 let b:pagenumber=0
 
