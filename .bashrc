@@ -44,12 +44,6 @@ export MANPATH="~/local/share/man:${MANPATH}"
 export PKG_CONFIG_PATH="~/local:$PKG_CONFIG_PATH"
 export PYTHONPATH="~/local/lib64/python2.7/site-packages:${PYTHONPATH}"
 
-if [[ "$host" == "jet"* ]]; then
-    # MATLAB has trouble figuring out where Java is
-    # Without this line (on jet) matlab crashes and takes X server with it
-    export MATLAB_JAVA=/usr/lib/jvm/java-1.8.0/jre
-fi
-
 # Set Modules environment
 if [[ "$platform" == "linux" ]]; then
     # Initialize Modules environment for non-interactive shell
@@ -177,6 +171,7 @@ command -v latexmk.pl > /dev/null 2>&1 && alias latexmk="latexmk.pl -pvc"
 alias less="less -R"
 alias ls="ls $ls_flags -v"
 alias make="make -j$MAKEPROC"
+command -v matlab > /dev/null 2>&1 && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
 alias mpirun="mpirun -bind-to socket -map-by socket"
 alias mplayer="mplayer -really-quiet"
 alias mv="mv -i"
