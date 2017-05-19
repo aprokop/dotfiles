@@ -1,7 +1,5 @@
 noremap <buffer> <F5> :update<CR>:!rst2pdf "%"<CR><CR>
 
-set formatoptions+=a
-
 setlocal textwidth=80
 
 " Turn on spell checking

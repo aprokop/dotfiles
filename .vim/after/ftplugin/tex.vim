@@ -1,5 +1,3 @@
-" set formatoptions+=a
-
 let b:pagenumber=0
 
 noremap <buffer> <F5> :update<CR>:Make<CR><CR>
