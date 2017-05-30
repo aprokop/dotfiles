@@ -286,7 +286,6 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs  = 1
 
 " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11': 1, 'c' : 1}
 nnoremap ,jd :YcmCompleter GoTo<CR>
