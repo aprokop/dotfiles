@@ -269,6 +269,9 @@ endif
 " Align
 vnoremap ,= :Align=<CR>
 
+" flake8
+let g:flake8_cmd="flake8-3"
+
 " Goyo
 " let g:goyo_width = 100
 
