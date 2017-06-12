@@ -14,18 +14,6 @@ au! BufEnter *.c let b:fswitchdst = 'h' | let b:fswitchlocs = '../inc'
 au! BufEnter *.h let b:fswitchdst = 'c' | let b:fswitchlocs = '../inc'
 nmap ,s :FSHere<CR>
 
-" automatic __HEADER_H__ generation for new .h files
-function! <SID>insert_gates()
-    let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-    execute "normal! i#ifndef __" . gatename . "__"
-    execute "normal! o#define __" . gatename . "__"
-    :put=''
-    :put=''
-    execute "normal! Go#endif // __" . gatename . "__"
-    normal! 2k
-endfunction
-autocmd BufNewFile *.h call <SID>insert_gates()
-
 function! <SID>make_local()
     wa
     let cur_dir = getcwd()
