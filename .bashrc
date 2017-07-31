@@ -233,7 +233,10 @@ chkcmd curl         && alias wtc="curl -s http://whatthecommit.com/index.txt"
 # mistypes
 alias lsls="ls"
 alias mak="make"
+alias amke="make"
 alias makemake="make"
+alias mamake="make"
+alias mk="make"
 
 # functions
 function dux() {
