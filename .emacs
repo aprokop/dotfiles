@@ -58,7 +58,7 @@
 ; (set-face-attribute 'default nil :font "Comic Sans MS")
 ; (set-face-attribute 'default nil :font "Laconic")
 ; (set-face-attribute 'default nil :font "Consolas")
-(set-face-attribute 'default nil :font "Terminus")
+(set-face-attribute 'default nil :font "xos4 Terminus")
 (set-face-attribute 'default nil :height 140)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
