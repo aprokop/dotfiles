@@ -108,7 +108,7 @@ syntax on
 
 " GUI
 if has("gui_running")
-    set guifont=Terminus\ 14
+    set guifont=xos4\ Terminus\ 14
     set guioptions=agim
 endif
 
