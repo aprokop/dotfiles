@@ -268,6 +268,9 @@ s() {
 set -o vi
 bind '"\e."':yank-last-arg
 
+# report terminated bg jobs immediately, not at the next prompt
+set -b
+
 # source $HOME/.xinitrc
 
 export TRILINOS_HOME=$HOME/code/trilinos/
