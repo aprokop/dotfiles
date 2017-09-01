@@ -146,7 +146,7 @@ export HISTTIMEFORMAT='%F %T '
 
 # helpers
 if [[ "$platform" == "linux" ]]; then
-    ls_flags="-N --color=auto"
+    ls_flags="-N --color=auto -v"
 elif [[ "$platform" == "darwin" ]]; then
     ls_flags="-G"
 fi
@@ -171,7 +171,7 @@ chkcmd iotop        && alias iotop="iotop -o"
 chkcmd jdownloader  && alias jdownloader="be_quiet jdownloader"
 chkcmd latexmk.pl   && alias latexmk="latexmk.pl -pvc"
 alias less="less -R"
-alias ls="ls $ls_flags -v"
+alias ls="ls $ls_flags"
 chkcmd make         && alias make="make -j$MAKEPROC"
 chkcmd matlab       && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
 chkcmd mpirun       && alias mpirun="mpirun -bind-to socket -map-by socket"
@@ -213,8 +213,8 @@ fi
 chkcmd git          && alias gauno="git status -uno"
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
-alias l.="ls $ls_flags -v -d .*"
-alias lsd="ls -d $ls_flags -v */"
+alias l.="ls $ls_flags -d .*"
+alias lsd="ls -d $ls_flags */"
 alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
 alias lt="ls $ls_flags -ltr"
 chkcmd module       && alias ma="module avail"
