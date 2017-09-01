@@ -13,7 +13,7 @@
     log1a       = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
     log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
     ls          = ls-files
-    authors     = log --format="%aN"
+    authors     = ! git log --format="%aN" | sort | uniq -c | sort -n
 [apply]
     whitespace  = fix
 [core]
