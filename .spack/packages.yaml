@@ -1,0 +1,22 @@
+packages:
+    all:
+        compiler: [gcc@7.1.0]
+        providers:
+            mpi: [openmpi]
+            blas: [openblas]
+            lapack: [openblas]
+
+    libxml2:
+        variants: ~python
+    boost:
+        variants: +mpi
+    gcc:
+        variants: ~binutils
+    hdf5:
+        variants: +mpi ~fortran
+    netcdf:
+        variants: +mpi +parallel-netcdf
+    parallel-netcdf:
+        variants: ~fortran
+    yaml-cpp:
+        variants: +fpic
