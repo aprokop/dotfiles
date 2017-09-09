@@ -175,17 +175,6 @@ imap <PageDown> <C-O><C-D><C-O><C-D>
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-
-" Group comments
-if has("autocmd") && has("eval")
-    " Add comment symbol in the beginning of the line
-"    au BufEnter .vimrc,*.vim			noremap <F3> :s/^\(\s*\)/\1"\ /<CR>			" "
-    au BufEnter configure.in,configure.ac	noremap <F3> :s/^\(\s*\)/\1\#\ /<CR>		" #
-    " Remove comment symbol in the beginning of the line
-"    au BufEnter .vimrc,*.vim			noremap <silent> <F4> :s/^\(\s*\)"\ /\1/<CR>		" "
-    au BufEnter configure.in,configure.ac	noremap <silent> <F4> :s/^\(\s*\)\#\ /\1/<CR>		" #
-endif
-
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
