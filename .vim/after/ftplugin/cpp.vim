@@ -23,14 +23,3 @@ iabbrev <buffer> jvi virtual
 au! BufEnter *.C,*.cc,*.cpp,*.cxx let b:fswitchdst = 'h,hh,H,hpp,hxx'
 au! BufEnter *.h,*.H,*.hpp,*.hxx  let b:fswitchdst = 'cc,cpp,cxx,C,c'
 nmap ,s :FSHere<CR>
-
-function! SSH(filename)
-    " update!
-    if (expand(a:filename) =~ "_decl.hpp$")
-        let l:v =  substitute(expand("%"), "_decl.hpp", "_def.hpp", "")
-    elseif (expand(a:filename) =~ "_def.hpp$")
-        let l:v = substitute(expand("%"), "_def.hpp", "_decl.hpp", "")
-    endif
-    return l:v
-endfunction
-nmap ,S :exec "edit " . SSH('%')<CR>
