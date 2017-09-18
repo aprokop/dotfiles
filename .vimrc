@@ -216,6 +216,11 @@ nnoremap n nzzzv
 nmap ,v :e ~/.vimrc<CR>
 nmap ,s :source ~/.vimrc<CR>
 
+" Use global clipboard if possible
+if has('xterm_clipboard')
+    set clipboard=unnamedplus
+endif
+
 " Insert a blank line below/above/after/prior and stay in normal mode
 nnoremap ,o :put =''<CR>
 nnoremap ,O :put! =''<CR>
@@ -248,7 +253,7 @@ fun! ChangeHighlightWhite()
     else
         let g:highlight_white = 1
         highlight ExtraWhitespace ctermbg=lightred guibg=red
-    endi
+    endif
 endfun
 nnoremap ,w :call ChangeHighlightWhite()<CR>
 if has("autocmd")
