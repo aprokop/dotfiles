@@ -61,6 +61,8 @@ if [[ "$platform" == "linux" ]]; then
         fi
 
     fi
+elif [[ "$platform" == "darwin" ]]; then
+    source /usr/local/opt/modules/init/bash
 fi
 
 for file in \
