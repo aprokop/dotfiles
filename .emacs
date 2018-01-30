@@ -56,7 +56,7 @@
 
 ;; define default font
 (cond ((eq system-type 'gnu/linux)
-       (set-face-attribute 'default nil :font "xos4 Terminus")
+       (set-face-attribute 'default nil :font "Terminus")
        (set-face-attribute 'default nil :height 140))
       ((eq system-type 'darwin)
        (set-face-attribute 'default nil :font "Terminus (TTF)")
