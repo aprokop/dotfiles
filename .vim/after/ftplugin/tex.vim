@@ -13,7 +13,7 @@ setlocal sw=2
 setlocal iskeyword+=:
 
 " Turn on spell checking
-setlocal spell
+" setlocal spell
 
 " Add easy align
 vnoremap ,& :Align&<CR>
