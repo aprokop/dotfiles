@@ -1,6 +1,6 @@
 packages:
     all:
-        compiler: [gcc@7.1.0]
+        # compiler: [gcc@7.2.0]
         providers:
             mpi: [openmpi]
             blas: [openblas]
@@ -10,6 +10,8 @@ packages:
         variants: ~python
     boost:
         variants: +mpi
+    dealii:
+        variants: ~petsc ~oce +mpi +trilinos +p4est
     gcc:
         variants: ~binutils
     hdf5:
@@ -18,5 +20,7 @@ packages:
         variants: +mpi +parallel-netcdf
     parallel-netcdf:
         variants: ~fortran
+    trilinos:
+        variants: ~mumps ~superlu-dist
     yaml-cpp:
         variants: +fpic
