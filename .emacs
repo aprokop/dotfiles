@@ -207,11 +207,12 @@
 (setq org-use-fast-todo-selection t)                            ; allow change from any to any
 (setq org-treat-S-cursor-todo-selection-as-state-change nil)    ; skip normal processing when entering/leaving <todo> state
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+      (quote ((sequence "TODO(t)" "NEXT(n)" "INPROGRESS(p)""|" "DONE(d)")
               (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "|" "BROKEN(b@/!)" "|" "DELEGATED(D@/!)" "MEETING" "SEMINAR"))))
 (setq org-todo-keyword-faces
       (quote (("TODO"       :foreground "red"           :weight bold)
-              ("NEXT"       :foreground "orange"        :weight bold)
+              ("NEXT"       :foreground "khaki"         :weight bold)
+              ("INPROGRESS" :foreground "orange"        :weight bold)
               ("DONE"       :foreground "forest green"  :weight bold)
               ("WAITING"    :foreground "cyan"          :weight bold)
               ("MEETING"    :foreground "forest green"  :weight bold)
@@ -221,6 +222,7 @@
               (done         ("WAITING"    ))
               ("TODO"       ("WAITING"    )         ("CANCELLED"))
               ("NEXT"       ("WAITING"    )         ("CANCELLED"))
+              ("INPROGRESS" ("WAITING"    )         ("CANCELLED"))
               ("DONE"       ("WAITING"    )         ("CANCELLED")))))
 
 ;; capture templates for: <todo> tasks, notes, appointments, meetings, and org-protocol
@@ -317,15 +319,10 @@
               (" " "Agenda"
                ((agenda "" nil)
                 (tags "REFILE"
-                      ((org-agenda-overriding-header "Refile")
+                      ((org-agenda-overriding-header "REFILE")
                        (org-tags-match-list-sublevels nil)))
-;               (tags-todo "/!"
-;                          ((org-agenda-overriding-header "Projects")
-;                           (org-agenda-skip-function 'ap/skip-non-projects)
-;                           (org-agenda-sorting-strategy
-;                            '(priority-down category-keep))))
-                (tags-todo "-REFILE/!NEXT"
-                           ((org-agenda-overriding-header "Project next tasks")
+                (tags-todo "-REFILE/!INPROGRESS"
+                           ((org-agenda-overriding-header "IN PROGRESS [MAX=5]")
                             (org-agenda-skip-function 'ap/skip-projects-and-habits)
                             (org-tags-match-list-sublevels t)
                             (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
@@ -333,24 +330,30 @@
                             (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-sorting-strategy
                               '(todo-state-down priority-down effort-up category-keep))))
-;                (tags-todo "-REFILE-WAITING/!"
-;                           ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project subtasks" "Standalone tasks"))
-;                            (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
-;                            (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
-;                            (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
-;                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
-;                            (org-agenda-sorting-strategy
-;                              '(todo-state-down priority-down effort-up category-keep))))
                 (tags-todo "+WAITING|+DELEGATED/!"
-                           ((org-agenda-overriding-header "Waiting and delegated Tasks")
+                           ((org-agenda-overriding-header "WAITING")
                             (org-agenda-skip-function 'ap/skip-stuck-projects)
                             (org-tags-match-list-sublevels nil)
                             (org-agenda-todo-ignore-scheduled 'future)
                             (org-agenda-todo-ignore-deadlines 'future)))
-;                (tags "-REFILE/DONE"
-;                      ((org-agenda-overriding-header "Tasks to Archive")
-;                       (org-agenda-skip-function 'ap/skip-non-archivable-tasks)
-;                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-REFILE/!NEXT"
+                           ((org-agenda-overriding-header "READY")
+                            (org-agenda-skip-function 'ap/skip-projects-and-habits)
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                              '(todo-state-down priority-down effort-up category-keep))))
+                (tags-todo "-REFILE/!TODO"
+                           ((org-agenda-overriding-header "BACKLOG")
+                            (org-agenda-skip-function 'ap/skip-projects-and-habits)
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date ap/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                              '(todo-state-down priority-down effort-up category-keep))))
                 )
                nil)
               ("r" "Tasks to Refile" tags "REFILE"
