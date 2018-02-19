@@ -240,6 +240,10 @@ alias amke="make"
 alias makemake="make"
 alias mamake="make"
 alias mk="make"
+# CUDA
+if [[ "$host" == "scramjet" ]]; then
+    export CUDA_VISIBLE_DEVICES="0"
+fi
 
 # functions
 function dux() {
