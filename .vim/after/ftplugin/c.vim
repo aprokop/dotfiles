@@ -12,7 +12,6 @@ setlocal foldmethod=indent
 " Easily switch between source and header file
 au! BufEnter *.c let b:fswitchdst = 'h' | let b:fswitchlocs = '../inc'
 au! BufEnter *.h let b:fswitchdst = 'c' | let b:fswitchlocs = '../inc'
-nmap ,s :FSHere<CR>
 
 function! <SID>make_local()
     wa

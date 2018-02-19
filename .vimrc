@@ -213,9 +213,8 @@ vnoremap k gk
 nnoremap N Nzzzv
 nnoremap n nzzzv
 
-" edit ~/.vimrc
-nmap ,v :e ~/.vimrc<CR>
-nmap ,s :source ~/.vimrc<CR>
+" switch files
+nmap ,s :FSHere<CR>
 
 " Use global clipboard if possible
 if has('xterm_clipboard')
