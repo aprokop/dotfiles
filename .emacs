@@ -132,28 +132,12 @@
 (global-set-key "\C-cc"           'org-capture)                  ; start capture mode
 ; often
 (global-set-key (kbd "C-<f11>")   'org-clock-in)                 ; clock in a task (show menu with prefix)
-;; (global-set-key (kbd "<f9> g")    'gnus)                         ; Gnus (mail)
-;; (global-set-key (kbd "<f5>")      'ap/org-todo)                  ; show TODO items for this subtree
-;; (global-set-key (kbd "<S-f5>")    'ap/widen)                     ; widen
-;; (global-set-key (kbd "<f9> b")    'bbdb)                         ; quick access to bbdb data (adressbook)
 (global-set-key (kbd "<f9> c")    'calendar)                     ; calendar access
 (global-set-key (kbd "<f9> SPC")  'ap/clock-in-last-task)        ; switch clock back to previously clocked task
 (global-set-key "\C-cl"           'org-store-link)               ; store the link for retrieval with 'C-c C-l'
 ; sometimes
-(global-set-key (kbd "<f8>")      'org-cycle-agenda-files)       ; goto next org file in org-agenda-files
-;; (global-set-key (kbd "<f9> t")    'ap/insert-inactive-timestamp) ; insert inactive timestamp
-(global-set-key (kbd "<f9> v")    'visible-mode)                 ; toggle visible modes (for showing/editing links)
-(global-set-key (kbd "C-<f9>")    'previous-buffer)              ; previous buffer
-(global-set-key (kbd "C-<f10>")   'next-buffer)                  ; next buffer
-(global-set-key (kbd "C-x n r")   'narrow-to-region)             ; narrow to region
 (global-set-key (kbd "<f9> I")    'ap/punch-in)                  ; punch clock in
 (global-set-key (kbd "<f9> O")    'ap/punch-out)                 ; punch clock out
-;; (global-set-key (kbd "<f9> o")    'ap/make-org-scratch)          ; switch to org scratch buffer
-;; (global-set-key (kbd "<f9> s")    'ap/switch-to-scratch)         ; switch to scratch buffer
-; rarely
-;; (global-set-key (kbd "<f9> h")    'ap/hide-other)                ; hide all other tasks
-(global-set-key (kbd "<f7>")      'ap/set-truncate-lines)        ; toggle line truncation/wrap
-(global-set-key "\C-ca"           'org-agenda)                   ; agenda (minimal emacs testing)
 
 ;; flyspell mode for spell checking everywhere
 ; (add-hook 'org-mode-hook 'turn-on-flyspell 'append)             ; should work but does not
@@ -309,14 +293,7 @@
 
 ; custom agenda command definitions
 (setq org-agenda-custom-commands
-      (quote (("N" "Notes" tags "NOTE"
-               ((org-agenda-overriding-header "Notes")
-                (org-tags-match-list-sublevels t)))
-              ("h" "Habits" tags-todo "STYLE=\"habit\""
-               ((org-agenda-overriding-header "Habits")
-                (org-agenda-sorting-strategy
-                 '(category-keep))))
-              (" " "Agenda"
+      (quote ((" " "Agenda"
                ((agenda "" nil)
                 (tags "REFILE"
                       ((org-agenda-overriding-header "REFILE")
@@ -368,23 +345,9 @@
                 (org-tags-match-list-sublevels t)
                 (org-agenda-sorting-strategy
                  '(category-keep))))
-              ("R" "Tasks" tags-todo "-REFILE/!-WAITING"
-               ((org-agenda-overriding-header "Tasks")
-                (org-agenda-skip-function 'ap/skip-project-tasks-maybe)
-                (org-agenda-sorting-strategy
-                 '(category-keep))))
-              ("p" "Projects" tags-todo "-CANCELLED/!"
-               ((org-agenda-overriding-header "Projects")
-                (org-agenda-skip-function 'ap/skip-non-projects)
-                (org-agenda-sorting-strategy
-                 '(category-keep))))
               ("w" "Waiting Tasks" tags-todo "+WAITING/!"
                ((org-agenda-overriding-header "Waiting and Postponed tasks"))
                (org-tags-match-list-sublevels nil))
-;              ("A" "Tasks to Archive" tags "-REFILE/"
-;               ((org-agenda-overriding-header "Tasks to Archive")
-;                (org-agenda-skip-function 'ap/skip-non-archivable-tasks)
-;                (org-tags-match-list-sublevels nil)))
                )))
 
 ;;; functions
@@ -615,24 +578,6 @@ Callers of this function already widen the buffer view."
                 next-headline
               nil)) ; a stuck project, has subtasks but no next task
         next-headline))))
-(defun ap/skip-non-projects ()
-  "Skip trees that are not projects"
-  (ap/list-sublevels-for-projects-indented)
-  (if (save-excursion (ap/skip-non-stuck-projects))
-      (save-restriction
-        (widen)
-        (let ((subtree-end (save-excursion (org-end-of-subtree t))))
-          (cond
-           ((and (ap/is-project-p)
-                 (marker-buffer org-agenda-restrict-begin))
-            nil)
-           ((and (ap/is-project-p)
-                 (not (marker-buffer org-agenda-restrict-begin))
-                 (not (ap/is-project-subtree-p)))
-            nil)
-           (t
-            subtree-end))))
-    (save-excursion (org-end-of-subtree t))))
 (defun ap/skip-project-trees-and-habits ()
   "Skip trees that are projects"
   (save-restriction
@@ -679,29 +624,6 @@ Callers of this function already widen the buffer view."
         next-headline)
        (t
         nil)))))
-(defun ap/skip-project-tasks-maybe ()
-  "Show tasks related to the current restriction.
-When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
-When not restricted, skip project and sub-project tasks, habits, and project related tasks."
-  (save-restriction
-    (widen)
-    (let* ((subtree-end (save-excursion (org-end-of-subtree t)))
-           (next-headline (save-excursion (or (outline-next-heading) (point-max))))
-           (limit-to-project (marker-buffer org-agenda-restrict-begin)))
-      (cond
-       ((ap/is-project-p)
-        next-headline)
-       ((org-is-habit-p)
-        subtree-end)
-       ((and (not limit-to-project)
-             (ap/is-project-subtree-p))
-        subtree-end)
-       ((and limit-to-project
-             (ap/is-project-subtree-p)
-             (member (org-get-todo-state) (list "TODO")))
-        subtree-end)
-       (t
-        nil)))))
 (defun ap/skip-projects-and-habits ()
   "Skip trees that are projects and tasks that are habits"
   (save-restriction
@@ -714,12 +636,6 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
         subtree-end)
        (t
         nil)))))
-(defun ap/skip-non-subprojects ()
-  "Skip trees that are not projects"
-  (let ((next-headline (save-excursion (outline-next-heading))))
-    (if (ap/is-subproject-p)
-        nil
-      next-headline)))
 (defun ap/org-auto-exclude-function (tag)
   "Automatic task exclusion in the agenda with / RET"
   (and (cond
@@ -727,35 +643,3 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
          t)
        (concat "-" tag))))
 (setq org-agenda-auto-exclude-function 'ap/org-auto-exclude-function)
-
-(defun ap/set-truncate-lines ()
-  "Toggle value of truncate-lines and refresh window display."
-  (interactive)
-  (setq truncate-lines (not truncate-lines))
-  ;; now refresh window display (an idiom from simple.el):
-  (save-excursion
-    (set-window-start (selected-window)
-                      (window-start (selected-window)))))
-
-(defun ap/skip-non-archivable-tasks ()
-  "Skip trees that are not available for archiving"
-  (save-restriction
-    (widen)
-    ;; Consider only tasks with done todo headings as archivable candidates
-    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
-          (subtree-end (save-excursion (org-end-of-subtree t))))
-      (if (member (org-get-todo-state) org-todo-keywords-1)
-          (if (member (org-get-todo-state) org-done-keywords)
-              (let* ((daynr (string-to-int (format-time-string "%d" (current-time))))
-                     (a-month-ago (* 60 60 24 (+ daynr 1)))
-                     (last-month (format-time-string "%Y-%m-" (time-subtract (current-time) (seconds-to-time a-month-ago))))
-                     (this-month (format-time-string "%Y-%m-" (current-time)))
-                     (subtree-is-current (save-excursion
-                                           (forward-line 1)
-                                           (and (< (point) subtree-end)
-                                                (re-search-forward (concat last-month "\\|" this-month) subtree-end t)))))
-                (if subtree-is-current
-                    subtree-end ; Has a date in this month or last month, skip it
-                  nil))  ; available to archive
-            (or subtree-end (point-max)))
-        next-headline))))
