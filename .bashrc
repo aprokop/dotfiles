@@ -201,15 +201,16 @@ chkcmd vimx         && alias vim="vimx -p"
 chkcmd ipython3     && alias wcalc="ipython3"
 
 # custom commands
-ccopy(){ for i in $*; do cp -aip $i $HOME/tmp/ccopy.`basename $i`; done }
-cmove(){ for i in $*; do mv -i   $i $HOME/tmp/ccopy.`basename $i`; done }
+CCOPY_DIR="$HOME/.ccopy"
+ccopy(){ for i in $*; do cp -aip $i $CCOPY_DIR/ccopy.`basename $i`; done }
+cmove(){ for i in $*; do mv -i   $i $CCOPY_DIR/ccopy.`basename $i`; done }
 if [[ "$platform" == "linux" ]]; then
-    alias clist="ls -d --color=never $HOME/tmp/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
-    alias cpaste="ls -d --color=never $HOME/tmp/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
+    alias clist="ls -d --color=never $CCOPY_DIR/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
+    alias cpaste="ls -d --color=never $CCOPY_DIR/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
     alias clwhite="sed -i 's/\s*$//g'"
 elif [[ "$platform" == "darwin" ]]; then
-    alias clist="ls -d $HOME/tmp/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
-    alias cpaste="ls -d $HOME/tmp/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $HOME/tmp/ccopy.% ./%"
+    alias clist="ls -d $CCOPY_DIR/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
+    alias cpaste="ls -d $CCOPY_DIR/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
     alias clwhite="sed -i \"\" 's/[[:space:]]*$//g'"
 fi
 chkcmd git          && alias gauno="git status -uno"
