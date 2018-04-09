@@ -154,11 +154,6 @@ noremap td :q<CR>
 " I never use q:, but periodically hit it by mistake
 nmap q: :q
 
-" Quick file selection through CtrlP
-noremap ,t :CtrlP<CR>
-let g:ctrlp_switch_buffer = 'Et'
-let g:ctrlp_clear_cache_on_exit = 0
-
 " Make <space> in normal mode go down a page rather than left a character
 noremap <space> <C-f>
 
@@ -278,6 +273,12 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims = 1
 map <F3>    <plug>NERDCommenterComment
 map <F4>    <plug>NERDCommenterUncomment
+
+" CtrlP
+noremap ,t :CtrlP<CR>
+let g:ctrlp_switch_buffer = 'Et'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_root_markers = ['.ctrlp']   " root CtrlP within the directory
 
 " Syntastic
 let g:syntastic_check_on_open = 0
