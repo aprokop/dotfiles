@@ -14,6 +14,7 @@
     log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
     ls          = ls-files
     authors     = ! git log --format="%aN" | sort | uniq -c | sort -n
+    sed         = ! git grep -z --full-name -l '.' | xargs -0 sed -i "" -e
 [apply]
     whitespace  = fix
 [core]
