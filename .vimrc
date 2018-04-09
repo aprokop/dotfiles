@@ -96,6 +96,9 @@ set showcmd
 " Try to show at least three lines of context while scrolling
 set scrolloff=3
 
+" Set maximum number of tabs (vim -p)
+set tabpagemax=100
+
 " Use the cool tab complete menu
 set wildmode=longest,list,full
 set wildmenu
