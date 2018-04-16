@@ -15,6 +15,7 @@ Plugin 'vundlevim/vundle.vim'
 
 Plugin 'andrewradev/linediff.vim'
 Plugin 'bogado/file-line'
+Plugin 'conradirwin/vim-bracketed-paste'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'docker/docker'
