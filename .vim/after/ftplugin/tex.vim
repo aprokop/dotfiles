@@ -12,9 +12,6 @@ setlocal sw=2
 " all the figure labels. Very useful!
 setlocal iskeyword+=:
 
-" Turn on spell checking
-" setlocal spell
-
 " Add easy align
 vnoremap ,& :Align&<CR>
 
