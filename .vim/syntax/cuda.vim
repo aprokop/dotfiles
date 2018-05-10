@@ -66,6 +66,7 @@ syn keyword cudaFunction __syncthreads
 syn keyword cudaFunction cudaDeviceSynchronize
 syn keyword cudaFunction cudaFree
 syn keyword cudaFunction cudaGetDevice
+syn keyword cudaFunction cudaGetDeviceCount
 syn keyword cudaFunction cudaGetErrorString
 syn keyword cudaFunction cudaGetLastError
 syn keyword cudaFunction cudaMalloc
