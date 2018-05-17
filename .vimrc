@@ -83,7 +83,8 @@ set infercase
 set path=.
 
 " set persistent undo
-" set undofile
+set undofile
+set undodir=$HOME/.vim/undo  " must exist
 
 " Show full tags when doing search completion
 set showfulltag
