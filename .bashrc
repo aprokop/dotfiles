@@ -177,7 +177,7 @@ alias less="less -R"
 alias ls="ls $ls_flags"
 chkcmd make         && alias make="make -j$MAKEPROC"
 chkcmd matlab       && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
-chkcmd mpirun       && alias mpirun="mpirun -bind-to socket -map-by socket"
+                       alias mpirun="mpirun -bind-to socket -map-by socket"
 chkcmd mplayer      && alias mplayer="mplayer -really-quiet"
 alias mv="mv -i"
 chkcmd ninja        && alias ninja="ninja       -j$MAKEPROC"
