@@ -5,7 +5,7 @@
 # output. So make sure this doesn't display anything or bad things will happen!
 
 platform="unknown"
-unamestr=`uname`
+unamestr=$(uname)
 if   [[ "$unamestr" == "Linux" ]]; then
     platform="linux"
 elif [[ "$unamestr" == "Darwin" ]]; then
@@ -13,7 +13,7 @@ elif [[ "$unamestr" == "Darwin" ]]; then
 fi
 
 # Machine dependent parameters
-host=`hostname`
+host=$(hostname)
 MAKEPROC=1
 if   [[ "$host" == "jet"* ]] ||
      [[ "$host" == "mbpro617"* ]]; then
@@ -28,29 +28,29 @@ fi
 
 # Set environment before non-interactive shell check, so that it is the same for
 # both login and interactive shells
-export PATH="~/bin:/opt/bin:~/local/bin:$PATH"
+export PATH="$HOME/bin:/opt/bin:~/local/bin:$PATH"
 [[ "$platform" == "darwin" ]] && export PATH="/opt/local/bin:/usr/local/opt/findutils/libexec/gnubin:$PATH"
 if [[ "$CPATH" != "" ]]; then
-    export CPATH="~/local/include:$CPATH"
+    export CPATH="$HOME/local/include:$CPATH"
 else
-    export CPATH="~/local/include"
+    export CPATH="$HOME/local/include"
 fi
 # LIBRARY_PATH is used by gcc before compilation to search for directories
 # containing libraries that need to be linked to your program
 # export LIBRARY_PATH=$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="~/local/lib:~/local/lib64:${LD_LIBRARY_PATH}"
-export MANPATH="~/local/share/man:${MANPATH}"
+export LD_LIBRARY_PATH="$HOME/local/lib:~/local/lib64:${LD_LIBRARY_PATH}"
+export MANPATH="$HOME/local/share/man:${MANPATH}"
 [[ "$platform" == "darwin" ]] && MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
-export PKG_CONFIG_PATH="~/local:$PKG_CONFIG_PATH"
-export PYTHONPATH="~/local/lib64/python2.7/site-packages:${PYTHONPATH}"
+export PKG_CONFIG_PATH="$HOME/local:$PKG_CONFIG_PATH"
+export PYTHONPATH="$HOME/local/lib64/python2.7/site-packages:${PYTHONPATH}"
 
 # Set Modules environment
 if [[ "$platform" == "linux" ]]; then
     # Initialize Modules environment for non-interactive shell
     # (copied from /etc/profile.d/modules.sh)
     if [[ $- != *i* ]] ; then
-        shell=`/bin/basename \`/bin/ps -p $$ -ocomm=\``
-        if [ -f /usr/share/Modules/init/$shell ]; then  . /usr/share/Modules/init/$shell;
+        shell=$(basename \`/bin/ps -p $$ -ocomm=\`)
+        if [ -f /usr/share/Modules/init/"$shell" ]; then  . /usr/share/Modules/init/"$shell";
         else                                            . /usr/share/Modules/init/sh;       fi
     fi
 
@@ -76,7 +76,7 @@ for file in \
     "/etc/profile.d/autojump.sh" \
     "$HOME/.autojump/etc/profile.d/autojump.sh" \
     ; do
-    [[ -s $file ]] && source $file
+    [[ -s $file ]] && source "$file"
 done
 
 # Spack (commented out due to slow speed)
@@ -99,9 +99,9 @@ fi
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 if [[ "$platform" == "linux" ]]; then
     if [[ -f ~/.dir_colors ]]; then
-        eval `dircolors -b ~/.dir_colors`
+        eval "$(dircolors -b ~/.dir_colors)"
     else
-        eval `dircolors -b /etc/DIR_COLORS`
+        eval "$(dircolors -b /etc/DIR_COLORS)"
     fi
 fi
 
@@ -118,7 +118,7 @@ esac
 # Connect to existing / create new ssh-agent
 ifs=$IFS
 IFS='
-' ssh_locks=(`netstat -xl | grep -o "/tmp/ssh-[A-Za-z0-9]*/agent.[0-9]*"`)
+' ssh_locks=("$(netstat -xl | grep -o "/tmp/ssh-[A-Za-z0-9]*/agent.[0-9]*")")
 IFS=$ifs
 ssh_lock=""
 for lock in "${ssh_locks[@]}"; do
@@ -128,7 +128,7 @@ for lock in "${ssh_locks[@]}"; do
     fi
 done
 if [[ "x$ssh_lock" == "x" ]]; then
-    eval `ssh-agent`
+    eval "$(ssh-agent)"
 else
     export SSH_AUTH_SOCK=$ssh_lock
 fi
@@ -157,63 +157,62 @@ fi
 alias chkcmd="command -v &>/dev/null"
 
 # standard commands
-chkcmd anki         && alias anki="anki -b /home/prok/.anki"
-alias cal="cal -m"
-chkcmd cgdb         && alias cgdb="cgdb --ex run"
-alias cp="cp -ip"
+chkcmd anki         && alias anki='anki -b /home/prok/.anki'
+chkcmd cgdb         && alias cgdb='cgdb --ex run'
+                       alias cp='cp -ip'
 chkcmd ctest        && alias ctest="ctest -j$MAKEPROC"
-chkcmd colordiff    && alias diff="colordiff"
-chkcmd egrep        && alias egrep="egrep --color"
-chkcmd gdb          && alias gdb="gdb --ex run"
-chkcmd gitk         && alias gitk="gitk --all --since='1 month ago'"
-alias grep="LANG='C' grep --color --exclude=tags"
-chkcmd feh          && alias feh="feh -Fd"
-chkcmd firefox      && alias firefox="firefox -new-tab"
-chkcmd iotop        && alias iotop="iotop -o"
-chkcmd jdownloader  && alias jdownloader="be_quiet jdownloader"
-chkcmd spectacle    && alias ksnapshot="spectacle"
-chkcmd latexmk.pl   && alias latexmk="latexmk.pl -pvc"
-alias less="less -R"
-alias ls="ls $ls_flags"
+chkcmd colordiff    && alias diff='colordiff'
+chkcmd egrep        && alias egrep='egrep --color'
+chkcmd gdb          && alias gdb='gdb --ex run'
+chkcmd gitk         && alias gitk='gitk --all --since="1 month ago"'
+                       alias grep='LANG="C" grep --color --exclude=tags'
+chkcmd feh          && alias feh='feh -Fd'
+chkcmd firefox      && alias firefox='firefox -new-tab'
+chkcmd iotop        && alias iotop='iotop -o'
+chkcmd jdownloader  && alias jdownloader='be_quiet jdownloader'
+chkcmd spectacle    && alias ksnapshot='spectacle'
+chkcmd latexmk.pl   && alias latexmk='latexmk.pl -pvc'
+                       alias less='less -R'
+                       alias ls="ls $ls_flags"
 chkcmd make         && alias make="make -j$MAKEPROC"
 chkcmd matlab       && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
-                       alias mpirun="mpirun -bind-to socket -map-by socket"
-chkcmd mplayer      && alias mplayer="mplayer -really-quiet"
+                       alias mpirun='mpirun -bind-to socket -map-by socket'
+chkcmd mplayer      && alias mplayer='mplayer -really-quiet'
 alias mv="mv -i"
 chkcmd ninja        && alias ninja="ninja       -j$MAKEPROC"
 chkcmd ninja-build  && alias ninja="ninja-build -j$MAKEPROC"
-chkcmd okular       && alias okular="be_quiet okular"
-chkcmd parallel     && alias parallel="parallel --no-notice"
-chkcmd qstat        && alias qstat="qstat -u `whoami`"
-chkcmd pigz         && alias tgz="tar --use-compress-program=pigz"
-chkcmd pbzip2       && alias tbz2="tar --use-compress-program=pbzip2"
+chkcmd okular       && alias okular='be_quiet okular'
+chkcmd parallel     && alias parallel='parallel --no-notice'
+chkcmd qstat        && alias qstat='qstat -u $(whoami)'
+chkcmd pigz         && alias tgz='tar --use-compress-program=pigz'
+chkcmd pbzip2       && alias tbz2='tar --use-compress-program=pbzip2'
 chkcmd tig          && alias tig='tig --since="2 years ago"'
-chkcmd tmux         && alias tmux="tmux -2"
-chkcmd pxz          && alias txz="tar --use-compress-program=pxz"
+chkcmd tmux         && alias tmux='tmux -2'
+chkcmd pxz          && alias txz='tar --use-compress-program=pxz'
 alias vi="vim"
 
 # reassigned commands
-chkcmd okular       && alias gv="okular"
-chkcmd simple-scan  && alias skanlite="simple-scan"
-chkcmd htop         && alias top="htop"
-chkcmd konsole      && alias xterm="konsole"
+chkcmd okular       && alias gv='okular'
+chkcmd simple-scan  && alias skanlite='simple-scan'
+chkcmd htop         && alias top='htop'
+chkcmd konsole      && alias xterm='konsole'
 chkcmd ninja        && alias make="ninjac -j$MAKEPROC"
 chkcmd ninja-build  && alias make="ninjac -j$MAKEPROC"
-alias vim="vim -p"
-chkcmd vimx         && alias vim="vimx -p"
-chkcmd ipython3     && alias wcalc="ipython3"
+                       alias vim="vim -p"
+chkcmd vimx         && alias vim='vimx -p'
+chkcmd ipython3     && alias wcalc='ipython3'
 
 # custom commands
 CCOPY_DIR="$HOME/.ccopy"
-ccopy(){ for i in $*; do cp -aip $i $CCOPY_DIR/ccopy.`basename $i`; done }
-cmove(){ for i in $*; do mv -i   $i $CCOPY_DIR/ccopy.`basename $i`; done }
+ccopy(){ for i in $*; do cp -aip "$i" "$CCOPY_DIR"/ccopy.$(basename $i); done }
+cmove(){ for i in $*; do mv -i   "$i" "$CCOPY_DIR"/ccopy.$(basename $i); done }
 if [[ "$platform" == "linux" ]]; then
-    alias clist="ls -d --color=never $CCOPY_DIR/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
-    alias cpaste="ls -d --color=never $CCOPY_DIR/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
+    alias clist="ls -d --color=never "$CCOPY_DIR"/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
+    alias cpaste="ls -d --color=never "$CCOPY_DIR"/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv "$CCOPY_DIR"/ccopy.% ./%"
     alias clwhite="sed -i 's/\s*$//g'"
 elif [[ "$platform" == "darwin" ]]; then
-    alias clist="ls -d $CCOPY_DIR/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
-    alias cpaste="ls -d $CCOPY_DIR/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
+    alias clist="ls -d "$CCOPY_DIR"/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
+    alias cpaste="ls -d "$CCOPY_DIR"/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
     alias clwhite="sed -i \"\" 's/[[:space:]]*$//g'"
 fi
 chkcmd git          && alias gauno="git status -uno"
@@ -229,11 +228,11 @@ chkcmd module       && alias mlist="module list"
 chkcmd module       && alias mu="module unload"
 [[ "$platform" != "darwin" ]] && alias open="be_quiet xdg-open"
 chkcmd emacs        && alias org="emacs ~/.personal/org/my.org"
-[[ -d $HOME/local/opt/pdftk ]] && alias pdftk="LD_PRELOAD=$HOME/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk/pdftk"
+[[ -d $HOME/local/opt/pdftk ]] && alias pdftk='LD_PRELOAD="$HOME"/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk/pdftk'
 # alias ulocate="locate -d ~/.locate-home.db -d ~/.locate-data.db"
-chkcmd tail         && alias tailf="tail -f"
-chkcmd locate       && [[ $platform != "darwin" ]] && alias ulocate="locate -d $HOME/.locate.db"
-chkcmd locate       && [[ $platform == "darwin" ]] && alias ulocate="locate --database=$HOME/.locate.db"
+chkcmd tail         && alias tailf='tail -f'
+chkcmd locate       && [[ $platform != "darwin" ]] && alias ulocate='locate -d $HOME/.locate.db'
+chkcmd locate       && [[ $platform == "darwin" ]] && alias ulocate='locate --database=$HOME/.locate.db'
 chkcmd vimdiff      && alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
 chkcmd amplxe-gui   && alias vtune="amplxe-gui"
 chkcmd curl         && alias wtc="curl -s http://whatthecommit.com/index.txt"
@@ -271,9 +270,9 @@ rpath() {
 s() {
     local arg=${1:-1};
     local pt=""
-    while [ $arg -gt 0 ]; do
+    while [ "$arg" -gt 0 ]; do
         pt="../$pt"
-        arg=$(($arg - 1));
+        arg=$(("$arg" - 1));
     done
     cd $pt >&/dev/null;
 }
@@ -293,7 +292,7 @@ export TRILINOS_HOME=$HOME/code/trilinos/
 # export MANPAGER=/usr/bin/vimmanpager
 export EDITOR=/usr/bin/vim
 
-if [[ "platform" == "linux" ]]; then
+if [[ "$platform" == "linux" ]]; then
     xrdb -load ~/.Xresources
 fi
 
@@ -319,17 +318,17 @@ fi
 
 __slurm_ps1 ()
 {
-    salloc=`env | grep SLURM_NNODES`
+    salloc="$(env | grep SLURM_NNODES)"
     if [ "x$salloc" != "x" ]; then
-        printf " slurm[%d]" `echo $salloc | cut -f 2 -d =`
+        printf " slurm[%d]" "$(echo "$salloc" | cut -f 2 -d =)"
     fi
 }
 
-if [[ -s $HOME/local/share/git/git-prompt.sh ]]; then
+if [[ -s "$HOME"/local/share/git/git-prompt.sh ]]; then
     # Git me harder!
     export GIT_PS1_SHOWSTASHSTATE=1
     #export GIT_PS1_SHOWUPSTREAM="verbose"
-    source $HOME/local/share/git/git-prompt.sh
+    source "$HOME"/local/share/git/git-prompt.sh
 
     export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
 else
