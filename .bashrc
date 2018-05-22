@@ -140,6 +140,8 @@ shopt -s extglob
 HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
+export OMP_PROC_BIND=spread
+export OMP_PLACES=cores
 
 export OMPI_CFLAGS="-fdiagnostics-color"
 export OMPI_CXXFLAGS="-fdiagnostics-color"
