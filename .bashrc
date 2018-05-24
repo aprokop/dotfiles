@@ -274,7 +274,7 @@ s() {
     local pt=""
     while [ "$arg" -gt 0 ]; do
         pt="../$pt"
-        arg=$(("$arg" - 1));
+        arg=$(($arg - 1));
     done
     cd $pt >&/dev/null;
 }
