@@ -50,8 +50,6 @@ set history=500
 
 set fileencodings=utf8,cp1251,cp866,koi8-r
 
-set term=xterm
-
 set listchars=eol:$,tab:>-
 
 " Tabs
@@ -100,6 +98,12 @@ set scrolloff=3
 
 " Set maximum number of tabs (vim -p)
 set tabpagemax=100
+
+" Disable Background Color Erase (BCE) so that color schemes
+" render properly when inside 256-color tmux and GNU screen.
+if &term =~ '256color'
+    set t_ut=
+endif
 
 " Use the cool tab complete menu
 set wildmode=longest,list,full
