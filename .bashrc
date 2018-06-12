@@ -296,7 +296,7 @@ export TRILINOS_HOME=$HOME/code/trilinos/
 export EDITOR=/usr/bin/vim
 
 if [[ "$platform" == "linux" ]]; then
-    chkcmd xrdb && xrdb -load ~/.Xresources
+    xhost &> /dev/null && xrdb -load ~/.Xresources
 fi
 
 export GPG_TTY='tty'
