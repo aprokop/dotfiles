@@ -3,7 +3,7 @@
     url = https://github.com/emacs-evil/evil.git
 [submodule ".emacs.d/org-mode"]
 	path = .emacs.d/org-mode
-	url = http://orgmode.org/org-mode.git
+	url = https://code.orgmode.org/bzr/org-mode.git
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
