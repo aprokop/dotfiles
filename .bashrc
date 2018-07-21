@@ -1,5 +1,3 @@
-# /etc/skel/.bashrc:
-#
 # This file is sourced by all *interactive* bash shells on startup, including
 # some apparently interactive shells such as scp and rcp that can't tolerate any
 # output. So make sure this doesn't display anything or bad things will happen!
@@ -49,9 +47,10 @@ if [[ "$platform" == "linux" ]]; then
     # Initialize Modules environment for non-interactive shell
     # (copied from /etc/profile.d/modules.sh)
     if [[ $- != *i* ]] ; then
-        shell=$(basename \`/bin/ps -p $$ -ocomm=\`)
-        if [ -f /usr/share/Modules/init/"$shell" ]; then  . /usr/share/Modules/init/"$shell";
-        else                                            . /usr/share/Modules/init/sh;       fi
+        shell=$(basename "$(/bin/ps -p $$ -ocomm=)")
+        # shellcheck source=/dev/null
+        if [ -f /usr/share/Modules/init/"$shell" ]; then source /usr/share/Modules/init/"$shell";
+        else                                             source /usr/share/Modules/init/sh;       fi
     fi
 
     if [[ -d $HOME/.modules ]]; then
@@ -62,6 +61,7 @@ if [[ "$platform" == "linux" ]]; then
 
     fi
 elif [[ "$platform" == "darwin" ]]; then
+    # shellcheck source=/dev/null
     source /usr/local/opt/modules/init/bash
 fi
 
@@ -76,6 +76,7 @@ for file in \
     "/etc/profile.d/autojump.sh" \
     "$HOME/.autojump/etc/profile.d/autojump.sh" \
     ; do
+    # shellcheck source=/dev/null
     [[ -s $file ]] && source "$file"
 done
 
@@ -207,8 +208,8 @@ chkcmd ipython3     && alias wcalc='ipython3'
 
 # custom commands
 CCOPY_DIR="$HOME/.ccopy"
-ccopy(){ for i in $*; do cp -aip "$i" "$CCOPY_DIR"/ccopy.$(basename $i); done }
-cmove(){ for i in $*; do mv -i   "$i" "$CCOPY_DIR"/ccopy.$(basename $i); done }
+ccopy(){ for i in $*; do cp -aip "$i" "$CCOPY_DIR/ccopy.$(basename $i)"; done }
+cmove(){ for i in $*; do mv -i   "$i" "$CCOPY_DIR/ccopy.$(basename $i)"; done }
 if [[ "$platform" == "linux" ]]; then
     alias clist="ls -d --color=never "$CCOPY_DIR"/ccopy.* 2>/dev/null | sed 's/.*ccopy.//'"
     alias cpaste="ls -d --color=never "$CCOPY_DIR"/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv "$CCOPY_DIR"/ccopy.% ./%"
@@ -257,18 +258,18 @@ fi
 # functions
 function dux() {
     if [ $# -gt 0 ]; then
-        du -sh  "$@" | sort -h
-        du -shc "$@" | tail -n 1 | awk 'END{ print "Total: " $1}'
+        du -sh  -- "$@" | sort -h
+        du -shc -- "$@" | tail -n 1 | awk 'END{ print "Total: " $1}'
     else
-        du -sh *  | sort -h
-        du -shc * | tail -n 1 | awk 'END{ print "Total: " $1}'
+        du -sh  -- *  | sort -h
+        du -shc -- * | tail -n 1 | awk 'END{ print "Total: " $1}'
     fi
 }
 lsnew() {
     ls -lt ${1+"$@"} | head -10;
 }
 rpath() {
-    objdump -x $1 | grep RPATH | awk '{print $2}'
+    objdump -x "$1" | grep RPATH | awk '{print $2}'
 }
 s() {
     local arg=${1:-1};
