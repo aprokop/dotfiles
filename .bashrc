@@ -256,6 +256,9 @@ if [[ "$host" == "scramjet" ]]; then
 fi
 
 # functions
+function mkcd() {
+    mkdir "$1" && cd "$1"
+}
 function dux() {
     if [ $# -gt 0 ]; then
         du -sh  -- "$@" | sort -h
