@@ -2,8 +2,6 @@ setlocal cindent
 setlocal cinoptions+=g0,p2s,i2s,+2s,j1,(0
 setlocal noignorecase
 setlocal noinfercase
-setlocal foldenable
-setlocal foldmethod=indent
 
 " Auto remove white space when saving
 " autocmd BufWritePre *.cc *.h :%s/\s\+$//e
