@@ -42,27 +42,23 @@ export MANPATH="$HOME/local/share/man:${MANPATH}"
 export PKG_CONFIG_PATH="$HOME/local:$PKG_CONFIG_PATH"
 export PYTHONPATH="$HOME/local/lib64/python2.7/site-packages:${PYTHONPATH}"
 
+# Test for an interactive shell. There is no need to set anything past this
+# point for scp and rcp, and it's important to refrain from outputting anything
+# in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive. Be done now!
+	return
+fi
+
 # Set Modules environment
 if [[ "$platform" == "linux" ]]; then
-    # Initialize Modules environment for non-interactive shell
-    # (copied from /etc/profile.d/modules.sh)
-    if [[ $- != *i* ]] ; then
-        shell=$(basename "$(/bin/ps -p $$ -ocomm=)")
-        # shellcheck source=/dev/null
-        if [ -f /usr/share/Modules/init/"$shell" ]; then source /usr/share/Modules/init/"$shell";
-        else                                             source /usr/share/Modules/init/sh;       fi
-    fi
-
-    if [[ -d $HOME/.modules ]]; then
-        module use-append ~/.modules
-        if [[ "$host" == "geminga"* ]]; then
-            module load common_base
-        fi
-
-    fi
+    module_file="/etc/profile.d/modules.sh"
 elif [[ "$platform" == "darwin" ]]; then
-    # shellcheck source=/dev/null
-    source /usr/local/opt/modules/init/bash
+    module_file="/usr/local/opt/modules/init/bash"
+fi
+if [[ -f "$module_file" ]]; then
+    source "$module_file"
+    [[ -d "$HOME/.modules" ]] && module use-append "$HOME/.modules"
 fi
 
 for file in \
@@ -83,18 +79,8 @@ done
 # Spack (commented out due to slow speed)
 if [[ -s $HOME/local/opt/spack ]]; then
     export SPACK_ROOT=$HOME/local/opt/spack
-    # Fast
-    export PATH="$SPACK_ROOT/bin:$PATH"
-    # Slow
-    # source $SPACK_ROOT/share/spack/setup-env.sh
-fi
-
-# Test for an interactive shell. There is no need to set anything past this
-# point for scp and rcp, and it's important to refrain from outputting anything
-# in those cases.
-if [[ $- != *i* ]] ; then
-	# Shell is non-interactive. Be done now!
-	return
+    export PATH="$SPACK_ROOT/bin:$PATH"               # fast
+    # source $SPACK_ROOT/share/spack/setup-env.sh     # slow
 fi
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
