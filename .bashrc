@@ -146,51 +146,51 @@ fi
 alias chkcmd="command -v &>/dev/null"
 
 # standard commands
-chkcmd anki         && alias anki='anki -b /home/prok/.anki'
-chkcmd cgdb         && alias cgdb='cgdb --ex run'
-                       alias cp='cp -ip'
-chkcmd ctest        && alias ctest="ctest -j$MAKEPROC"
-chkcmd colordiff    && alias diff='colordiff'
-chkcmd egrep        && alias egrep='egrep --color'
-chkcmd gdb          && alias gdb='gdb --ex run'
-chkcmd gitk         && alias gitk='gitk --all --since="1 month ago"'
-                       alias grep='LANG="C" grep --color --exclude=tags'
-chkcmd feh          && alias feh='feh -Fd'
-chkcmd firefox      && alias firefox='firefox -new-tab'
-chkcmd iotop        && alias iotop='iotop -o'
-chkcmd jdownloader  && alias jdownloader='be_quiet jdownloader'
-chkcmd spectacle    && alias ksnapshot='spectacle'
-chkcmd latexmk.pl   && alias latexmk='latexmk.pl -pvc'
-                       alias less='less -R'
-                       alias ls="ls $ls_flags"
-chkcmd make         && alias make="make -j$MAKEPROC"
-chkcmd matlab       && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
-                       alias mpirun='mpirun --bind-to core --map-by socket'
-chkcmd mplayer      && alias mplayer='mplayer -really-quiet'
-alias mv="mv -i"
-chkcmd ninja        && alias ninja="ninja       -j$MAKEPROC"
-chkcmd ninja-build  && alias ninja="ninja-build -j$MAKEPROC"
-chkcmd okular       && alias okular='be_quiet okular'
-chkcmd parallel     && alias parallel='parallel --no-notice'
-chkcmd qstat        && alias qstat='qstat -u $(whoami)'
-chkcmd pigz         && alias tgz='tar --use-compress-program=pigz'
-chkcmd pbzip2       && alias tbz2='tar --use-compress-program=pbzip2'
-chkcmd squeue       && alias squeue='squeue -u $(whoami)'
-chkcmd tig          && alias tig='tig --since="2 years ago"'
-chkcmd tmux         && alias tmux='tmux -2'
-chkcmd pxz          && alias txz='tar --use-compress-program=pxz'
-alias vi="vim"
+chkcmd anki                     && alias anki='anki -b /home/prok/.anki'
+[[ "$platform" != "darwin" ]]   && alias cal='cal -m'
+chkcmd cgdb                     && alias cgdb='cgdb --ex run'
+                                   alias cp='cp -ip'
+chkcmd ctest                    && alias ctest="ctest -j$MAKEPROC"
+chkcmd colordiff                && alias diff='colordiff'
+chkcmd egrep                    && alias egrep='egrep --color'
+chkcmd gdb                      && alias gdb='gdb --ex run'
+chkcmd gitk                     && alias gitk='gitk --all --since="1 month ago"'
+                                   alias grep='LANG="C" grep --color --exclude=tags'
+chkcmd feh                      && alias feh='feh -Fd'
+chkcmd firefox                  && alias firefox='firefox -new-tab'
+chkcmd iotop                    && alias iotop='iotop -o'
+chkcmd jdownloader              && alias jdownloader='be_quiet jdownloader'
+chkcmd latexmk.pl               && alias latexmk='latexmk.pl -pvc'
+                                   alias less='less -R'
+                                   alias ls="ls $ls_flags"
+chkcmd make                     && alias make="make -j$MAKEPROC"
+chkcmd matlab                   && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
+                                   alias mpirun='mpirun --bind-to core --map-by socket'
+chkcmd mplayer                  && alias mplayer='mplayer -really-quiet'
+                                   alias mv='mv -i'
+chkcmd okular                   && alias okular='be_quiet okular'
+chkcmd parallel                 && alias parallel='parallel --no-notice'
+chkcmd qstat                    && alias qstat='qstat -u $(whoami)'
+[[ "$platform" == "darwin" ]]   && alias tar='COPYFILE_DISABLE=1 tar'
+chkcmd pigz                     && alias tgz='tar --use-compress-program=pigz'
+chkcmd pbzip2                   && alias tbz2='tar --use-compress-program=pbzip2'
+chkcmd squeue                   && alias squeue='squeue -u $(whoami)'
+chkcmd tig                      && alias tig='tig --since="2 years ago"'
+chkcmd tmux                     && alias tmux='tmux -2'
+chkcmd pxz                      && alias txz='tar --use-compress-program=pxz'
+                                   alias vi='vim'
 
 # reassigned commands
-chkcmd okular       && alias gv='okular'
-chkcmd simple-scan  && alias skanlite='simple-scan'
-chkcmd htop         && alias top='htop'
-chkcmd konsole      && alias xterm='konsole'
-chkcmd ninja        && alias make="ninjac -j$MAKEPROC"
-chkcmd ninja-build  && alias make="ninjac -j$MAKEPROC"
-                       alias vim="vim -p"
-chkcmd vimx         && alias vim='vimx -p'
-chkcmd ipython3     && alias wcalc='ipython3'
+chkcmd okular                   && alias gv='okular'
+chkcmd simple-scan              && alias skanlite='simple-scan'
+chkcmd htop                     && alias top='htop'
+chkcmd konsole                  && alias xterm='konsole'
+chkcmd ninja                    && alias make="ninjac -j$MAKEPROC"
+chkcmd ninja-build              && alias make="ninjac -j$MAKEPROC"
+                                   alias vim='vim -p'
+chkcmd spectacle                && alias ksnapshot='spectacle'
+chkcmd vimx                     && alias vim='vimx -p'
+chkcmd ipython3                 && alias wcalc='ipython3'
 
 # custom commands
 CCOPY_DIR="$HOME/.ccopy"
@@ -205,27 +205,27 @@ elif [[ "$platform" == "darwin" ]]; then
     alias cpaste="ls -d "$CCOPY_DIR"/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
     alias clwhite="sed -i \"\" 's/[[:space:]]*$//g'"
 fi
-chkcmd git          && alias gauno="git status -uno"
+chkcmd git                      && alias gauno="git status -uno"
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias l.="ls $ls_flags -d .*"
 alias lsd="ls -d $ls_flags */ 2>/dev/null"   # empty directory lists need error redirection
 alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
 alias lt="ls $ls_flags -ltrh"
-chkcmd module       && alias ma="module avail"
-chkcmd module       && alias ml="module load"
-chkcmd module       && alias mlist="module list"
-chkcmd module       && alias mu="module unload"
-[[ "$platform" != "darwin" ]] && alias open="be_quiet xdg-open"
-chkcmd emacs        && alias org="emacs ~/.personal/org/my.org"
-[[ -d $HOME/local/opt/pdftk ]] && alias pdftk='LD_PRELOAD="$HOME"/local/opt/pdftk/libgcj.so.10 $HOME/local/opt/pdftk/pdftk'
+chkcmd module                   && alias ma="module avail"
+chkcmd module                   && alias ml="module load"
+chkcmd module                   && alias mlist="module list"
+chkcmd module                   && alias mu="module unload"
+[[ "$platform" != "darwin" ]]   && alias open="be_quiet xdg-open"
+chkcmd emacs                    && alias org="emacs ~/.personal/org/my.org"
+[[ -d "$HOME/local/opt/pdftk" ]]&& alias pdftk='LD_PRELOAD="$HOME/local/opt/pdftk/libgcj.so.10" $HOME/local/opt/pdftk/pdftk'
 # alias ulocate="locate -d ~/.locate-home.db -d ~/.locate-data.db"
-chkcmd tail         && alias tailf='tail -f'
-chkcmd locate       && [[ $platform != "darwin" ]] && alias ulocate='locate -d $HOME/.locate.db'
-chkcmd locate       && [[ $platform == "darwin" ]] && alias ulocate='locate --database=$HOME/.locate.db'
-chkcmd vimdiff      && alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
-chkcmd amplxe-gui   && alias vtune="amplxe-gui"
-chkcmd curl         && alias wtc="curl -s http://whatthecommit.com/index.txt"
+chkcmd tail                     && alias tailf='tail -f'
+chkcmd locate                   && [[ $platform != "darwin" ]] && alias ulocate='locate -d "$HOME/.locate.db"'
+chkcmd locate                   && [[ $platform == "darwin" ]] && alias ulocate='locate --database="$HOME/.locate.db"'
+chkcmd vimdiff                  && alias vimdiffw="vimdiff -c 'set diffopt+=iwhite'"
+chkcmd amplxe-gui               && alias vtune='amplxe-gui'
+chkcmd curl                     && alias wtc='curl -s http://whatthecommit.com/index.txt'
 
 # mistypes
 alias lsls="ls"
