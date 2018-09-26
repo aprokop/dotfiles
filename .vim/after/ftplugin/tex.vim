@@ -2,8 +2,6 @@ let b:pagenumber=0
 
 noremap <buffer> <F5> :update<CR>:Make<CR><CR>
 
-setlocal textwidth=80
-
 " Set indentation
 setlocal sw=2
 
