@@ -105,10 +105,10 @@ esac
 # Connect to existing / create new ssh-agent
 ifs=$IFS
 IFS='
-' ssh_locks=("$(netstat -xl | grep -o "/tmp/ssh-[A-Za-z0-9]*/agent.[0-9]*")")
+' ssh_locks=("$(netstat -xl | grep -o "/.*/ssh-[A-Za-z0-9]*/agent.[0-9]*")")
 IFS=$ifs
 ssh_lock=""
-for lock in "${ssh_locks[@]}"; do
+for lock in ${ssh_locks[@]}; do
     if [[ -r $lock ]]; then
         ssh_lock=$lock
         break
