@@ -63,14 +63,14 @@ fi
 
 for file in \
     "$HOME/local/share/cdargs/cdargs-bash.sh" \
-    "$HOME/local/share/git/git-completion.sh" \
     "/usr/share/doc/git-core-doc/contrib/completion/git-completion.bash" \
     "/etc/profile.d/bash-completion.sh" \
-    "$HOME/local/share/bash-completion/bash_completion" \
     "/usr/local/etc/bash_completion" \
     "$HOME/local/share/bash-completion/completions/tmux" \
+    "$HOME/local/share/bash-completion/completions/git" \
     "/etc/profile.d/autojump.sh" \
     "$HOME/.autojump/etc/profile.d/autojump.sh" \
+    "/usr/share/autojump/autojump.sh" \
     ; do
     # shellcheck source=/dev/null
     [[ -s $file ]] && source "$file"
@@ -124,11 +124,13 @@ fi
 shopt -s histappend
 shopt -s extglob
 
-HISTSIZE=5000
+export HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
 export OMP_PROC_BIND=spread
 export OMP_PLACES=cores
+
+export DEAL_II_NUM_THREADS=1
 
 export OMPI_CFLAGS="-fdiagnostics-color"
 export OMPI_CXXFLAGS="-fdiagnostics-color"
