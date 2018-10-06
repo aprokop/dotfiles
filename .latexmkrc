@@ -14,3 +14,9 @@ if ($^O =~/darwin/) { # Mac
 }
 
 $clean_ext = "paux lox pdfsync out";
+
+# Define all output directories to be "tmp"
+# All build files will now be placed in this directory
+$aux_dir = ".tmp";
+$tmpdir  = ".tmp";
+$out_dir = ".tmp";
