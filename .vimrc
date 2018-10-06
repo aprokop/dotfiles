@@ -221,8 +221,11 @@ nnoremap n nzzzv
 nmap ,s :FSHere<CR>
 
 " Use global clipboard if possible
-if has('xterm_clipboard')
-    set clipboard=unnamedplus
+if has("clipboard")
+  set clipboard=unnamed         " copy to the system clipboard
+  if has("unnamedplus")         " X11 support
+    set clipboard+=unnamedplus
+  endif
 endif
 
 " Insert a blank line below/above/after/prior and stay in normal mode
