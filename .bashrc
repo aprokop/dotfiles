@@ -274,7 +274,7 @@ s() {
 
 # set VI mode for bash
 set -o vi
-bind '"\e."':yank-last-arg
+bind '"\e."':yank-last-arg  # \e is readline's mapping to the Esc key
 
 # report terminated bg jobs immediately, not at the next prompt
 set -b
