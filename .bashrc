@@ -167,7 +167,7 @@ chkcmd latexmk.pl               && alias latexmk='latexmk.pl -pvc'
                                    alias ls="ls $ls_flags"
 chkcmd make                     && alias make="make -j$MAKEPROC"
 chkcmd matlab                   && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
-                                   alias mpirun='mpirun --bind-to core --map-by socket'
+[[ "$platform" != "darwin" ]]   && alias mpirun='mpirun --bind-to core --map-by socket'
 chkcmd mplayer                  && alias mplayer='mplayer -really-quiet'
                                    alias mv='mv -i'
 chkcmd okular                   && alias okular='be_quiet okular'
