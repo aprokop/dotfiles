@@ -77,6 +77,12 @@ for file in \
     [[ -s $file ]] && source "$file"
 done
 
+# Setup nvm
+if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    source "/usr/local/opt/nvm/nvm.sh"
+fi
+
 # Spack (commented out due to slow speed)
 if [[ -s $HOME/local/opt/spack ]]; then
     export SPACK_ROOT=$HOME/local/opt/spack
