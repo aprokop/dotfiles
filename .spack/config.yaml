@@ -1,5 +1,7 @@
 config:
     build_jobs: 12
 
-    # build_stage:
-        # - $spack/var/spack/stage
+    build_stage:
+        - $spack/var/spack/stage
+        - $tempdir
+        - ~/tmp
