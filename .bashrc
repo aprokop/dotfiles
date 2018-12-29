@@ -229,6 +229,7 @@ chkcmd module                   && alias mu="module unload"
 chkcmd emacs                    && alias org="emacs ~/.personal/org/my.org"
 [[ -d "$HOME/local/opt/pdftk" ]]&& alias pdftk='LD_PRELOAD="$HOME/local/opt/pdftk/libgcj.so.10" $HOME/local/opt/pdftk/pdftk'
 [[ "$platform" == "darwin" ]]   && alias skim='open -a /Applications/Skim.app'
+chkcmd tmux                     && peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
 chkcmd tail                     && alias tailf='tail -f'
 chkcmd locate                   && [[ $platform != "darwin" ]] && alias ulocate='locate -d "$HOME/.locate.db"'
 chkcmd locate                   && [[ $platform == "darwin" ]] && alias ulocate='locate --database="$HOME/.locate.db"'
