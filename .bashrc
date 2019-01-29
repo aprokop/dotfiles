@@ -59,7 +59,7 @@ elif [[ "$platform" == "darwin" ]]; then
 fi
 if [[ -f "$module_file" ]]; then
     source "$module_file"
-    [[ -d "$HOME/.modules" ]] && module use-append "$HOME/.modules"
+    [[ -d "$HOME/.modules" ]] && module use -a "$HOME/.modules"
 fi
 
 for file in \
