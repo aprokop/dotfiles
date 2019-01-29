@@ -4,7 +4,10 @@
 "\e[B": history-search-forward
 
 # Enable bracketed paste mode
-set enable-bracketed-paste on
+# Disabling for now, as it causes (arg: n) in VI mode
+# https://www.reddit.com/r/bash/comments/5pelmy/whats_going_on_with_bracketed_paste_vi_mode/
+#
+# set enable-bracketed-paste on
 
 # List all matches in case multiple possible completions
 set show-all-if-ambiguous on
@@ -28,7 +31,6 @@ set completion-query-items 20
 # ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
 # Readline used by Bash 4.)
 set skip-completed-text on
-
 
 # Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
 set input-meta on
