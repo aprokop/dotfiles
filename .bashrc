@@ -156,7 +156,6 @@ alias chkcmd="command -v &>/dev/null"
 
 # standard commands
 chkcmd anki                     && alias anki='anki -b /home/prok/.anki'
-[[ "$platform" != "darwin" ]]   && alias cal='cal -m'
 chkcmd cgdb                     && alias cgdb='cgdb --ex run'
                                    alias cp='cp -ip'
 chkcmd ctest                    && alias ctest="ctest -j$MAKEPROC"
