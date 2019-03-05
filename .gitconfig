@@ -21,6 +21,9 @@
     whitespace  = trailing-space,space-before-tab
     editor = vim
     # pager       = vim -R -
+[diff]
+    colorMoved = blocks
+    colorMovedWs = ignore-all-space
 [diff "nocomment"]
     textconv    = stripcmt
 [diff "odf"]
