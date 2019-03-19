@@ -226,6 +226,7 @@ chkcmd module                   && alias mlist="module list"
 chkcmd module                   && alias mu="module unload"
 [[ "$platform" != "darwin" ]]   && alias open="be_quiet xdg-open"
 chkcmd emacs                    && alias org="emacs ~/.personal/org/my.org"
+                                   alias org_update="git commit -m 'org files: update' ."
 [[ -d "$HOME/local/opt/pdftk" ]]&& alias pdftk='LD_PRELOAD="$HOME/local/opt/pdftk/libgcj.so.10" $HOME/local/opt/pdftk/pdftk'
 [[ "$platform" == "darwin" ]]   && alias skim='open -a /Applications/Skim.app'
 chkcmd tmux                     && peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
