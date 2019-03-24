@@ -80,6 +80,9 @@ set infercase
 " path for autocompletion
 set path=.
 
+" Do not insert two spaces after '.', '?', '!' when joining
+set nojoinspaces
+
 " set persistent undo
 " set undofile
 set undodir=$HOME/.vim/undo  " must exist
