@@ -16,3 +16,6 @@
 [submodule ".emacs.d/emacs-langtool"]
 	path = .emacs.d/emacs-langtool
 	url = https://github.com/mhayashi1120/emacs-langtool
+[submodule ".tmux/plugins/tmux-continuum"]
+	path = .tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
