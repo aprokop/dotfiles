@@ -5,6 +5,7 @@
 .emacs.d/org-clock-save.el
 .emacs.d/.org-id-locations
 .emacs.d/recentf
+.emacs.d/#recentf#
 .vim/.netrwhist
 *.pyc
 .tmux/resurrect
