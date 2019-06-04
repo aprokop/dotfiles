@@ -1,3 +1,4 @@
+AABB
 advection
 AMD
 Amesos
@@ -9,6 +10,8 @@ Andrey
 anisotropic
 API
 aprokop
+ArborX
+Arnoldi
 ArrayRCP
 ASC
 ASCI
@@ -29,6 +32,7 @@ BoomerAMG
 Boyarkin
 Boyarkine
 Braess
+BVH
 CASL
 CCR
 CEED
@@ -41,6 +45,7 @@ cmake
 CMake
 configs
 const
+Courant
 CUDA
 Cuthill
 CVFEM
@@ -77,6 +82,7 @@ Fuego
 Galerkin
 gcc
 geoscience
+github
 GMG
 GMRES
 GPU
@@ -146,12 +152,14 @@ Multiscale
 multisection
 Nalu
 Nalu's
+nanoflann
 Navier
 Neumann
 NGP
 nnz
 nonsymmetric
 nonzeros
+NOX
 NREL
 nullspace
 NUMA
@@ -232,6 +240,7 @@ SuperLU
 svn
 templated
 Teuchos
+Thyra
 Tpetra
 TPL
 Trilinos
@@ -254,13 +263,3 @@ Yamazaki
 Yavich
 Zoltan
 Zoltan2
-Fotran
-Fortrilinos
-NOX
-Thyra
-Courant
-Arnoldi
-BVH
-AABB
-Andrey
-github
