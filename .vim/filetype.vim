@@ -5,4 +5,5 @@ augroup filetypedetect
 	au BufNewFile,BufRead *.jl          setf julia
 	au BufNewFile,BufRead *.cuh         setf cuda
 	au BufNewFile,BufRead *.ts          setf javascript
+    au BufNewFile,BufRead Dockerfile*   setf dockerfile
 augroup END
