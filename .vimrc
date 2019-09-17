@@ -203,9 +203,6 @@ noremap <F11>           :!ctags -R --c++-kinds=+p --fields=+iatlS --extra=+q .<C
 iab todo TODO
 iab fixme FIXME
 
-" See changes since last saving to a file
-command DiffOrig vert rightb new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
 " Calendar
 let g:calendar_diary = '~/.calendar'
 let g:calendar_mark = 'right'
