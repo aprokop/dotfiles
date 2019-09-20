@@ -303,24 +303,6 @@ fi
 
 export GPG_TTY='tty'
 
-# Network
-# export BROWSER=$HOME/local/opt/firefox/firefox
-
-# Proxies
-if [[ "$host" == "geminga"* ]]; then
-    export http_proxy="https://sonproxy.sandia.gov:80"
-    export https_proxy="https://sonproxy.sandia.gov:80"
-    export ftp_proxy="https://sonproxy.sandia.gov:80"
-    export rsync_proxy="https://sonproxy.sandia.gov:80"
-    export no_proxy="localhost"
-fi
-# some programs look for all caps proxies
-# export HTTP_PROXY=$http_proxy
-# export HTTPS_PROXY=$https_proxy
-# export FTP_PROXY=$ftp_proxy
-# export RSYNC_PROXY=$rsync_proxy
-# export NO_PROXY=$no_proxy
-
 __slurm_ps1 ()
 {
     salloc="$(env | grep SLURM_NNODES)"
