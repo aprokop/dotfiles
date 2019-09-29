@@ -131,6 +131,7 @@ fi
 shopt -s histappend
 shopt -s extglob
 
+export HISTCONTROL=ignoreboth
 export HISTSIZE=5000
 
 export OMP_NUM_THREADS=1
