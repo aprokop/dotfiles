@@ -191,16 +191,17 @@ chkcmd pxz                      && alias txz='tar --use-compress-program=pxz'
 chkcmd youtube-dl               && alias youtube-dl='youtube-dl --format best'
 
 # reassigned commands
+chkcmd ncal                     && alias cal="ncal -bM"
 chkcmd okular                   && alias gv='okular'
-chkcmd simple-scan              && alias skanlite='simple-scan'
-chkcmd htop                     && alias top='htop'
-chkcmd konsole                  && alias xterm='konsole'
+chkcmd spectacle                && alias ksnapshot='spectacle'
 chkcmd ninja                    && alias make="ninjac -j$MAKEPROC"
 chkcmd ninja-build              && alias make="ninjac -j$MAKEPROC"
+chkcmd simple-scan              && alias skanlite='simple-scan'
+chkcmd htop                     && alias top='htop'
                                    alias vim='vim -p'
-chkcmd spectacle                && alias ksnapshot='spectacle'
 chkcmd vimx                     && alias vim='vimx -p'
 chkcmd ipython3                 && alias wcalc='ipython3'
+chkcmd konsole                  && alias xterm='konsole'
 
 # custom commands
 CCOPY_DIR="$HOME/.ccopy"
@@ -215,7 +216,7 @@ elif [[ "$platform" == "darwin" ]]; then
     alias cpaste="ls -d "$CCOPY_DIR"/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
     alias clwhite="sed -i \"\" 's/[[:space:]]*$//g'"
 fi
-chkcmd git                      && alias gauno="git status -uno"
+chkcmd git                      && alias gauno="git status -sb -uno"
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias l.="ls $ls_flags -d .*"
