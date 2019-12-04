@@ -230,7 +230,7 @@ chkcmd module                   && alias mr="module restore"
 chkcmd module                   && alias ms="module save"
 chkcmd module                   && alias mu="module unload"
 [[ "$platform" != "darwin" ]]   && alias open="be_quiet xdg-open"
-[[ "$platform" == "darwin" ]]   && alias okular='open -a ~/Applications/KDE/okular.app'
+[[ "$platform" == "darwin" ]]   && alias okular='open -a "/usr/local/opt/okular/bin/okular.app" --args'
 chkcmd emacs                    && alias org="emacs ~/.personal/org/my.org"
                                    alias org_update="git commit -m 'org files: update' ."
 [[ -d "$HOME/local/opt/pdftk" ]]&& alias pdftk='LD_PRELOAD="$HOME/local/opt/pdftk/libgcj.so.10" $HOME/local/opt/pdftk/pdftk'
