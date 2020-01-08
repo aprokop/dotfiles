@@ -6,3 +6,4 @@ color date cyan default
 color grep.file cyan default
 color diff-stat cyan default
 color graph-commit cyan default
+set mailmap = yes
