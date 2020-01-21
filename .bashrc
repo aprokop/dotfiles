@@ -185,6 +185,7 @@ chkcmd pxz                      && alias txz='tar --use-compress-program=pxz'
 chkcmd youtube-dl               && alias youtube-dl='youtube-dl --format best -o "%(title)s.%(ext)s"'
 
 # reassigned commands
+[[ "$platform" != "darwin" ]]   && \
 chkcmd ncal                     && alias cal="ncal -bM"
 chkcmd okular                   && alias gv='okular'
 chkcmd spectacle                && alias ksnapshot='spectacle'
