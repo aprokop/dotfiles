@@ -13,33 +13,50 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'vundlevim/vundle.vim'
 
-Plugin 'andrewradev/linediff.vim'
-Plugin 'bogado/file-line'
-Plugin 'conradirwin/vim-bracketed-paste'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'docker/docker'
-Plugin 'ekalinin/dockerfile.vim'
-Plugin 'embear/vim-localvimrc'
-Plugin 'johngrib/vim-game-code-break'
-Plugin 'juliaeditorsupport/julia-vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'nvie/vim-flake8'
-" Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'powerman/vim-plugin-ansiesc'
-Plugin 'rdnetto/ycm-generator'
-Plugin 'reedes/vim-pencil'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'skywind3000/asyncrun.vim'
+" utility
+Plugin 'andrewradev/linediff.vim'           " compare two blocks of lines in a file
+Plugin 'bogado/file-line'                   " allow opening files like 'file:80'
+Plugin 'conradirwin/vim-bracketed-paste'    " use automatic 'set paste'
+Plugin 'ctrlpvim/ctrlp.vim'                 " search fuzzy
+Plugin 'derekwyatt/vim-fswitch'             " switch between companion files
+Plugin 'embear/vim-localvimrc'              " search local vimrc files
+" Plugin 'ervandew/supertab'
+Plugin 'gilsondev/searchtasks.vim'          " search TODO/FIXME
+Plugin 'godlygeek/tabular'                  " align text
+Plugin 'junegunn/goyo.vim'                  " write distraction-free
+Plugin 'majutsushi/tagbar'                  " display tags in a window
+Plugin 'powerman/vim-plugin-ansiesc'        " conceal ansi sequences
+Plugin 'preservim/nerdtree'                 " explore file system
+Plugin 'preservim/nerdcommenter'            " comment in/out lines
 Plugin 'tpope/vim-dispatch'
-Plugin 'valloric/youcompleteme'
-Plugin 'vim-scripts/align'
-Plugin 'vim-scripts/languagetool'
-Plugin 'vim-scripts/swig-syntax'
+Plugin 'vim-scripts/languagetool'           " proof-read
+
+" generic programming support
+Plugin 'honza/vim-snippets'
+Plugin 'scrooloose/syntastic'               " check syntax
+Plugin 'townk/vim-autoclose'                " auto-write closing ], ), etc
+Plugin 'universal-ctags/ctags'
+
+" c/c++
+Plugin 'rhysd/vim-clang-format'             " check syntax/style for C++
+Plugin 'valloric/youcompleteme'             " complete code
+
+" docker
+Plugin 'ekalinin/dockerfile.vim'            " highlight Dockerfile
+
+" julia
+Plugin 'juliaeditorsupport/julia-vim'       " support Julia
+
+" markdown/text
+Plugin 'reedes/vim-pencil'                  " allow soft-wrap
+Plugin 'tpope/vim-markdown'                 " highlight syntax for Markdown
+Plugin 'jtratner/vim-flavored-markdown'     " allow GitHub flavored markdown
+
+" python
+Plugin 'nvie/vim-flake8'                    " check syntax/style for Python
+
+" swig
+Plugin 'vim-scripts/swig-syntax'            " highlight SWIG
 
 call vundle#end()
 " --------------------------------------------------------
@@ -127,9 +144,7 @@ endif
 
 " Enable filetype settings
 if has("eval")
-    filetype on
-    filetype plugin on
-    filetype indent on
+    filetype plugin indent on
 endif
 
 " Set vim colors
@@ -268,8 +283,8 @@ if has("autocmd")
 endif
 
 " ------------------------ Scripts configuration ------------------------
-" Align
-vnoremap ,= :Align=<CR>
+" tabular
+vnoremap ,= :Tabularize /=<CR>
 
 " flake8
 let g:flake8_cmd="flake8-3"
