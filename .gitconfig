@@ -48,7 +48,7 @@
     fontui      = -family helvetica -size 10 -weight normal -slant roman -underline 0 -overstrike 0
     fontdiff    = -family Terminus -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 [help]
-    autocorrect = 15
+    autocorrect = 10
 [merge]
     tool        = vimdiff3
 [push]
