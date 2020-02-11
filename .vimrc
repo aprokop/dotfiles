@@ -129,6 +129,7 @@ endif
 set wildmode=longest,list,full
 set wildmenu
 set wildignore+=*.o,*~,Makefile.in,*.a,*.la,*.dvi,*.aux
+set wildignorecase
 set suffixes+=.aux,.log,.dvi
 
 set ruler
