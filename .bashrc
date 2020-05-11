@@ -211,6 +211,7 @@ elif [[ "$platform" == "darwin" ]]; then
     alias cpaste="ls -d "$CCOPY_DIR"/ccopy.* | sed 's/.*ccopy.//' | xargs -I % mv $CCOPY_DIR/ccopy.% ./%"
     alias clwhite="sed -i \"\" 's/[[:space:]]*$//g'"
 fi
+check_endian(){ q=$(echo -n I | od -to2 | head -n1 | cut -f2 -d" " | cut -c6); [ "$q" == "1" ] && echo "little-endian" || echo "big-endian";}  # or lscpu
 chkcmd git                      && alias gauno="git status -sb -uno"
 alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
 alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
