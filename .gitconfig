@@ -2,19 +2,20 @@
     name        = Andrey Prokopenko
     email       = prokopenkoav@ornl.gov
 [alias]
+    authors     = ! git log --format="%aN" "${GIT_PREFIX:-.}" | sort | uniq -c | sort -n
+    br          = branch -v
     ci          = commit
     civ         = commit --no-verify
     co          = checkout
-    st          = status -sb
-    br          = branch -v
     fp          = format-patch -k -M -N
     glog        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
-    log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
+    hash        = rev-parse --short HEAD
     log1a       = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
+    log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
     log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
     ls          = ls-files
-    authors     = ! git log --format="%aN" "${GIT_PREFIX:-.}" | sort | uniq -c | sort -n
     sed         = ! cd -- "${GIT_PREFIX:-.}" && git ls-files -z | xargs -0 sed -i '' -e
+    st          = status -sb
 [apply]
     whitespace  = fix
 [core]
