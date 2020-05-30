@@ -27,7 +27,7 @@ fi
 
 # Set environment before non-interactive shell check, so that it is the same for
 # both login and interactive shells
-export PATH="$HOME/bin:/opt/bin:~/local/bin:$PATH"
+export PATH="$HOME/bin:~/local/bin:~/.local/bin:/opt/bin:$PATH"
 [[ "$platform" == "darwin" ]] && export PATH="/opt/local/bin:/usr/local/opt/findutils/libexec/gnubin:$PATH"
 if [[ "$CPATH" != "" ]]; then
     export CPATH="$HOME/local/include:$CPATH"
