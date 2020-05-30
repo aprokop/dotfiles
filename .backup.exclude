@@ -4,6 +4,7 @@ prok/media/video
 prok/media/x
 prok/misc/games
 prok/misc/virtualbox
+prok/.vmware/machines
 prok/.cache
 prok/.ccache
 prok/.downloads
