@@ -41,7 +41,7 @@ export LD_LIBRARY_PATH="$HOME/local/lib:~/local/lib64:${LD_LIBRARY_PATH}"
 export MANPATH="$HOME/local/share/man:${MANPATH}"
 [[ "$platform" == "darwin" ]] && MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 export PKG_CONFIG_PATH="$HOME/local:$PKG_CONFIG_PATH"
-export PYTHONPATH="$HOME/local/lib64/python2.7/site-packages:${PYTHONPATH}"
+
 
 # Test for an interactive shell. There is no need to set anything past this
 # point for scp and rcp, and it's important to refrain from outputting anything
