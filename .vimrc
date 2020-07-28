@@ -34,12 +34,14 @@ Plugin 'vim-scripts/languagetool'           " proof-read
 " generic programming support
 Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/syntastic'               " check syntax
-Plugin 'townk/vim-autoclose'                " auto-write closing ], ), etc
 Plugin 'universal-ctags/ctags'
 
 " c/c++
 Plugin 'rhysd/vim-clang-format'             " check syntax/style for C++
-Plugin 'valloric/youcompleteme'             " complete code
+" Plugin 'valloric/youcompleteme'             " complete code
+
+" python
+Plugin 'psf/black'
 
 " docker
 Plugin 'ekalinin/dockerfile.vim'            " highlight Dockerfile
