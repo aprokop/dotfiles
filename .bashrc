@@ -183,7 +183,7 @@ chkcmd tig                      && alias tig='tig --since="2 years ago"'
 chkcmd tmux                     && alias tmux='tmux -2'
 chkcmd pxz                      && alias txz='tar --use-compress-program=pxz'
                                    alias vi='vim'
-chkcmd youtube-dl               && alias youtube-dl='youtube-dl --format best -o "%(title)s.%(ext)s"'
+chkcmd youtube-dl               && alias youtube-dl='youtube-dl --no-mtime --format best -o "%(title)s.%(ext)s"'
 
 # reassigned commands
 [[ "$platform" != "darwin" ]]   && \
