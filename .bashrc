@@ -174,7 +174,7 @@ chkcmd mplayer                  && alias mplayer='mplayer -really-quiet'
                                    alias mv='mv -i'
 chkcmd okular                   && alias okular='be_quiet okular'
 chkcmd parallel                 && alias parallel='parallel --no-notice'
-[[ -d $HOME/.steam ]]           && alias proton="STEAM_COMPAT_DATA_PATH=$HOME/.proton ~/.steam/steam/steamapps/common/Proton\ 4.2/proton run"
+[[ -d $HOME/.steam ]]           && alias proton="STEAM_COMPAT_DATA_PATH=$HOME/.proton ~/.steam/steam/steamapps/common/Proton\ 5.0/proton run"
 chkcmd qstat                    && alias qstat='qstat -u $(whoami)'
                                    alias tar='COPYFILE_DISABLE=1 tar -k'
 chkcmd pigz                     && alias tgz='tar --use-compress-program=pigz'
@@ -189,6 +189,7 @@ chkcmd youtube-dl               && alias youtube-dl='youtube-dl --no-mtime --for
 # reassigned commands
 [[ "$platform" != "darwin" ]]   && \
 chkcmd ncal                     && alias cal="ncal -bM"
+chkcmd imv                      && alias feh="imv -fdr"
 chkcmd okular                   && alias gv='okular'
 chkcmd spectacle                && alias ksnapshot='spectacle'
 chkcmd ninja                    && alias make="ninjac -j$MAKEPROC"
