@@ -285,6 +285,11 @@ if has("autocmd")
     au BufEnter * match ExtraWhitespace /\s\+$/
 endif
 
+" Change autocompletion popup menu colors
+highlight Pmenu ctermbg=gray guibg=gray
+highlight PmenuSel ctermbg=lightgreen guibg=lightgreen
+"
+
 " ------------------------ Scripts configuration ------------------------
 " tabular
 vnoremap ,= :Tabularize /=<CR>
