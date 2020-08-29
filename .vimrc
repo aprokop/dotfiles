@@ -322,6 +322,7 @@ let g:livedown_browser = "firefox"
 let g:localvimrc_name    = ".local_vimrc"
 let g:localvimrc_ask     = 0
 let g:localvimrc_sandbox = 0
+let g:localvimrc_event   = [ "BufReadPre" ]
 
 " Makeshift tries the built file in the current directory before searching
 " from the file directory.
