@@ -20,8 +20,9 @@
     whitespace  = fix
 [core]
     whitespace  = trailing-space,space-before-tab
-    editor = vim
+    editor      = vim
     # pager       = vim -R -
+    pager       = diff-highlight | less -r
 [diff]
     colorMoved = blocks
     colorMovedWs = ignore-all-space
