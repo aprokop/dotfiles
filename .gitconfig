@@ -55,6 +55,8 @@
     tool        = vimdiff3
 [push]
     default     = simple
+[pull]
+    rebase      = false
 [credential]
     helper = cache --timeout=3600
 [init]
