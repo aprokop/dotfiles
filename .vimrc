@@ -20,14 +20,16 @@ Plugin 'conradirwin/vim-bracketed-paste'    " use automatic 'set paste'
 Plugin 'ctrlpvim/ctrlp.vim'                 " search fuzzy
 Plugin 'derekwyatt/vim-fswitch'             " switch between companion files
 Plugin 'embear/vim-localvimrc'              " search local vimrc files
-" Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'gilsondev/searchtasks.vim'          " search TODO/FIXME
 Plugin 'godlygeek/tabular'                  " align text
 Plugin 'junegunn/goyo.vim'                  " write distraction-free
+Plugin 'lifecrisis/vim-difforig'            " show unsaved buffer changes
 Plugin 'majutsushi/tagbar'                  " display tags in a window
 Plugin 'powerman/vim-plugin-ansiesc'        " conceal ansi sequences
 Plugin 'preservim/nerdtree'                 " explore file system
 Plugin 'preservim/nerdcommenter'            " comment in/out lines
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-scripts/languagetool'           " proof-read
 
@@ -38,10 +40,13 @@ Plugin 'universal-ctags/ctags'
 
 " c/c++
 Plugin 'rhysd/vim-clang-format'             " check syntax/style for C++
-" Plugin 'valloric/youcompleteme'             " complete code
+Plugin 'xavierd/clang_complete'             " complete C/C++ code
 
 " python
 Plugin 'psf/black'
+
+" jenkins
+Plugin 'martinda/jenkinsfile-vim-syntax'    " support Jenkins
 
 " docker
 Plugin 'ekalinin/dockerfile.vim'            " highlight Dockerfile
@@ -263,11 +268,6 @@ let g:languagetool_jar='$HOME/local/opt/languagetool/languagetool-commandline.ja
 
 set guicursor=a:block-Cursor-blinkon0
 
-" Project specific configuration
-let g:localvimrc_name    = ".local_vimrc"
-let g:localvimrc_ask     = 0
-let g:localvimrc_sandbox = 0
-
 " Highlight extra white space
 let g:highlight_white = 1
 highlight ExtraWhitespace ctermbg=lightred guibg=red
@@ -289,17 +289,8 @@ endif
 " tabular
 vnoremap ,= :Tabularize /=<CR>
 
-" flake8
-let g:flake8_cmd="flake8-3"
-
-" Goyo
-" let g:goyo_width = 100
-
-" NerdCommenter
-let g:NERDCommentEmptyLines = 1
-let g:NERDSpaceDelims = 1
-map <F3>    <plug>NERDCommenterComment
-map <F4>    <plug>NERDCommenterUncomment
+" clang complete
+let g:clang_library_path='/usr/lib/llvm-10/lib/libclang-10.so.1'
 
 " CtrlP
 noremap ,t :CtrlP<CR>
@@ -307,14 +298,50 @@ let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_root_markers = ['.ctrlp']   " root CtrlP within the directory
 
+" flake8
+let g:flake8_cmd="flake8"
+
+" Goyo
+let g:goyo_width = 100
+
+" Markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
+" Livedown
+let g:livedown_browser = "firefox"
+
+" localvimrc
+let g:localvimrc_name    = ".local_vimrc"
+let g:localvimrc_ask     = 0
+let g:localvimrc_sandbox = 0
+
+" Makeshift tries the built file in the current directory before searching
+" from the file directory.
+let g:makeshift_use_pwd_first = 1
+
+" NerdCommenter
+let g:NERDCommentEmptyLines = 1
+let g:NERDSpaceDelims = 1
+map <F3>    <plug>NERDCommenterComment
+map <F4>    <plug>NERDCommenterUncomment
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+
 " Syntastic
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs  = 1
 
-" YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11': 1, 'c' : 1}
-nnoremap ,jd :YcmCompleter GoTo<CR>
+" UltiSnips
+let g:UltiSnipsSnippetDirectories  = ["snips"]
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " ------------------------ Functions ------------------------
 " Scroll inactive window
