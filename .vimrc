@@ -29,7 +29,8 @@ Plugin 'majutsushi/tagbar'                  " display tags in a window
 Plugin 'powerman/vim-plugin-ansiesc'        " conceal ansi sequences
 Plugin 'preservim/nerdtree'                 " explore file system
 Plugin 'preservim/nerdcommenter'            " comment in/out lines
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'                 " Git
+Plugin 'tpope/vim-rhubarb'                  " Gbrowse for GitHub
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-scripts/languagetool'           " proof-read
 
