@@ -6,7 +6,8 @@ xset r rate 380                 # set keyboard delay
 # Evoluent mouse
 host=`hostname`
 evoluent_mouse_device_id=`xinput -list | grep Evoluent | cut -d= -f 2 | cut -f1`
-if [[ "$evoluent_mouse_device_id" != "" ]] && [[ "$host" == "scramjet" ]]; then
+if [[ "$evoluent_mouse_device_id" != "" ]]; then
+    echo "Setting Evoluent mouse buttons"
     xinput set-button-map $evoluent_mouse_device_id  1 3 9 4 5 6 7 8 2 10 11 12 13
     # xmodmap -e "keycode 22 = Delete"
     # xmodmap -e "keycode 119 = BackSpace"
