@@ -165,6 +165,7 @@ chkcmd feh                      && alias feh='feh -Fd'
 chkcmd firefox                  && alias firefox='firefox -new-tab'
 chkcmd iotop                    && alias iotop='iotop -o'
 chkcmd jdownloader              && alias jdownloader='be_quiet jdownloader'
+chkcmd kgpg                     && alias kgpg='kgpg -k'
 chkcmd latexmk.pl               && alias latexmk='latexmk.pl -pvc'
                                    alias less='less -R'
                                    alias ls="ls $ls_flags"
