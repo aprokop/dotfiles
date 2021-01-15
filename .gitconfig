@@ -63,3 +63,5 @@
     templatedir = ~/.git_templates
 [pull]
     rebase = false
+[rerere]
+    enabled = true
