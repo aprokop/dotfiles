@@ -1,0 +1,4 @@
+# this file is auto-generated.
+[report]
+	percent-limit = 0.1
+	children = false
