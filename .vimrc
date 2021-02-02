@@ -109,8 +109,14 @@ set path=.
 set nojoinspaces
 
 " set persistent undo
-" set undofile
-set undodir=$HOME/.vim/undo  " must exist
+if has('persistent_undo')
+    let target_path = expand('$HOME/.vim/undo')
+    if !isdirectory(target_path)
+        call system('mkdir -p ' . target_path)
+    endif
+    let &undodir = target_path
+    set undofile
+endif
 
 " Show full tags when doing search completion
 set showfulltag
