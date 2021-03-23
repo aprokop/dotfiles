@@ -2,6 +2,7 @@
     name        = Andrey Prokopenko
     email       = prokopenkoav@ornl.gov
 [alias]
+    amendno     = commit --amend --no-edit
     authors     = ! git log --format="%aN" "${GIT_PREFIX:-.}" | sort | uniq -c | sort -n
     br          = branch -v
     ci          = commit
