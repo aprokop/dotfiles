@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+trap 'rm -f "$$.tags"' EXIT
+command -v 2>/dev/null 1>/dev/null ctags && git ls-files | \
+  ctags --tag-relative -L - -f"$$.tags" --languages=+c++,c -R --c++-kinds=+p --fields=+iatlS --extra=+q
+mv "$$.tags" "tags"
