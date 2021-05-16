@@ -18,8 +18,7 @@ draw_bold_text_with_bright_colors: false
 colors:
   primary:
     background: '#000000'
-    # foreground: '#a9a9a9'
-    foreground: '#c6c6c6'
+    foreground: '#a9a9a9'
 
   cursor:
     cursor: '#fffb01'
