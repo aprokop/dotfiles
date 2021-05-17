@@ -44,7 +44,8 @@ Plugin 'rhysd/vim-clang-format'             " check syntax/style for C++
 Plugin 'xavierd/clang_complete'             " complete C/C++ code
 
 " python
-Plugin 'psf/black'
+" Plugin 'psf/black'    " see https://github.com/psf/black/issues/1304
+
 
 " jenkins
 Plugin 'martinda/jenkinsfile-vim-syntax'    " support Jenkins
