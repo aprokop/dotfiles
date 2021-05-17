@@ -3,7 +3,7 @@
     email       = prokopenkoav@ornl.gov
 [alias]
     amendno     = commit --amend --no-edit
-    authors     = ! git log --format="%aN" "${GIT_PREFIX:-.}" | sort | uniq -c | sort -n
+    authors     = shortlog -sn
     br          = branch -v
     ci          = commit
     civ         = commit --no-verify
