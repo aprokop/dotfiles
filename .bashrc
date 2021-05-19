@@ -132,7 +132,7 @@ shopt -s extglob
 export HISTCONTROL=ignoreboth
 export HISTSIZE=5000
 
-export OMP_NUM_THREADS=1
+# export OMP_NUM_THREADS=1
 export OMP_PROC_BIND=spread
 export OMP_PLACES=cores
 
@@ -244,6 +244,7 @@ chkcmd module                   && alias mlist="module list"
 chkcmd module                   && alias mr="module restore"
 chkcmd module                   && alias ms="module save"
 chkcmd module                   && alias mu="module unload"
+chkcmd quota                    && alias myquota="quota -Qs"
 [[ "$platform" != "darwin" ]]   && alias open="be_quiet xdg-open"
 [[ "$platform" == "darwin" ]]   && alias okular='open -a "/usr/local/opt/okular/bin/okular.app" --args'
 chkcmd emacs                    && alias org="emacs ~/.personal/org/my.org"
