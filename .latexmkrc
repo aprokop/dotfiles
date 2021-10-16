@@ -16,7 +16,7 @@ $tmpdir  = ".tmp";
 $out_dir = ".tmp";
 
 if ($^O =~/darwin/) { # Mac
-    $pdf_previewer = "open -a /Applications/Skim.app";
+    $pdf_previewer = "open -a /Applications/Skim.app/";
 } elsif ($^O =~ /MSWin32/) { # Windows
     # Use the windows start comand to call default PDF viewer
     $pdf_previewer = 'start "" /max %0 %S';
