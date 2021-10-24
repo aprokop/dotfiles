@@ -1,4 +1,5 @@
 AABB
+AABBs
 AMD
 AMG
 AMGX
@@ -46,6 +47,7 @@ Cielo
 Courant
 Cuthill
 Cyr
+DBSCAN
 DILU
 DOFs
 DTK
@@ -70,6 +72,7 @@ GMRES
 GPU
 GPUs
 Galerkin
+HDBSCAN
 HPC
 HSS
 Helmholz
@@ -122,16 +125,19 @@ NOX
 NREL
 NUMA
 NVIDIA
+NVLink
 Nalu
 Nalu's
 Navier
 Neumann
+Nvidia
 OLCF
 ORNL
 ORNL's
 OpenCL
 OpenMP
 OpenMPI
+OptiX
 Oseen
 PDE
 PDEs
@@ -198,10 +204,12 @@ backends
 barycenters
 biquadratic
 bool
+boundable
 cmake
 configs
 const
 datasets
+dendrogram
 dir
 discretization
 discretizations
@@ -224,10 +232,12 @@ hypre
 incompressibility
 indices
 interprocess
+kNN
 lidcavity
 linearized
 manycore
 middleware
+moreso
 multi
 multicore
 multifrontal
