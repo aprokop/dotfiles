@@ -3,6 +3,7 @@ live_config_reload: true
 window:
   startup_mode: Maximized
   dynamic_title: true
+  # decorations: none
 
 scrolling:
   history: 10000
