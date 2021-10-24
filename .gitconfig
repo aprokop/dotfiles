@@ -10,7 +10,7 @@
     co          = checkout
     fp          = format-patch -k -M -N
     glog        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
-    hash        = rev-parse --short HEAD
+    hash        = rev-parse --verify --short HEAD
     log1a       = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
     log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
     log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
