@@ -41,7 +41,7 @@ Plugin 'universal-ctags/ctags'
 
 " c/c++
 Plugin 'rhysd/vim-clang-format'             " check syntax/style for C++
-Plugin 'xavierd/clang_complete'             " complete C/C++ code
+" Plugin 'ycm-core/youcompleteme'             " code completion
 
 " python
 " Plugin 'psf/black'    " see https://github.com/psf/black/issues/1304
@@ -87,6 +87,7 @@ set autoindent
 
 " Speed up macros
 set lazyredraw
+set ttyfast
 
 set cpoptions-=m
 
@@ -167,6 +168,12 @@ endif
 colorscheme desert256
 " Use Vim 256 colorscheme in screen
 set t_Co=256
+
+" Set diff colors
+hi DiffAdd    ctermfg=233 ctermbg=194 guifg=#003300 guibg=#DDFFDD gui=none cterm=none
+hi DiffDelete ctermfg=252 ctermbg=224 guifg=#DDCCCC guibg=#FFDDDD gui=none cterm=none
+hi DiffChange             ctermbg=236               guibg=#303030 gui=none cterm=none
+hi DiffText   ctermfg=233 ctermbg=189 guifg=#000033 guibg=#DDDDFF gui=none cterm=none
 
 " Enable folds
 set nofoldenable
@@ -298,12 +305,13 @@ highlight Pmenu ctermbg=gray guibg=gray
 highlight PmenuSel ctermbg=lightgreen guibg=lightgreen
 "
 
+
 " ------------------------ Scripts configuration ------------------------
 " tabular
 vnoremap ,= :Tabularize /=<CR>
 
-" clang complete
-let g:clang_library_path='/usr/lib/llvm-10/lib/libclang-10.so.1'
+" clang-format
+let g:clang_format#auto_format = 1
 
 " CtrlP
 noremap ,t :CtrlP<CR>
@@ -356,6 +364,11 @@ let g:UltiSnipsSnippetDirectories  = ["snips"]
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_filetype_whitelist = { 'python' : 1, 'cpp' : 1, 'cpp11' : 1, 'cpp14' : 1, 'c' : 1}
+nnoremap ,jd :YcmCompleter GoTo<CR>
 
 " ------------------------ Functions ------------------------
 " Scroll inactive window
