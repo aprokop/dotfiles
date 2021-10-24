@@ -28,7 +28,12 @@ fi
 # Set environment before non-interactive shell check, so that it is the same for
 # both login and interactive shells
 export PATH="$HOME/bin:$HOME/local/bin:$HOME/.local/bin:/opt/bin:$PATH"
-[[ "$platform" == "darwin" ]] && export PATH="/opt/local/bin:/usr/local/opt/findutils/libexec/gnubin:$PATH"
+if [[ "$platform" == "darwin" ]]; then
+    export PATH="/opt/local/bin:$PATH"
+    export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+    export PATH="/usr/local/anaconda3/bin:$PATH"
+fi
+
 if [[ "$CPATH" != "" ]]; then
     export CPATH="$HOME/local/include:$CPATH"
 else
@@ -171,8 +176,12 @@ chkcmd latexmk.pl               && alias latexmk='latexmk.pl -pvc'
                                    alias ls="ls $ls_flags"
 chkcmd make                     && alias make="make -j$MAKEPROC"
 chkcmd matlab                   && alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" matlab'
-[[ "$platform" != "darwin" ]]   && alias mpirun='mpirun --bind-to core --map-by socket'
+[[ "$platform" != "darwin" ]]   && \
+chkcmd mpirun                   && alias mpirun='mpirun --bind-to core --map-by socket'
+[[ "$platform" != "darwin" ]]   && \
 chkcmd mplayer                  && alias mplayer='mplayer -really-quiet'
+[[ "$platform" == "darwin" ]]   && \
+chkcmd mplayer                  && alias mplayer='mplayer -really-quiet -vo gl'
                                    alias mv='mv -i'
 chkcmd okular                   && alias okular='be_quiet okular'
 chkcmd parallel                 && alias parallel='parallel --no-notice'
@@ -236,7 +245,7 @@ chkcmd module                   && alias mu="module unload"
 chkcmd emacs                    && alias org="emacs ~/.personal/org/my.org"
                                    alias org_update="git commit -m 'org files: update' ."
 [[ -d "$HOME/local/opt/pdftk" ]]&& alias pdftk='LD_PRELOAD="$HOME/local/opt/pdftk/libgcj.so.10" $HOME/local/opt/pdftk/pdftk'
-[[ "$platform" == "darwin" ]]   && alias skim='open -a /Applications/Skim.app'
+[[ "$platform" == "darwin" ]]   && alias skim='open -a /Applications/Skim.app/'
 chkcmd tmux                     && peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
 chkcmd tail                     && alias tailf='tail -f'
 chkcmd locate                   && [[ $platform != "darwin" ]] && alias ulocate='locate -d "$HOME/.locate.db"'
