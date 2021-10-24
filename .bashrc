@@ -144,6 +144,8 @@ export OMPI_CXXFLAGS="-fdiagnostics-color"
 
 export HISTTIMEFORMAT='%F %T '
 
+[[ "$platform" == "darwin" ]] && export HOMEBREW_NO_AUTO_UPDATE
+
 # helpers
 if [[ "$platform" == "linux" ]]; then
     ls_flags="-N --color=auto -v"
