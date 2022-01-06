@@ -165,6 +165,7 @@ chkcmd ctest                    && alias ctest="ctest -j$MAKEPROC"
 chkcmd colordiff                && alias diff='colordiff'
 chkcmd egrep                    && alias egrep='egrep --color'
 chkcmd gdb                      && alias gdb='gdb --ex run'
+chkcmd gh                       && eval "$(gh completion -s bash)"
 chkcmd gitk                     && alias gitk='gitk --all --since="1 month ago"'
 chkcmd glow                     && alias glow='glow -p -w 140'
                                    alias grep='LANG="C" grep --color --exclude=tags'
@@ -198,6 +199,7 @@ chkcmd tmux                     && alias tmux='tmux -2'
 chkcmd pxz                      && alias txz='tar --use-compress-program=pxz'
                                    alias vi='vim'
 chkcmd youtube-dl               && alias youtube-dl='youtube-dl --no-mtime --format best -o "%(title)s.%(ext)s"'
+chkcmd yt-dlp                   && alias yt-dlp='yt-dlp -f bv+ba/b'
 
 # reassigned commands
 [[ "$platform" != "darwin" ]]   && \
