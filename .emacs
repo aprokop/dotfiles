@@ -39,6 +39,10 @@
 (blink-cursor-mode 0)
 (set-cursor-color "#ffff00")
 
+;; set default browser
+; (setq browse-url-browser-function 'browse-url-chrome)
+; (setq browse-url-chrome-program "chrome")
+
 ;; enable visual feedback on selections
 (setq transient-mark-mode t)
 
