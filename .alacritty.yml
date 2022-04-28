@@ -11,7 +11,11 @@ scrolling:
 
 font:
   normal:
-    family: Inconsolata Medium
+    family: Inconsolata
+    style: Medium
+  bold:
+    family: Inconsolata
+    style: SemiBold
   size: 18.0
 
 draw_bold_text_with_bright_colors: false
