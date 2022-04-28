@@ -30,8 +30,9 @@ fi
 export PATH="$HOME/bin:$HOME/local/bin:$HOME/.local/bin:/opt/bin:$PATH"
 if [[ "$platform" == "darwin" ]]; then
     export PATH="/opt/local/bin:$PATH"
+    export PATH="/opt/homebrew/bin/:$PATH"
+    export PATH="/opt/homebrew/anaconda3/bin:$PATH"
     export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-    export PATH="/usr/local/anaconda3/bin:$PATH"
 fi
 
 if [[ "$CPATH" != "" ]]; then
