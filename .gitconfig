@@ -15,7 +15,7 @@
     log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
     log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
     ls          = ls-files
-    sed         = ! cd -- "${GIT_PREFIX:-.}" && git ls-files -z | xargs -0 sed -i '' -e
+    sed         = ! cd -- "${GIT_PREFIX:-.}" && git grep -z --cached -Il '' | xargs -0 sed -i '' -e
     st          = status -sb
     amendno     = commit --amend --no-edit
 [apply]
