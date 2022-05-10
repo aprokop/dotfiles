@@ -232,12 +232,13 @@ fi
 [[ -d $HOME/code/flame-graph ]] && alias flamegraph='perf script | $HOME/code/flame-graph/stackcollapse-perf.pl | $HOME/code/flame-graph/flamegraph.pl'
 check_endian(){ q=$(echo -n I | od -to2 | head -n1 | cut -f2 -d" " | cut -c6); [ "$q" == "1" ] && echo "little-endian" || echo "big-endian";}  # or lscpu
 chkcmd git                      && alias gauno="git status -sb -uno"
-alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
-alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
-alias l.="ls $ls_flags -d .*"
-alias lsd="ls -d $ls_flags */ 2>/dev/null"   # empty directory lists need error redirection
-alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
-alias lt="ls $ls_flags -ltrh"
+                                   alias history1="history | awk '{a[\$4]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
+                                   alias history2="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}' | sort -rn | head -n 20"
+[[ "$platform" == "darwin" ]]   && alias iina='open -a "/Applications/IINA.app"'
+                                   alias l.="ls $ls_flags -d .*"
+                                   alias lsd="ls -d $ls_flags */ 2>/dev/null"   # empty directory lists need error redirection
+                                   alias lsf="find . -maxdepth 1 \( ! -regex '.*/\..*' \) -type f -print0 | sed 's/\.\///g' | xargs -0 ls $ls_flags"
+                                   alias lt="ls $ls_flags -ltrh"
 chkcmd module                   && alias ma="module avail"
 chkcmd module                   && alias ml="module load"
 chkcmd module                   && alias mlist="module list"
