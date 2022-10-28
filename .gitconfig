@@ -17,7 +17,6 @@
     ls          = ls-files
     sed         = ! cd -- "${GIT_PREFIX:-.}" && git grep -z --cached -Il '' | xargs -0 sed -i '' -e
     st          = status -sb
-    amendno     = commit --amend --no-edit
 [apply]
     whitespace  = fix
 [core]
