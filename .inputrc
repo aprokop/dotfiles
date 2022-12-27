@@ -3,6 +3,9 @@
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 
+# Display completions using colors to indicate file type
+set colored-stats on
+
 # Enable bracketed paste mode
 # Disabling for now, as it causes (arg: n) in VI mode
 # https://www.reddit.com/r/bash/comments/5pelmy/whats_going_on_with_bracketed_paste_vi_mode/
@@ -11,6 +14,9 @@
 
 # List all matches in case multiple possible completions
 set show-all-if-ambiguous on
+
+# List completions immediately instead of ringing a bell
+set show-all-if-unmodified on
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
