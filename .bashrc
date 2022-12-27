@@ -198,8 +198,7 @@ chkcmd tmux                     && alias tmux='tmux -2'
 chkcmd pxz                      && alias txz='tar --use-compress-program=pxz'
                                    alias vi='vim'
 chkcmd youtube-dl               && alias youtube-dl='youtube-dl --no-mtime --format best -o "%(title)s.%(ext)s"'
-# chkcmd yt-dlp                   && alias yt-dlp='yt-dlp -f bv+ba/b -o "%(title)s.%(ext)s"'
-chkcmd yt-dlp                   && alias yt-dlp='yt-dlp --exec after_move:detox -o "%(title)s.%(ext)s"'
+chkcmd yt-dlp                   && alias yt-dlp='yt-dlp -f bv+ba/b --exec after_move:detox -o "%(title)s.%(ext)s"'
 
 # reassigned commands
 [[ "$platform" != "darwin" ]]   && \
