@@ -16,7 +16,7 @@ MAKEPROC=1
 if   [[ "$host" == "jet"* ]]; then
     MAKEPROC=3
 elif [[ "$host" == "MAC130194" ]]; then
-    MAKEPROC=4
+    MAKEPROC=8
 elif [[ "$host" == "scramjet" ]]; then
     MAKEPROC=15
 elif [[ "$host" == "erectus" ]]; then
@@ -28,8 +28,8 @@ fi
 export PATH="$HOME/bin:$HOME/local/bin:$HOME/.local/bin:/opt/bin:$PATH"
 if [[ "$platform" == "darwin" ]]; then
     export PATH="/opt/local/bin:$PATH"
-    export PATH="/opt/homebrew/bin/:$PATH"
     export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    export PATH="/opt/homebrew/bin/:$PATH"
     export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 fi
 
