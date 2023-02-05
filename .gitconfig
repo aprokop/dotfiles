@@ -1,71 +1,86 @@
 [user]
-    name        = Andrey Prokopenko
-    email       = prokopenkoav@ornl.gov
+    name            = Andrey Prokopenko
+    email           = prokopenkoav@ornl.gov
 [alias]
-    amendno     = commit --amend --no-edit
-    authors     = shortlog -sn
-    br          = branch -v
-    ci          = commit
-    civ         = commit --no-verify
-    co          = checkout
-    fp          = format-patch -k -M -N
-    glog        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
-    hash        = rev-parse --verify --short HEAD
-    log1a       = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
-    log1        = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
-    log2        = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
-    ls          = ls-files
-    sed         = ! cd -- "${GIT_PREFIX:-.}" && git grep -z --cached -Il '' | xargs -0 sed -i '' -e
-    st          = status -sb
-    sw          = switch
+    amendno         = commit --amend --no-edit
+    authors         = shortlog -sn
+    br              = branch -v
+    brr             = "!r() { \
+                         refbranch=$1; \
+                         count=$2; \
+                         git for-each-ref \
+                         --sort=committerdate refs/heads \
+                         --format='%(refname:short)|%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)%(color:reset)|%(subject)' \
+                         --color=always |\
+                         while read line; do \
+                           branch=$(echo \"$line\" | awk 'BEGIN { FS = \"|\" }; { print $1 }' | tr -d '*'); \
+                           ahead=$(git rev-list --count \"${refbranch:-origin/master}..${branch}\"); \
+                           behind=$(git rev-list --count \"${branch}..${refbranch:-origin/master}\"); \
+                           colorline=$(echo \"$line\" | sed 's/^[^|]*|//'); \
+                           echo \"$colorline|$ahead|$behind\"; \
+                         done | column -ts'|';\
+                       }; r"
+    ci              = commit
+    civ             = commit --no-verify
+    co              = checkout
+    fp              = format-patch -k -M -N
+    glog            = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
+    hash            = rev-parse --verify --short HEAD
+    log1a           = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%ar] %C(bold blue)<%an>%Creset'  # author date
+    log1            = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset'  # commit date
+    log2            = log --pretty=format:'%C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nAuthorDate: %ad\nCommitDate: %cd\n\n%B'
+    ls              = ls-files
+    sed             = ! cd -- "${GIT_PREFIX:-.}" && git grep -z --cached -Il '' | xargs -0 sed -i '' -e
+    st              = status -sb
+    sw              = switch
 [apply]
-    whitespace  = fix
+    whitespace      = fix
 [core]
-    whitespace  = trailing-space,space-before-tab
-    editor      = vim
-    # pager       = vim -R -
-    # pager       = diff-highlight | less -r
+    whitespace      = trailing-space,space-before-tab
+    editor          = vim
+    # pager           = vim -R -
+    # pager           = diff-highlight | less -r
 [diff]
-    colorMoved = blocks
-    colorMovedWs = ignore-all-space
+    colorMoved      = blocks
+    colorMovedWs    = ignore-all-space
 [diff "nocomment"]
-    textconv    = stripcmt
+    textconv        = stripcmt
 [diff "odf"]
-    binary      = true
-    textconv    = odt2txt
+    binary          = true
+    textconv        = odt2txt
 [color]
-    ui          = auto
+    ui              = auto
 [color "branch"]
-    current     = yellow reverse
-    local       = yellow
-    remote      = green
+    current         = yellow reverse
+    local           = yellow
+    remote          = green
 [color "diff"]
-    meta        = yellow
-    frag        = magenta
-    old         = red
-    new         = green
+    meta            = yellow
+    frag            = magenta
+    old             = red
+    new             = green
 [color "status"]
-    added       = yellow
-    changed     = green
-    untracked   = cyan
+    added           = yellow
+    changed         = green
+    untracked       = cyan
 [gui]
-    fontui      = -family helvetica -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-    fontdiff    = -family Terminus -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+    fontui          = -family helvetica -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff        = -family Terminus -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 [help]
-    autocorrect = 10
+    autocorrect     = 10
 [merge]
-    tool        = vimdiff3
+    tool            = vimdiff3
 [push]
-    default     = simple
+    default         = simple
 [pull]
-    rebase      = false
+    rebase          = false
 [credential]
-    helper = cache --timeout=3600
+    helper          = cache --timeout=3600
 [init]
-    templatedir = ~/.git_templates
+    templatedir     = ~/.git_templates
 [pull]
-    rebase = false
+    rebase          = false
 [rerere]
-    enabled = true
+    enabled         = true
 [pager]
-	branch = false
+	branch          = false
