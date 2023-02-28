@@ -38,6 +38,7 @@
 [core]
     whitespace      = trailing-space,space-before-tab
     editor          = vim
+    excludesfile    = ~/.gitignore_global
     # pager           = vim -R -
     # pager           = diff-highlight | less -r
 [diff]
