@@ -42,4 +42,4 @@ fi
 exec git diff-index --check --cached $against --
 
 # Rerun ctags (in background)
-.git/hooks/ctags >/dev/null 2>&1 &
+# .git/hooks/ctags >/dev/null 2>&1 &
