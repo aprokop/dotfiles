@@ -1,9 +1,6 @@
-[submodule ".emacs.d/evil"]
-	path = .emacs.d/evil
-    url = https://github.com/emacs-evil/evil.git
-[submodule ".emacs.d/org-mode"]
-	path = .emacs.d/org-mode
-	url = https://code.orgmode.org/bzg/org-mode.git
+[submodule ".emacs.d/spacemacs"]
+	path = .emacs.d/spacemacs
+	url = https://github.com/syl20bnr/spacemacs
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect

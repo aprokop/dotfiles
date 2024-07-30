@@ -4,22 +4,13 @@
 [alias]
     amendno         = commit --amend --no-edit
     authors         = shortlog -sn
-    br              = branch -v
-    brr             = "!r() { \
-                         refbranch=$1; \
-                         count=$2; \
-                         git for-each-ref \
-                         --sort=committerdate refs/heads \
-                         --format='%(refname:short)|%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)%(color:reset)|%(subject)' \
-                         --color=always |\
-                         while read line; do \
-                           branch=$(echo \"$line\" | awk 'BEGIN { FS = \"|\" }; { print $1 }' | tr -d '*'); \
-                           ahead=$(git rev-list --count \"${refbranch:-origin/master}..${branch}\"); \
-                           behind=$(git rev-list --count \"${branch}..${refbranch:-origin/master}\"); \
-                           colorline=$(echo \"$line\" | sed 's/^[^|]*|//'); \
-                           echo \"$colorline|$ahead|$behind\"; \
-                         done | column -ts'|';\
-                       }; r"
+    br              = "!git branch \
+                         --sort=committerdate  \
+                         --format='%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)%(color:reset)|%(subject)' \
+                         --color=always \
+                         \"$@\" \
+                         | column -ts'|' #"
+    brr             = branch -vv --sort=committerdate
     ci              = commit
     civ             = commit --no-verify
     co              = checkout
