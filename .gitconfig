@@ -14,6 +14,11 @@
     ci              = commit
     civ             = commit --no-verify
     co              = checkout
+    conflict        = "!if [ \"$(git merge --no-ff --no-commit --no-rerere-autoupdate \"$@\" 2>&1 | grep -i conflict)\" ]; \
+                        then echo \"Conflicts\"; \
+                        else echo \"Does not conflict\"; \
+                        fi; \
+                        git merge --abort #"
     fp              = format-patch -k -M -N
     glog            = log --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(yellow)%d%Creset %s %Cgreen[%cr] %C(bold blue)<%an>%Creset' --graph
     hash            = rev-parse --verify --short HEAD
