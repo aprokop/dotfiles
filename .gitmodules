@@ -16,3 +16,6 @@
 [submodule ".tmux/plugins/tmux-continuum"]
 	path = .tmux/plugins/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule ".emacs.d/evil"]
+	path = .emacs.d/evil
+	url = https://github.com/emacs-evil/evil.git
