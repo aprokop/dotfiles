@@ -22,6 +22,7 @@
 (enable-theme 'prok)
 
 ;; vi like keys
+(setq evil-want-C-i-jump nil)
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
