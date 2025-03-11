@@ -75,6 +75,7 @@
     helper          = cache --timeout=3600
 [init]
     templatedir     = ~/.git_templates
+    defaultBranch   = main
 [pull]
     rebase          = false
 [rerere]
