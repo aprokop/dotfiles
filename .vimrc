@@ -25,10 +25,11 @@ Plugin 'gilsondev/searchtasks.vim'          " search TODO/FIXME
 Plugin 'godlygeek/tabular'                  " align text
 Plugin 'junegunn/goyo.vim'                  " write distraction-free
 Plugin 'lifecrisis/vim-difforig'            " show unsaved buffer changes
-Plugin 'majutsushi/tagbar'                  " display tags in a window
 Plugin 'powerman/vim-plugin-ansiesc'        " conceal ansi sequences
+" Plugin 'preservim/vim-indent-guides'        " display indent levels in code
 Plugin 'preservim/nerdtree'                 " explore file system
 Plugin 'preservim/nerdcommenter'            " comment in/out lines
+Plugin 'preservim/tagbar'                   " display tags in a window
 Plugin 'tpope/vim-fugitive'                 " Git
 Plugin 'tpope/vim-rhubarb'                  " Gbrowse for GitHub
 Plugin 'tpope/vim-dispatch'
@@ -36,7 +37,7 @@ Plugin 'vim-scripts/languagetool'           " proof-read
 
 " generic programming support
 Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/syntastic'               " check syntax
+" Plugin 'scrooloose/syntastic'               " check syntax
 Plugin 'universal-ctags/ctags'
 
 " c/c++
@@ -62,7 +63,7 @@ Plugin 'tpope/vim-markdown'                 " highlight syntax for Markdown
 Plugin 'jtratner/vim-flavored-markdown'     " allow GitHub flavored markdown
 
 " python
-Plugin 'nvie/vim-flake8'                    " check syntax/style for Python
+" Plugin 'nvie/vim-flake8'                    " check syntax/style for Python
 
 " swig
 Plugin 'vim-scripts/swig-syntax'            " highlight SWIG
@@ -358,6 +359,9 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 " Syntastic
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs  = 1
+
+" Tagbar
+let g:tagbar_position = 'topleft vertical'
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories  = ["snips"]
