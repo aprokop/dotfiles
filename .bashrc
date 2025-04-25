@@ -23,13 +23,13 @@ fi
 
 # Set environment before non-interactive shell check, so that it is the same for
 # both login and interactive shells
-export PATH="$HOME/bin:$HOME/local/bin:$HOME/.local/bin:/opt/bin:$PATH"
 if [[ "$platform" == "darwin" ]]; then
+    # export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    export PATH="/opt/homebrew/bin:$PATH"
+else
     export PATH="/opt/local/bin:$PATH"
-    export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-    export PATH="/opt/homebrew/bin/:$PATH"
-    export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 fi
+export PATH="$HOME/bin:$HOME/local/bin:/opt/bin:$PATH"
 
 if [[ "$CPATH" != "" ]]; then
     export CPATH="$HOME/local/include:$CPATH"
