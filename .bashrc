@@ -47,6 +47,9 @@ export PKG_CONFIG_PATH="$HOME/local:$PKG_CONFIG_PATH"
 if [[ "$platform" == "darwin" ]]; then
     # Truncation can occur with MPI on OSX with the default TMPDIR
     export TMPDIR=/tmp
+    # Do not pre-allocate heap memory
+    # Fixes "malloc: nano zone abandoned due to inability to reserve vm space" warning
+    export MallocNanoZone=0
 fi
 
 # Test for an interactive shell. There is no need to set anything past this
