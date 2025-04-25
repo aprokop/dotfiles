@@ -19,8 +19,6 @@ elif [[ "$host" == "MAC130194" ]]; then
     MAKEPROC=8
 elif [[ "$host" == "scramjet" ]]; then
     MAKEPROC=15
-elif [[ "$host" == "erectus" ]]; then
-    MAKEPROC=14
 fi
 
 # Set environment before non-interactive shell check, so that it is the same for
