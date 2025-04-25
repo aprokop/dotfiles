@@ -45,6 +45,8 @@
 [diff "odf"]
     binary          = true
     textconv        = odt2txt
+[difftool]
+    prompt = false
 [color]
     ui              = auto
 [color "branch"]
@@ -83,4 +85,4 @@
 [pager]
     branch          = false
 [blame]
-    ignoreRevsFile = .git-blame-ignore-revs
+    # ignoreRevsFile = .git-blame-ignore-revs
