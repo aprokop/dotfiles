@@ -22,6 +22,7 @@ Plugin 'derekwyatt/vim-fswitch'             " switch between companion files
 Plugin 'embear/vim-localvimrc'              " search local vimrc files
 Plugin 'ervandew/supertab'
 Plugin 'gilsondev/searchtasks.vim'          " search TODO/FIXME
+Plugin 'github/copilot.vim'                 " GitHub Copilot
 Plugin 'godlygeek/tabular'                  " align text
 Plugin 'junegunn/goyo.vim'                  " write distraction-free
 Plugin 'lifecrisis/vim-difforig'            " show unsaved buffer changes
