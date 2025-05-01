@@ -335,13 +335,22 @@ __slurm_ps1 ()
     fi
 }
 
+__spack_ps1 ()
+{
+    command -v spack &>/dev/null || return
+    spack_env="$(spack env status | awk 'NF>1{print $NF}')"
+    if [ "x$spack_env" != "xenvironment" ]; then
+        echo -n " spack(${spack_env})"
+    fi
+}
+
 if [[ -s "$HOME"/local/share/git/git-prompt.sh ]]; then
     # Git me harder!
     export GIT_PS1_SHOWSTASHSTATE=1
     #export GIT_PS1_SHOWUPSTREAM="verbose"
     source "$HOME"/local/share/git/git-prompt.sh
 
-    export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
+    export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1)\$(__spack_ps1) \[\033[01;34m\]$\[\033[00m\] "
 else
-    export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
+    export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__slurm_ps1)\$(__spack_ps1) \[\033[01;34m\]$\[\033[00m\] "
 fi
