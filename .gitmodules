@@ -19,3 +19,6 @@
 [submodule ".emacs.d/evil"]
 	path = .emacs.d/evil
 	url = https://github.com/emacs-evil/evil.git
+[submodule ".emacs.d/org-mode"]
+	path = .emacs.d/org-mode
+	url = https://code.orgmode.org/bzg/org-mode.git
