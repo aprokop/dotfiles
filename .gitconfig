@@ -14,7 +14,7 @@
     ci              = commit
     civ             = commit --no-verify
     co              = checkout
-    conflict        = "!if [ \"$(git merge --no-ff --no-commit --no-rerere-autoupdate \"$@\" 2>&1 | grep -i conflict)\" ]; \
+    conflicts       = "!if [ \"$(git merge --no-ff --no-commit --no-rerere-autoupdate \"$@\" 2>&1 | grep -i conflict)\" ]; \
                         then echo \"Conflicts\"; \
                         else echo \"Does not conflict\"; \
                         fi; \
