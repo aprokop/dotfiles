@@ -76,8 +76,9 @@ for file in \
     "/usr/share/doc/git-core-doc/contrib/completion/git-completion.bash" \
     "/etc/profile.d/bash-completion.sh" \
     "/usr/local/etc/bash_completion" \
-    "$HOME/local/share/bash-completion/completions/tmux" \
     "$HOME/local/share/bash-completion/completions/git" \
+    "$HOME/local/share/bash-completion/completions/tig" \
+    "$HOME/local/share/bash-completion/completions/tmux" \
     "/etc/profile.d/autojump.sh" \
     "$HOME/.autojump/etc/profile.d/autojump.sh" \
     "/usr/share/autojump/autojump.sh" \
@@ -165,6 +166,8 @@ chkcmd anki                     && alias anki='anki -b /home/prok/.anki'
 chkcmd black                    && alias black='black -S -l 79'
 chkcmd cgdb                     && alias cgdb='cgdb --ex run'
                                    alias cp='cp -ip'
+[[ "$platform" == "darwin" ]]   && \
+chkcmd ctags                    && alias ctags="/opt/homebrew/opt/ctags/bin/ctags"
 chkcmd ctest                    && alias ctest="ctest -j$MAKEPROC"
 chkcmd colordiff                && alias diff='colordiff'
 chkcmd egrep                    && alias egrep='egrep --color'
@@ -220,6 +223,9 @@ chkcmd htop                     && alias top='htop'
 chkcmd vimx                     && alias vim='vimx -p'
 chkcmd ipython3                 && alias wcalc='ipython3'
 chkcmd konsole                  && alias xterm='konsole'
+
+# init zoxide
+chkcmd zoxide && eval "$(zoxide init --cmd j bash)"
 
 # custom commands
 CCOPY_DIR="$HOME/.ccopy"
@@ -340,7 +346,7 @@ __spack_ps1 ()
     command -v spack &>/dev/null || return
     spack_env="$(spack env status | awk 'NF>1{print $NF}')"
     if [ "x$spack_env" != "xenvironment" ]; then
-        echo -n " spack(${spack_env})"
+        echo -n "spack(${spack_env}) "
     fi
 }
 
@@ -350,7 +356,7 @@ if [[ -s "$HOME"/local/share/git/git-prompt.sh ]]; then
     #export GIT_PS1_SHOWUPSTREAM="verbose"
     source "$HOME"/local/share/git/git-prompt.sh
 
-    export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1)\$(__spack_ps1) \[\033[01;34m\]$\[\033[00m\] "
+    export PS1="\$(__spack_ps1)\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__git_ps1)\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
 else
-    export PS1="\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__slurm_ps1)\$(__spack_ps1) \[\033[01;34m\]$\[\033[00m\] "
+    export PS1="\$(__spack_ps1)\[\033[01;32m\]\h\[\033[01;34m\] \W\[\033[00;37m\]\$(__slurm_ps1) \[\033[01;34m\]$\[\033[00m\] "
 fi
