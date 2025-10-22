@@ -35,6 +35,7 @@ Plugin 'tpope/vim-fugitive'                 " Git
 Plugin 'tpope/vim-rhubarb'                  " Gbrowse for GitHub
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-scripts/languagetool'           " proof-read
+Plugin 'wellle/context.vim'                 " show context of code
 
 " generic programming support
 Plugin 'honza/vim-snippets'
