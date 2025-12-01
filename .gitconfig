@@ -3,7 +3,7 @@
     email           = prokopenkoav@ornl.gov
 [alias]
     amendno         = commit --amend --no-edit
-    authors         = shortlog -sn
+    authors         = shortlog --no-merges -sn
     br              = "!git branch \
                          --sort=committerdate  \
                          --format='%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)%(color:reset)|%(subject)' \
