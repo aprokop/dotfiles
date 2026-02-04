@@ -26,6 +26,7 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+(evil-set-undo-system 'undo-redo)
 
 ;; text width wrap
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
