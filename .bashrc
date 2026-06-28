@@ -149,7 +149,12 @@ export OMPI_CXXFLAGS="-fdiagnostics-color"
 
 export HISTTIMEFORMAT='%F %T '
 
-[[ "$platform" == "darwin" ]] && export HOMEBREW_NO_AUTO_UPDATE
+if [[ "$platform" == "darwin" ]]; then
+    export HOMEBREW_NO_AUTO_UPDATE=1
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_EMOJI=1
+    export HOMEBREW_NO_ENV_HINTS=1
+fi
 
 # helpers
 if [[ "$platform" == "linux" ]]; then
