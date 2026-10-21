@@ -17,8 +17,8 @@ if   [[ "$host" == "jet"* ]]; then
     MAKEPROC=3
 elif [[ "$host" == "MAC130194" ]]; then
     MAKEPROC=8
-elif [[ "$host" == "scramjet" ]]; then
-    MAKEPROC=15
+elif [[ "$host" == "hudson"* ]]; then
+    MAKEPROC=8
 fi
 
 # Set environment before non-interactive shell check, so that it is the same for
@@ -30,6 +30,7 @@ else
     export PATH="/opt/local/bin:$PATH"
 fi
 export PATH="$HOME/bin:$HOME/local/bin:/opt/bin:$PATH"
+export PATH="/home/xap/.pixi/bin:$PATH"
 
 if [[ "$CPATH" != "" ]]; then
     export CPATH="$HOME/local/include:$CPATH"
@@ -58,17 +59,6 @@ fi
 if [[ $- != *i* ]] ; then
 	# Shell is non-interactive. Be done now!
 	return
-fi
-
-# Set Modules environment
-if [[ "$platform" == "linux" ]]; then
-    module_file="/etc/profile.d/modules.sh"
-elif [[ "$platform" == "darwin" ]]; then
-    module_file="/usr/local/opt/modules/init/bash"
-fi
-if [[ -f "$module_file" ]]; then
-    source "$module_file"
-    [[ -d "$HOME/.modules" ]] && module use -a "$HOME/.modules"
 fi
 
 for file in \
